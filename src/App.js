@@ -1,12 +1,16 @@
-import reset from "./reset.module.css";
-import CustomTheme from "./theme/CustomTheme";
-import Router from "./pages/Router";
+import reset from './reset.module.css';
+import CustomTheme from './theme/CustomTheme';
+import { Provider } from 'react-redux';
+import store from './store/store';
+import Router from './pages/Router';
 
 function App() {
   return (
-    <CustomTheme className={reset}>
-      <Router />
-    </CustomTheme>
+    <Provider store={store}>
+      <CustomTheme className={reset}>
+        <Router />
+      </CustomTheme>
+    </Provider>
   );
 }
 
