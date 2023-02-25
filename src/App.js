@@ -2,7 +2,7 @@ import reset from './reset.module.css';
 import CustomTheme from './theme/CustomTheme';
 import { Provider } from 'react-redux';
 import store from './store/store';
-import Router from './pages/Router';
+import Router from './router/Router';
 
 function App() {
   return (
