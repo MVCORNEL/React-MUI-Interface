@@ -16,7 +16,7 @@ const NavMenuItem = ({ id, label, route, handleCloseMenu }) => {
   let activeStyle = ({ isActive }) =>
     isActive
       ? {
-          backgroundColor: '#b22347',
+          backgroundColor: '#ff3366',
           color: 'white',
         }
       : {};

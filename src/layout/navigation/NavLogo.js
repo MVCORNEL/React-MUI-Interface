@@ -32,7 +32,7 @@ const NavLogo = React.memo(({ variant, display, flexGrow }) => {
           display: { ...display },
           fontFamily: 'monospace',
           fontWeight: 700,
-          letterSpacing: '.3rem',
+          letterSpacing: '.5rem',
           flexGrow: flexGrow,
           color: 'inherit',
           textDecoration: 'none',

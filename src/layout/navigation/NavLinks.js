@@ -8,37 +8,52 @@ import navBarItems from './../../consts/navbarItems';
  *
  * @see {navBarItems}
  * @prop {function} handleCloseBarMenu -callback that is responsible for closing userMenu(settings bar)
+ *
  */
 
 const NavLinks = React.memo(({ handleCloseNavMenu }) => {
   let linkActiveStyle = ({ isActive }) =>
     isActive
       ? {
-          textDecoration: 'underline ',
+          color: '#ff3366',
         }
       : undefined;
 
   const linkStyle = (theme) => ({
     my: 3,
-    color: 'white',
     display: 'block',
     fontWeight: 500,
-    margin: 2,
-    textTransform: 'uppercase',
+    margin: 3,
+    textDecoration: 'none',
     alignSelf: 'center',
-    fontSize: '0.875rem',
+    fontSize: '1.8rem',
+    color: '#111',
+
+    '&:hover': {
+      textDecoration: 'underline',
+      textUnderlineOffset: '5px',
+    },
   });
 
   return (
     <Box
       sx={{
         flexGrow: 1,
+        justifyContent: 'flex-end',
+        marginRight: '1rem',
         display: { xs: 'none', md: 'flex' },
       }}
     >
       {navBarItems.map((item) => {
         return (
-          <Link key={item.id} to={item.route} onClick={handleCloseNavMenu} component={RouterLink} sx={linkStyle} style={linkActiveStyle}>
+          <Link
+            key={item.id}
+            to={item.route}
+            onClick={handleCloseNavMenu}
+            component={RouterLink}
+            sx={linkStyle}
+            style={linkActiveStyle}
+          >
             {item.label}
           </Link>
         );
