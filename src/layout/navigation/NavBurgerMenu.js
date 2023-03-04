@@ -53,7 +53,7 @@ const NavBurgerMenu = ({ handleOpenNavMenu, handleCloseNavMenu, anchorElNav }) =
         }}
       >
         {navbarItems.map((page) => (
-          <NavMenuItem id={page.id} label={page.label} route={page.route} handleCloseMenu={handleCloseNavMenu} />
+          <NavMenuItem key={page.id} label={page.label} route={page.route} handleCloseMenu={handleCloseNavMenu} />
         ))}
       </Menu>
     </Box>

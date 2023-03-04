@@ -39,7 +39,12 @@ const NavSettingsBox = ({ handleOpenUserMenu, handleCloseUserMenu, anchorElUser 
         onClose={handleCloseUserMenu}
       >
         {userSettings.map((setting) => (
-          <NavMenuItem id={setting.id} label={setting.label} route={setting.route} handleCloseMenu={handleCloseUserMenu} />
+          <NavMenuItem
+            key={setting.id}
+            label={setting.label}
+            route={setting.route}
+            handleCloseMenu={handleCloseUserMenu}
+          />
         ))}
       </Menu>
     </Box>

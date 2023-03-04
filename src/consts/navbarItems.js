@@ -1,21 +1,21 @@
 const pages = [
   {
-    id: 0,
+    id: 'home',
     label: 'Home',
     route: '/',
   },
   {
-    id: 1,
+    id: 'Curving',
     label: 'Curving Windows',
     route: '/windows',
   },
   {
-    id: 2,
+    id: 'portofolio',
     label: 'Portofolio',
     route: '/portofolio',
   },
   {
-    id: 3,
+    id: 'about',
     label: 'About us',
     route: '/about',
   },

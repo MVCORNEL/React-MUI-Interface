@@ -6,12 +6,18 @@ import { Padding } from '@mui/icons-material';
 
 /**
  * Represents a two-segmented responsive header component.
- * First of them is a container containing text elements, while the other half represent an image.
+ * First of them is a container containing text elements, while the other half represents an image.
  *
  */
 const Header = () => {
   return (
-    <Container sx={{ marginTop: { xs: '3rem', sm: '4rem', md: '8rem', lg: '10rem' }, marginBottom: '4rem' }}>
+    <Container
+      component="section"
+      sx={{
+        marginTop: { xs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },
+        marginBottom: { xs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },
+      }}
+    >
       <Grid container spacing={{ xs: 1, md: 10 }} sx={{ s: 10 }}>
         <Grid xs={12} md={7}>
           <Box>
@@ -42,7 +48,6 @@ const Header = () => {
                     Happy customers
                   </Typography>
                 </Stack>
-
                 {/* EXTRA 2*/}
                 <Stack>
                   <Typography variant="h4" component="span">

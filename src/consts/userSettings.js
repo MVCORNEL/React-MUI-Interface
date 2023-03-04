@@ -1,16 +1,16 @@
 const settings = [
   {
-    id: 0,
+    id: 'profile',
     label: 'Profile',
     route: '/user/profile',
   },
   {
-    id: 1,
+    id: 'messages',
     label: 'Messages',
     route: '/user/messages',
   },
   {
-    id: 2,
+    id: 'logout',
     label: 'Logout',
     route: '/logout',
   },
