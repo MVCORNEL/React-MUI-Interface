@@ -12,7 +12,18 @@ import SvgIcon from '@mui/material/SvgIcon';
  */
 const FeatureCard = ({ id, title, text, icon }) => {
   return (
-    <Card key={id} sx={{ boxShadow: 'none', display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <Card
+      key={id}
+      sx={{
+        boxShadow: 'none',
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        maxWidth: { xs: 275, md: 350 },
+      }}
+    >
       <CardContent>
         {/* ICON */}
         <SvgIcon component={icon} sx={{ fontSize: '5rem', display: 'block', margin: '0 auto', color: '#333' }} />

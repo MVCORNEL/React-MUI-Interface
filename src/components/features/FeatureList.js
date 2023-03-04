@@ -8,7 +8,12 @@ import FeatureCard from './FeatureCard';
  */
 const FeatureList = ({ featureList }) => {
   return (
-    <Grid container spacing={3} sx={{ justifyContent: 'space-around' }}>
+    <Grid
+      container
+      rowSpacing={{ xs: 2, sm: 3, md: 5 }}
+      columnSpacing={{ xs: 2, sm: 2, md: -10, lg: 3 }}
+      sx={{ justifyContent: 'space-between' }}
+    >
       {featureList.map((feature) => {
         return (
           <Grid key={feature.id} xs={12} sm={6} lg={3}>
