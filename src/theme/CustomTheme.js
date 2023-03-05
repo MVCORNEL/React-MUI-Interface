@@ -13,22 +13,23 @@ let theme = createTheme({
   typography: {
     // Tell MUI what's the font-size on the html element is.
     htmlFontSize: 10,
+    fontSize: 16,
 
     h1: {
-      fontSize: 62,
+      fontSize: 63,
       fontWeight: 400,
       color: '#252525',
     },
 
     h2: {
-      fontSize: 45,
+      fontSize: 46,
       lineHeight: 1.3,
       fontWeight: 500,
       color: '#222',
     },
 
     h3: {
-      fontSize: 28,
+      fontSize: 30,
       lineHeight: 1.3,
       color: '#222',
     },
@@ -50,7 +51,13 @@ let theme = createTheme({
 
     subtitle1: {
       fontSize: 20,
-      color: '#666',
+      color: '#555',
+    },
+
+    body1: {},
+
+    body2: {
+      fontSize: 15,
     },
   },
 });

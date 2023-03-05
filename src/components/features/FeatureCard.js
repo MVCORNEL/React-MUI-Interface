@@ -7,8 +7,10 @@ import SvgIcon from '@mui/material/SvgIcon';
  * Represents a card component that that display action and content of a single topic.
  * Each card consists on four elements (Icon,Title,Text,Button).
  *
- * @prop {component} children - the component that will be wrapped by the grey box.
- *
+ * @prop {string || number} id - key element required for each distinct element in a react list environment
+ * @prop {string} title - title of the card
+ * @prop {string} text - text content of the card
+ * @prop {url} icon - url to image
  */
 const FeatureCard = ({ id, title, text, icon }) => {
   return (

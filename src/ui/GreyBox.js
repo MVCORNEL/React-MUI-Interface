@@ -14,8 +14,8 @@ const GreyBox = ({ children }) => {
     <Box
       component="section"
       sx={{
-        paddingTop: { xs: '4rem', sm: '5rem', md: '7rem', lg: '8rem' },
-        paddingBottom: { xs: '4rem', sm: '5rem', md: '7rem', lg: '8rem' },
+        paddingTop: { xs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },
+        paddingBottom: { xs: '4rem', sm: '5rem', md: '7rem', lg: '10rem' },
         backgroundImage: `url(${backgroundLight})`,
       }}
     >
