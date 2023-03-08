@@ -51,7 +51,7 @@ let theme = createTheme({
 
     subtitle1: {
       fontSize: 20,
-      color: '#555',
+      color: '#333',
     },
 
     body1: {},

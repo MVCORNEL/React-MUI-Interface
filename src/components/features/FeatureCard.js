@@ -13,37 +13,40 @@ import SvgIcon from '@mui/material/SvgIcon';
  * @prop {url} icon - url to image
  */
 const FeatureCard = ({ id, title, text, icon }) => {
-  return (
-    <Card
-      key={id}
-      sx={{
-        boxShadow: 'none',
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        maxWidth: { xs: 275, md: 350 },
-      }}
-    >
-      <CardContent>
-        {/* ICON */}
-        <SvgIcon component={icon} sx={{ fontSize: '5rem', display: 'block', margin: '0 auto', color: '#333' }} />
-        {/* TITLE */}
-        <Typography variant="h3" component="h3" textAlign="center">
-          {title}
-        </Typography>
-        {/* TEXT */}
-        <Typography variant="body2" mt={2} textAlign="center">
-          {text}
-        </Typography>
-      </CardContent>
-      {/* BUTTON */}
-      <CardActions sx={{ marginTop: 'auto', justifyContent: 'center' }}>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-  );
+    return (
+        <Card
+            key={id}
+            sx={{
+                boxShadow: 'none',
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                maxWidth: { xs: 275, md: 350 },
+            }}
+        >
+            <CardContent>
+                {/* ICON */}
+                <SvgIcon
+                    component={icon}
+                    sx={{ fontSize: '6rem', display: 'block', margin: '0 auto', color: '#333' }}
+                />
+                {/* TITLE */}
+                <Typography variant="h3" component="h3" textAlign="center">
+                    {title}
+                </Typography>
+                {/* TEXT */}
+                <Typography variant="body1" mt={2} textAlign="center">
+                    {text}
+                </Typography>
+            </CardContent>
+            {/* BUTTON */}
+            <CardActions sx={{ marginTop: 'auto', justifyContent: 'center' }}>
+                <Button size="small">Learn More</Button>
+            </CardActions>
+        </Card>
+    );
 };
 
 export default FeatureCard;

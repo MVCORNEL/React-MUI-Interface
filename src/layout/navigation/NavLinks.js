@@ -12,54 +12,55 @@ import navBarItems from './../../consts/navbarItems';
  */
 
 const NavLinks = React.memo(({ handleCloseNavMenu }) => {
-  let linkActiveStyle = ({ isActive }) =>
-    isActive
-      ? {
-          color: '#ff3366',
-        }
-      : undefined;
+    let linkActiveStyle = ({ isActive }) =>
+        isActive
+            ? {
+                  color: '#ff3366',
+              }
+            : undefined;
 
-  const linkStyle = (theme) => ({
-    my: 3,
-    display: 'block',
-    fontWeight: 500,
-    margin: 3,
-    textDecoration: 'none',
-    alignSelf: 'center',
-    fontSize: '1.8rem',
-    color: '#111',
+    const linkStyle = (theme) => ({
+        my: 3,
+        display: 'block',
+        fontWeight: 500,
+        margin: 3,
+        textDecoration: 'none',
+        alignSelf: 'center',
+        fontSize: '1.8rem',
+        color: '#111',
+        transition: '0.5s ease',
 
-    '&:hover': {
-      textDecoration: 'underline',
-      textUnderlineOffset: '5px',
-    },
-  });
+        '&:hover': {
+            textDecoration: 'underline',
+            textUnderlineOffset: '5px',
+        },
+    });
 
-  return (
-    <Box
-      sx={{
-        flexGrow: 1,
-        justifyContent: 'flex-end',
-        marginRight: '1rem',
-        display: { xs: 'none', md: 'flex' },
-      }}
-    >
-      {navBarItems.map((item) => {
-        return (
-          <Link
-            key={item.id}
-            to={item.route}
-            onClick={handleCloseNavMenu}
-            component={RouterLink}
-            sx={linkStyle}
-            style={linkActiveStyle}
-          >
-            {item.label}
-          </Link>
-        );
-      })}
-    </Box>
-  );
+    return (
+        <Box
+            sx={{
+                flexGrow: 1,
+                justifyContent: 'flex-end',
+                marginRight: '1rem',
+                display: { xs: 'none', md: 'flex' },
+            }}
+        >
+            {navBarItems.map((item) => {
+                return (
+                    <Link
+                        key={item.id}
+                        to={item.route}
+                        onClick={handleCloseNavMenu}
+                        component={RouterLink}
+                        sx={linkStyle}
+                        style={linkActiveStyle}
+                    >
+                        {item.label}
+                    </Link>
+                );
+            })}
+        </Box>
+    );
 });
 
 export default NavLinks;

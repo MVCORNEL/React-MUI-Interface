@@ -5,13 +5,14 @@ import store from './store/store';
 import Router from './router/Router';
 
 function App() {
-  return (
-    <Provider store={store}>
-      <CustomTheme className={reset}>
-        <Router />
-      </CustomTheme>
-    </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <CustomTheme className={reset}>
+                <Router />
+            </CustomTheme>
+        </Provider>
+    );
 }
 
 export default App;
+
