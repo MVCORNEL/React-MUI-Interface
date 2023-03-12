@@ -10,18 +10,18 @@ import { Box } from '@mui/system';
  */
 
 const GreyBox = ({ children }) => {
-  return (
-    <Box
-      component="section"
-      sx={{
-        paddingTop: { xs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },
-        paddingBottom: { xs: '4rem', sm: '5rem', md: '7rem', lg: '10rem' },
-        backgroundImage: `url(${backgroundLight})`,
-      }}
-    >
-      {children}
-    </Box>
-  );
+    return (
+        <Box
+            component="section"
+            sx={{
+                paddingTop: { xs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },
+                paddingBottom: { xs: '4rem', sm: '5rem', md: '7rem', lg: '10rem' },
+                backgroundImage: `url(${backgroundLight})`,
+            }}
+        >
+            {children}
+        </Box>
+    );
 };
 
 export default GreyBox;

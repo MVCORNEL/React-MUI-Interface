@@ -1,6 +1,6 @@
 import { List, ListItem, Divider, Typography } from '@mui/material';
 import FooterItem from './FooterItem';
-
+import { useTheme } from '@mui/material/styles';
 /**
  * Represents the list of navigable links(pages) based on a a list of navigable items, first item of the list will be the heading
  *
@@ -8,6 +8,7 @@ import FooterItem from './FooterItem';
  * @prop {array} items - the list of navigable items (each item having an id,label and a key)
  */
 const FooterList = ({ title, items }) => {
+    const theme = useTheme();
     return (
         <List>
             {/* HEADING */}
@@ -17,7 +18,7 @@ const FooterList = ({ title, items }) => {
                 </Typography>
             </ListItem>
             <Divider
-                color="#ff3366"
+                color={theme.palette.primary.main}
                 width="40%"
                 sx={{
                     marginLeft: '3rem',

@@ -8,20 +8,23 @@ import { Box, Typography, ListItem, ListItemIcon, ListItemText, SvgIcon } from '
  * @prop {svg} icon - svg icon required
  */
 const ServiceItem = ({ text, icon }) => {
-  return (
-    <ListItem>
-      {/* ICON */}
-      <ListItemIcon>
-        <SvgIcon component={icon} sx={{ fontSize: '3rem', display: 'block', margin: '0 auto', color: '#ff3366' }} />
-      </ListItemIcon>
-      {/* TEXT */}
-      <ListItemText>
-        <Box mt={2} ml={2}>
-          <Typography variant="body1">{text}</Typography>
-        </Box>
-      </ListItemText>
-    </ListItem>
-  );
+    return (
+        <ListItem>
+            {/* ICON */}
+            <ListItemIcon>
+                <SvgIcon
+                    component={icon}
+                    sx={{ fontSize: '3rem', display: 'block', margin: '0 auto', color: 'primary.main' }}
+                />
+            </ListItemIcon>
+            {/* TEXT */}
+            <ListItemText>
+                <Box mt={2} ml={2}>
+                    <Typography variant="body1">{text}</Typography>
+                </Box>
+            </ListItemText>
+        </ListItem>
+    );
 };
 
 export default ServiceItem;
