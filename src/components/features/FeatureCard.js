@@ -28,16 +28,13 @@ const FeatureCard = ({ id, title, text, icon }) => {
         >
             <CardContent>
                 {/* ICON */}
-                <SvgIcon
-                    component={icon}
-                    sx={{ fontSize: '6rem', display: 'block', margin: '0 auto', color: '#333' }}
-                />
+                <SvgIcon component={icon} sx={{ fontSize: '6rem', display: 'block', margin: '0 auto', color: '#333' }} />
                 {/* TITLE */}
                 <Typography variant="h3" component="h3" textAlign="center">
                     {title}
                 </Typography>
                 {/* TEXT */}
-                <Typography variant="body1" mt={2} textAlign="center">
+                <Typography variant="body1" component="p" mt={2} textAlign="center">
                     {text}
                 </Typography>
             </CardContent>

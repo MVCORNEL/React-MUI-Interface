@@ -4,11 +4,11 @@ import GetInTouchForm from './GetInTouchForm';
 import Contacts from './Contacts';
 
 /**
- * Component section used to display contact details and providing a way of communicating with the bussines represantives.
- * First of them is a text container with text elements where the contact information is displayed,
- * and the other half is a simple form with fields for an email address, a phone number,
- * and text that needs to be communicated to the business representatives.
- * Using Mui Grid and break points, the section is fully responsive.
+ * Component section used to list contact information and offer a way to get in touch with business representatives.
+ * The first part consists of a text container with text elements where the contact details are shown,
+ * and the other half is a straightforward form with fields for an email address, a phone number,
+ * and text that needs to be communicated to the company representatives.
+ * The section is entirely responsive thanks to Mui Grid and break points.
  *
  */
 const GetInTouchTopic = () => {

@@ -14,65 +14,48 @@ import NavProfileBox from './NavSettingsBox';
  * which links a login page
  */
 function Navbar() {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
-  //user login state
-  const isAuth = useSelector((state) => state.auth.isAuthentificated);
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
+    //user login state
+    const isAuth = useSelector((state) => state.auth.isAuthentificated);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget);
+    };
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
 
-  return (
-    <AppBar position="static" color="transparent" sx={{ boxShadow: 'none' }}>
-      <Container maxWidth="lg">
-        {/* LOGO */}
-        <Toolbar disableGutters>
-          <NavLogo display={{ xs: 'none', md: 'flex' }} variant="h5" flexGrow={0} />
-          {/* HAMBURGER MENU */}
-          <NavBurgerMenu
-            handleCloseNavMenu={handleCloseNavMenu}
-            handleOpenNavMenu={handleOpenNavMenu}
-            anchorElNav={anchorElNav}
-          />
-          {/* LOGO MIDDLE */}
-          <NavLogo display={{ xs: 'flex', md: 'none' }} variant="h6" flexGrow={1} />
-          {/* LINKS */}
-          <NavLinks handleCloseNavMenu={handleCloseNavMenu} />
-          {/* PROFILE BOX */}
-          {isAuth && (
-            <NavProfileBox
-              handleOpenUserMenu={handleOpenUserMenu}
-              handleCloseUserMenu={handleCloseUserMenu}
-              anchorElUser={anchorElUser}
-            />
-          )}
-          {!isAuth && (
-            <Button
-              variant="contained"
-              color="primary"
-              component={RouterLink}
-              size="large"
-              to="/auth?mode=login"
-              sx={{ marginLeft: '0.7rem' }}
-            >
-              Log in
-            </Button>
-          )}
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
+    return (
+        <AppBar position="static" color="transparent" sx={{ boxShadow: 'none' }}>
+            <Container maxWidth="lg">
+                {/* LOGO */}
+                <Toolbar disableGutters>
+                    <NavLogo display={{ xs: 'none', md: 'flex' }} variant="h5" flexGrow={0} />
+                    {/* HAMBURGER MENU */}
+                    <NavBurgerMenu handleCloseNavMenu={handleCloseNavMenu} handleOpenNavMenu={handleOpenNavMenu} anchorElNav={anchorElNav} />
+                    {/* LOGO MIDDLE */}
+                    <NavLogo display={{ xs: 'flex', md: 'none' }} variant="h6" flexGrow={1} />
+                    {/* LINKS */}
+                    <NavLinks handleCloseNavMenu={handleCloseNavMenu} />
+                    {/* PROFILE BOX */}
+                    {isAuth && <NavProfileBox handleOpenUserMenu={handleOpenUserMenu} handleCloseUserMenu={handleCloseUserMenu} anchorElUser={anchorElUser} />}
+                    {!isAuth && (
+                        <Button variant="contained" color="primary" component={RouterLink} size="large" to="/auth?mode=login" sx={{ marginLeft: '1rem' }}>
+                            Log in
+                        </Button>
+                    )}
+                </Toolbar>
+            </Container>
+        </AppBar>
+    );
 }
 export default Navbar;

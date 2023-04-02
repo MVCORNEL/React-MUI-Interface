@@ -32,7 +32,7 @@ const ServiceTopic = ({ title, subtitle, list, image, link, isPlacedRight }) => 
                             {title}
                         </Typography>
                         {/* SUBTITLE */}
-                        <Typography variant="subtitle1" component="p" mb={1}>
+                        <Typography variant="body1" component="p" mb={1}>
                             {subtitle}
                         </Typography>
                         {/* TEXT ELEMENTS */}
@@ -51,14 +51,7 @@ const ServiceTopic = ({ title, subtitle, list, image, link, isPlacedRight }) => 
                 </Grid>
                 {/* IMAGE */}
                 <Grid xs={12} md={6} sx={{ display: { xs: 'none', md: 'block' } }}>
-                    <Image
-                        src={image}
-                        alt="window image"
-                        fit="cover"
-                        duration={3000}
-                        showLoading={true}
-                        easing="ease-in"
-                    />
+                    <Image src={image} alt="window image" fit="cover" duration={3000} showLoading={true} easing="ease-in" />
                 </Grid>
             </Grid>
         </Container>

@@ -1,5 +1,8 @@
+import HeaderAbout from '../layout/header/HeaderAbout';
+
 const AboutUs = () => {
-  return <div>AboutUs</div>;
+    // return <HeaderMiddle />;
+    return <HeaderAbout />;
 };
 
 export default AboutUs;

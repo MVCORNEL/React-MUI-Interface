@@ -1,4 +1,4 @@
-import Header from '../components/Header';
+import Header from '../layout/header/Header';
 import FeatureTopic from '../components/features/FeatureTopic';
 import ServiceTopic from '../components/services/ServiceTopic';
 import { services, products } from '../consts/serviceitems';
