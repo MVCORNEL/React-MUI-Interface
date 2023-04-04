@@ -1,5 +1,4 @@
-import { Container, Typography } from '@mui/material';
-import GreyBox from '../../ui/GreyBox';
+import SectionBox from '../../ui/SectionBox';
 import TeamGrid from './TeamGrid';
 import teamList from '../../consts/teamDetails';
 
@@ -10,10 +9,10 @@ import teamList from '../../consts/teamDetails';
  */
 const TeamTopic = () => {
     return (
-        <Container>
+        <SectionBox>
             {/* TEAM GRID */}
             <TeamGrid teamList={teamList} />
-        </Container>
+        </SectionBox>
     );
 };
 

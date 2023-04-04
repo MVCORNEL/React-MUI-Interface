@@ -1,4 +1,3 @@
-import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import TeamCard from './TeamCard';
 import { Box } from '@mui/system';
 /**

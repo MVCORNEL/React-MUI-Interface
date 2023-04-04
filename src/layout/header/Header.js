@@ -17,12 +17,12 @@ const Header = () => {
                 marginBottom: { xs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },
             }}
         >
-            <Grid container spacing={{ xs: 1, md: 10 }}>
+            <Grid container spacing={{ xs: 1, md: 5, lg: 10 }}>
                 <Grid xs={12} md={7}>
                     <Box>
                         {/* HEADING */}
                         <Typography variant="h1" component="h1">
-                            Montare termopane cu garantie indelungata
+                            Montare termopane cu garantie
                         </Typography>
                         {/* SUBTITLE TEXT*/}
                         <Typography variant="body1" component="p" sx={{ textAlign: 'justify', marginTop: '2rem' }}>
@@ -63,7 +63,7 @@ const Header = () => {
 
                 <Grid xs={12} md={5} alignSelf="center">
                     {/* IMAGE */}
-                    <Box p={2} border="1px solid grey" width={{ xs: '90%', sm: '50%', md: '100%' }} mr="auto" ml="auto">
+                    <Box p={2} border="1px solid grey" width={{ xs: '90%', sm: '60%', md: '100%' }} mr="auto" ml="auto">
                         <Image src={img1} alt="window image" fit="cover" duration={3000} showLoading={true} easing="ease-in" />
                     </Box>
                     {/* BUTTON */}

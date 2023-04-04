@@ -13,6 +13,7 @@ const HeaderAbout = () => {
     return (
         <Box mr="auto" ml="auto" sx={{ position: 'relative' }}>
             <Box sx={{ position: 'relative' }}>
+                {/* TITLE */}
                 <Box
                     sx={{
                         position: 'absolute',
@@ -28,11 +29,11 @@ const HeaderAbout = () => {
                         DESPRE NOI
                     </Typography>
                 </Box>
-
-                <Image src={team} alt="window image" fit="cover" duration={3000} showLoading={true} easing="ease-in" height={'60rem'} />
+                {/* IMAGE */}
+                <Image src={team} alt="window image" fit="cover" duration={500} showLoading={true} easing="ease-in" height={'60rem'} />
             </Box>
-
-            <Container mt="100rem" sx={{ marginTop: '-18rem', position: 'absolute', zIndex: '2000000', marginLeft: '50%', transform: 'translateX(-50%)' }}>
+            {/* TEAM CARDS */}
+            <Container sx={{ marginTop: '-35rem', marginBottom: { md: '-10rem' }, zIndex: '2000', marginLeft: '50%', transform: 'translateX(-50%)' }}>
                 <TeamTopic />
             </Container>
         </Box>

@@ -12,15 +12,14 @@ const ServiceItem = ({ text, icon }) => {
         <ListItem>
             {/* ICON */}
             <ListItemIcon>
-                <SvgIcon
-                    component={icon}
-                    sx={{ fontSize: '3rem', display: 'block', margin: '0 auto', color: 'primary.main' }}
-                />
+                <SvgIcon component={icon} sx={{ fontSize: '3rem', display: 'block', color: 'white', bgcolor: 'primary.main' }} />
             </ListItemIcon>
             {/* TEXT */}
             <ListItemText>
-                <Box mt={2} ml={2}>
-                    <Typography variant="body1">{text}</Typography>
+                <Box mt={1} ml={1}>
+                    <Typography variant="body1" textAlign="justify">
+                        {text}
+                    </Typography>
                 </Box>
             </ListItemText>
         </ListItem>

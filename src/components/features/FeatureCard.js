@@ -17,13 +17,16 @@ const FeatureCard = ({ id, title, text, icon }) => {
         <Card
             key={id}
             sx={{
-                boxShadow: 'none',
+                paddingTop: { xs: '2rem', md: '3rem' },
+                paddingBottom: { xs: '2rem', md: '3rem' },
+                paddingRight: { xs: '1rem', md: '2rem' },
+                paddingLeft: { xs: '1rem', md: '2rem' },
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100%',
                 marginLeft: 'auto',
                 marginRight: 'auto',
-                maxWidth: { xs: 275, md: 350 },
+                maxWidth: { xs: 325, md: 425 },
             }}
         >
             <CardContent>

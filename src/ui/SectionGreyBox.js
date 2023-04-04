@@ -9,7 +9,7 @@ import { Box } from '@mui/system';
  *
  */
 
-const GreyBox = ({ children }) => {
+const SectionGreyBox = ({ children }) => {
     return (
         <Box
             component="section"
@@ -24,4 +24,4 @@ const GreyBox = ({ children }) => {
     );
 };
 
-export default GreyBox;
+export default SectionGreyBox;

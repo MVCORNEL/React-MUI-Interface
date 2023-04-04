@@ -1,5 +1,5 @@
 import AdbIcon from '@mui/icons-material/Adb';
-import { Typography, Box } from '@mui/material';
+import { Typography } from '@mui/material';
 import { Fragment } from 'react';
 
 /**

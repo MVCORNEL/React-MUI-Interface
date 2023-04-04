@@ -1,25 +1,10 @@
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 let theme = createTheme({
-    fontFamily: [
-        'Teko',
-        'sans-serif',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-    ].join(','),
-
     palette: {
         primary: {
             light: '#b22347',
-            main: '#ff3366',
+            main: '#FF5722',
             dark: '#ff5b84',
             contrastText: '#fff',
         },
@@ -35,11 +20,13 @@ let theme = createTheme({
         // Tell MUI what's the font-size on the html element is.
         htmlFontSize: 10,
         fontSize: 16,
+        fontFamily: ['Quicksand', 'sans-serif', 'Roboto'].join(','),
 
         h1: {
-            fontSize: 60,
-            fontWeight: 500,
-            color: '#333',
+            fontSize: 64,
+            fontWeight: 400,
+            color: '#111',
+            fontFamily: 'Lora',
         },
 
         h2: {
@@ -47,14 +34,16 @@ let theme = createTheme({
             lineHeight: 1.3,
             fontWeight: 600,
             color: '#111',
+            fontFamily: 'Lora',
         },
 
         h3: {
-            fontWeight: 500,
-            fontSize: 30,
+            fontWeight: 700,
+            fontSize: 26,
             lineHeight: 1.3,
-            color: '#303030',
+            color: '#222',
             position: 'relative',
+            fontFamily: 'Lora',
         },
 
         h4: {
@@ -74,17 +63,18 @@ let theme = createTheme({
 
         subtitle1: {
             fontSize: 20,
-            color: '#272727',
+            color: '#333',
         },
 
         cardTitle: {
-            fontFamily: 'Teko',
+            fontFamily: 'Lora',
             fontWeight: 500,
-            fontSize: 32,
+            fontSize: 30,
         },
         cardSubTitle: {
-            color: '#ff3366',
-            fontSize: 18,
+            color: '#ff5b84',
+            fontWeight: 400,
+            fontSize: 16,
         },
     },
 });

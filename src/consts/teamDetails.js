@@ -19,7 +19,7 @@ const team = [
     },
     {
         id: 3,
-        name: 'Manea Valentin Cornel',
+        name: 'Manea Valentin',
         title: 'Web Developer',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua semper.',
         image: team3,

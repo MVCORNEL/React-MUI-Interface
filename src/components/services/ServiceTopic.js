@@ -1,12 +1,13 @@
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
-import { Container, Stack, Typography, Box, Button, List } from '@mui/material';
+import { Stack, Typography, Box, Button, List } from '@mui/material';
+import SectionBox from '../../ui/SectionBox';
 import Image from 'mui-image';
 import ServiceItem from './ServiceItem';
 
 /**
- * Service topic section component, consiting in two equal segment one of them representing an image,
- * while the other one represents a text topc that includes (a title, a subtitle , a list of steps, and a link)
- * The image won't be displayed on small devices (md being the breakpoint)
+ * The component of the service topic section is divided into two equal segments, one of which contains an image.
+ * One represents a text topic that includes, while the other (a title, a subtitle, a list of steps, and a link)
+ * One represents an inclusive text topic, while the other (a title, a subtitle, a list of steps, and a link)
  *
  * @prop {string} title - topic heading title
  * @prop {string} subtitle - subtitle topic representing more details about the topic
@@ -18,14 +19,9 @@ import ServiceItem from './ServiceItem';
  */
 const ServiceTopic = ({ title, subtitle, list, image, link, isPlacedRight }) => {
     return (
-        <Container
-            sx={{
-                marginTop: { xs: '5rem', sm: '6rem', md: '7rem', lg: '9rem' },
-                marginBottom: { xs: '5rem', sm: '6rem', md: '7rem', lg: '9rem' },
-            }}
-        >
-            <Grid container spacing={{ xs: 4, ms: 10, md: 8, lg: 10 }}>
-                <Grid xs={12} md={6} sx={{ order: isPlacedRight ? '0' : '2' }}>
+        <SectionBox>
+            <Grid mb={{ xs: '-4rem', sm: '-5rem', md: '-7rem', lg: '-10rem' }} container spacing={{ xs: 4, ms: 10, md: 8, lg: 10 }}>
+                <Grid xs={12} md={7} sx={{ order: isPlacedRight ? '0' : '2' }}>
                     <Stack>
                         {/* TITLE */}
                         <Typography variant="h2" component="h2" mb={3}>
@@ -50,11 +46,11 @@ const ServiceTopic = ({ title, subtitle, list, image, link, isPlacedRight }) => 
                     </Button>
                 </Grid>
                 {/* IMAGE */}
-                <Grid xs={12} md={6} sx={{ display: { xs: 'none', md: 'block' } }}>
-                    <Image src={image} alt="window image" fit="cover" duration={3000} showLoading={true} easing="ease-in" />
+                <Grid xs={12} md={5} sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
+                    <Image src={image} alt="window image" fit="cover" duration={3000} showLoading={true} easing="ease-in" height="100%" />
                 </Grid>
             </Grid>
-        </Container>
+        </SectionBox>
     );
 };
 
