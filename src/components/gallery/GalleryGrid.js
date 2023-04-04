@@ -10,28 +10,22 @@ import useMediaQuery from '@mui/material/useMediaQuery';
  *
  */
 const GalleryGrid = () => {
-  //App theme use to get current theme breakpoints
-  const theme = useTheme();
-  //All devices smaller that md
-  const isMediumDevice = useMediaQuery(theme.breakpoints.down('md'));
-  //All devices smaller that sm
-  const isSmallDevice = useMediaQuery(theme.breakpoints.down('sm'));
+    //App theme use to get current theme breakpoints
+    const theme = useTheme();
+    //All devices smaller that md
+    const isMediumDevice = useMediaQuery(theme.breakpoints.down('md'));
+    //All devices smaller that sm
+    const isSmallDevice = useMediaQuery(theme.breakpoints.down('sm'));
 
-  return (
-    <ImageList
-      sx={{ height: 'auto' }}
-      cols={isMediumDevice ? 2 : 3}
-      rowHeight={isMediumDevice ? (isSmallDevice ? 150 : 225) : 300}
-      gap={1}
-      variant="quilted"
-    >
-      {images.map((item) => (
-        <ImageListItem key={item.img}>
-          <img src={`${item.img}`} alt={item.title} loading="lazy" />
-        </ImageListItem>
-      ))}
-    </ImageList>
-  );
+    return (
+        <ImageList sx={{ height: 'auto' }} cols={isMediumDevice ? 2 : 3} rowHeight={isMediumDevice ? (isSmallDevice ? 150 : 225) : 300} gap={1} variant="quilted">
+            {images.map((item) => (
+                <ImageListItem key={item.img}>
+                    <img src={`${item.img}`} alt={item.title} loading="lazy" />
+                </ImageListItem>
+            ))}
+        </ImageList>
+    );
 };
 
 export default GalleryGrid;

@@ -1,7 +1,7 @@
 import { Box, Typography, ListItem, ListItemIcon, ListItemText, SvgIcon } from '@mui/material';
 
 /**
- * Represents a text list element component preceed by a svg icon
+ * Represents a text list element component preceeded by a svg icon
  * Wrapped into a box element for margins
  *
  * @prop {string} text - the text content within the text box
