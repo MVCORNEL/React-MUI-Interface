@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } 
 import RootLayout from './RootLayout';
 import ErrorPage from '../pages/ErrorPage';
 import Home from '../pages/Home';
-import DoubleGlazed from '../pages/DoubleGlazed';
+import Products from '../pages/Products';
 import Portofolio from '../pages/Portofolio';
 import AboutUs from '../pages/AboutUs';
 import UserLayout from '../pages/User/UserLayout';
@@ -27,7 +27,7 @@ const router = createBrowserRouter(
             <Route path="about" element={<AboutUs />} />
             <Route path="auth" element={<Auth />} />
             <Route path="portofolio" element={<Portofolio />} />
-            <Route path="windows" element={<DoubleGlazed />} />
+            <Route path="windows" element={<Products />} />
             <Route path="user" element={<UserLayout />}>
                 <Route path="messages" element={<UserMessages />} />
                 <Route path="profile" element={<UserProfile />} />

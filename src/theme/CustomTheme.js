@@ -39,7 +39,7 @@ let theme = createTheme({
 
         h3: {
             fontWeight: 700,
-            fontSize: 26,
+            fontSize: 28,
             lineHeight: 1.3,
             color: '#222',
             position: 'relative',
@@ -47,15 +47,14 @@ let theme = createTheme({
         },
 
         h4: {
-            color: '#ff3366',
-            fontWeight: 500,
+            color: '#FF5722',
+            fontWeight: 700,
             lineHeight: 1.3,
             fontSize: 30,
         },
 
         h5: {
-            fontSize: 18,
-            fontWeight: 700,
+            fontWeight: 500,
             lineHeight: 1.35,
             color: '#535354',
             textTransform: 'uppercase',

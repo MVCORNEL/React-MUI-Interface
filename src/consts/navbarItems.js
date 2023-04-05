@@ -5,14 +5,14 @@ const pages = [
         route: '/',
     },
     {
-        id: 'windows',
-        label: 'Double Glazed',
-        route: '/windows',
-    },
-    {
         id: 'portofolio',
         label: 'Portofolio',
         route: '/portofolio',
+    },
+    {
+        id: 'windows',
+        label: 'Double Glazed',
+        route: '/windows',
     },
     {
         id: 'about',

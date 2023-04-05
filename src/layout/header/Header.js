@@ -17,12 +17,12 @@ const Header = () => {
                 marginBottom: { xs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },
             }}
         >
-            <Grid container spacing={{ xs: 1, md: 5, lg: 10 }}>
+            <Grid container spacing={{ xs: 1, md: 1, lg: 10 }}>
                 <Grid xs={12} md={7}>
                     <Box>
                         {/* HEADING */}
-                        <Typography variant="h1" component="h1">
-                            Montare termopane cu garantie
+                        <Typography variant="h1" component="h1" sx={{ width: { md: '115%' } }}>
+                            Montare Termopane Ardelenesti
                         </Typography>
                         {/* SUBTITLE TEXT*/}
                         <Typography variant="body1" component="p" sx={{ textAlign: 'justify', marginTop: '2rem' }}>
@@ -60,15 +60,15 @@ const Header = () => {
                         </Box>
                     </Box>
                 </Grid>
-
-                <Grid xs={12} md={5} alignSelf="center">
+                {/* border="1px solid grey" p={2} */}
+                <Grid xs={12} md={5} alignSelf="center" pl={{ md: 10, lg: 3 }}>
                     {/* IMAGE */}
-                    <Box p={2} border="1px solid grey" width={{ xs: '90%', sm: '60%', md: '100%' }} mr="auto" ml="auto">
+                    <Box width={{ xs: '55%', sm: '30%', md: '100%' }} mr="auto" ml="auto">
                         <Image src={img1} alt="window image" fit="cover" duration={3000} showLoading={true} easing="ease-in" />
                     </Box>
                     {/* BUTTON */}
-                    <Box mt={3} sx={{ textAlign: 'center' }}>
-                        <Button variant="contained" color="primary" size="large" sx={{ width: { xs: '100%', sm: '65%' }, display: { sx: 'block', md: 'none' } }}>
+                    <Box mt={{ xs: 4 }} sx={{ textAlign: 'center' }}>
+                        <Button variant="contained" color="primary" size="large" sx={{ width: { xs: '100%', sm: '60%' }, display: { sx: 'block', md: 'none' } }}>
                             Calculeaza pret estimativ
                         </Button>
                     </Box>

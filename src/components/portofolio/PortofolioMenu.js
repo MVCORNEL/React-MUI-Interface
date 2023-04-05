@@ -3,7 +3,7 @@ import { ButtonGroup, Button } from '@mui/material';
 
 /**
  * Component representing a Group of selectable buttons. 
- * Only one button can be chosen at a time, and the chosen button has a different colour. 
+ * One button can be selected at a time, and the chosen button has a different colour. 
  * 
  * @prop {array} menuItems - expects a list of objects in the format (index,category) value/pair.
 

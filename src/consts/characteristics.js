@@ -1,33 +1,33 @@
-import HandymanRoundedIcon from '@mui/icons-material/HandymanRounded';
-import LocalShippingRoundedIcon from '@mui/icons-material/LocalShippingRounded';
-import PrecisionManufacturingRoundedIcon from '@mui/icons-material/PrecisionManufacturingRounded';
-import BuildRoundedIcon from '@mui/icons-material/BuildRounded';
+import ThermostatIcon from '@mui/icons-material/Thermostat';
+import HandshakeIcon from '@mui/icons-material/Handshake';
+import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
+import SecurityRoundedIcon from '@mui/icons-material/SecurityRounded';
 
-const features = [
+const characteristics = [
     {
         id: 1,
-        title: 'Montaj',
+        title: 'Izolare termica',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        icon: HandymanRoundedIcon,
+        icon: ThermostatIcon,
     },
     {
         id: 2,
-        title: 'Productie',
+        title: 'Intretinere usoara',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-        icon: PrecisionManufacturingRoundedIcon,
+        icon: CleaningServicesIcon,
     },
     {
         id: 3,
-        title: 'Transport',
+        title: 'Siguranta marita',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        icon: LocalShippingRoundedIcon,
+        icon: SecurityRoundedIcon,
     },
     {
         id: 4,
-        title: 'Reparatii',
+        title: 'Garantie indelungata',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-        icon: BuildRoundedIcon,
+        icon: HandshakeIcon,
     },
 ];
 
-export default features;
+export default characteristics;
