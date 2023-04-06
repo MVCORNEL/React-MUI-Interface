@@ -19,7 +19,7 @@ const TeamCard = ({ id, name, title, text, image }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100%',
-                maxWidth: { xs: '360px', sm: '400px', md: '360px', lg: '330px', xl: '360px' },
+                maxWidth: { xxs: '360px', sm: '400px', md: '360px', lg: '330px', xl: '360px' },
                 borderRadius: 0,
                 padding: '1rem',
             }}

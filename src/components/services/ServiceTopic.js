@@ -20,8 +20,8 @@ import ServiceItem from './ServiceItem';
 const ServiceTopic = ({ title, subtitle, list, image, link, isPlacedRight }) => {
     return (
         <SectionBox>
-            <Grid mb={{ xs: '-4rem', sm: '-5rem', md: '-7rem', lg: '-10rem' }} container spacing={{ xs: 4, ms: 10, md: 8, lg: 10 }}>
-                <Grid xs={12} md={7} sx={{ order: isPlacedRight ? '0' : '2' }}>
+            <Grid mb={{ xxs: '-4rem', sm: '-5rem', md: '-7rem', lg: '-10rem' }} container spacing={{ xxs: 4, ms: 10, md: 7, lg: 9 }}>
+                <Grid xxs={12} md={7} sx={{ order: isPlacedRight ? '0' : '2' }}>
                     <Stack>
                         {/* TITLE */}
                         <Typography variant="h2" component="h2" mb={3}>
@@ -46,8 +46,8 @@ const ServiceTopic = ({ title, subtitle, list, image, link, isPlacedRight }) => 
                     </Button>
                 </Grid>
                 {/* IMAGE */}
-                <Grid xs={12} md={5} sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
-                    <Image src={image} alt="window image" fit="cover" duration={3000} showLoading={true} easing="ease-in" height="100%" />
+                <Grid xxs={12} md={5} sx={{ display: { xxs: 'none', md: 'flex' }, alignItems: 'center' }}>
+                    <Image src={image} alt="window image" fit="cover" duration={3000} showLoading={true} easing="ease-in" height="85%" />
                 </Grid>
             </Grid>
         </SectionBox>

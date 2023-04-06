@@ -1,11 +1,22 @@
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 let theme = createTheme({
+    breakpoints: {
+        values: {
+            xxs: 0,
+            xs: 360,
+            sm: 600,
+            md: 900,
+            lg: 1200,
+            xl: 1536,
+        },
+    },
+
     palette: {
         primary: {
-            light: '#b22347',
+            light: '#ff7043',
             main: '#FF5722',
-            dark: '#ff5b84',
+            dark: '#e64a19',
             contrastText: '#fff',
         },
         secondary: {
@@ -23,40 +34,43 @@ let theme = createTheme({
         fontFamily: ['Quicksand', 'sans-serif', 'Roboto'].join(','),
 
         h1: {
-            fontSize: 64,
+            fontSize: 66,
             fontWeight: 400,
             color: '#111',
             fontFamily: 'Lora',
         },
 
         h2: {
-            fontSize: 40,
+            fontSize: 44,
             lineHeight: 1.3,
             fontWeight: 600,
-            color: '#111',
+            color: '#292929',
             fontFamily: 'Lora',
         },
 
         h3: {
             fontWeight: 700,
-            fontSize: 28,
+            fontSize: 26,
             lineHeight: 1.3,
-            color: '#222',
+            color: '#333',
             position: 'relative',
             fontFamily: 'Lora',
         },
 
         h4: {
+            fontFamily: 'Lora',
             color: '#FF5722',
-            fontWeight: 700,
+            fontWeight: 600,
             lineHeight: 1.3,
             fontSize: 30,
         },
 
         h5: {
+            fontFamily: 'Lora',
+            fontSize: 24,
             fontWeight: 500,
             lineHeight: 1.35,
-            color: '#535354',
+            color: '#555',
             textTransform: 'uppercase',
         },
 

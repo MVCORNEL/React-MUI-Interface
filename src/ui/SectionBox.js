@@ -18,8 +18,8 @@ const SectionBox = ({ children, isGray }) => {
             <Container
                 component="section"
                 sx={{
-                    paddingTop: { xs: '4rem', sm: '5rem', md: '7rem', lg: '10rem' },
-                    paddingBottom: { xs: '4rem', sm: '5rem', md: '7rem', lg: '10rem' },
+                    paddingTop: { xxs: '4rem', sm: '5rem', md: '7rem', lg: '10rem' },
+                    paddingBottom: { xxs: '4rem', sm: '5rem', md: '7rem', lg: '10rem' },
                     backgroundImage: isGray ? `url(${backgroundLight})` : 'none',
                 }}
             >

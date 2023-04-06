@@ -1,0 +1,12 @@
+.icon svg {
+    width: 8rem;
+    height: 8rem;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 2rem;
+}
+
+.icon svg path {
+    fill: #ff5722;
+}

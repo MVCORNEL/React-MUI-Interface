@@ -4,7 +4,7 @@ import { NavLink as RouterLink } from 'react-router-dom';
 import navBarItems from './../../consts/navbarItems';
 
 /**
- * Represents the list of navigable links(pages) based on a list of navigable items (for xs devices the links will be hidden)
+ * Represents the list of navigable links(pages) based on a list of navigable items (for xxs devices the links will be hidden)
  *
  * @see {navBarItems}
  * @prop {function} handleCloseBarMenu -callback that is responsible for closing userMenu(settings bar)
@@ -42,19 +42,12 @@ const NavLinks = React.memo(({ handleCloseNavMenu }) => {
                 flexGrow: 1,
                 justifyContent: 'flex-end',
                 marginRight: '1rem',
-                display: { xs: 'none', md: 'flex' },
+                display: { xxs: 'none', md: 'flex' },
             }}
         >
             {navBarItems.map((item) => {
                 return (
-                    <Link
-                        key={item.id}
-                        to={item.route}
-                        onClick={handleCloseNavMenu}
-                        component={RouterLink}
-                        sx={linkStyle}
-                        style={linkActiveStyle}
-                    >
+                    <Link key={item.id} to={item.route} onClick={handleCloseNavMenu} component={RouterLink} sx={linkStyle} style={linkActiveStyle}>
                         {item.label}
                     </Link>
                 );

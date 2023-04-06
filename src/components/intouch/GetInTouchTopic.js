@@ -17,13 +17,13 @@ const GetInTouchTopic = () => {
         <SectionBox>
             {/*SECTION  HEADING */}
             <SectionHeading heading="Get in Touch" subheading=" Mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra ." />
-            <Grid container spacing={{ xs: 4, md: 4 }}>
+            <Grid container spacing={{ xxs: 2, md: 4 }}>
                 {/*CONTACTS */}
-                <Grid xs={12} md={6}>
+                <Grid xxs={12} md={6}>
                     <Contacts />
                 </Grid>
                 {/*CONTACT FORM*/}
-                <Grid xs={12} md={6}>
+                <Grid xxs={12} md={6}>
                     <GetInTouchForm />
                 </Grid>
             </Grid>

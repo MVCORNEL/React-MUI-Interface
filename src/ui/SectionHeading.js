@@ -17,7 +17,7 @@ const SectionHeading = ({ heading, subheading }) => {
                 {heading}
             </Typography>
             {/* SUBTITLE */}
-            <Typography mb={{ xs: 4, sm: 5, md: 10 }} variant="subtitle1" component="p" textAlign="center" sx={{ maxWidth: '65ch', marginRight: 'auto', marginLeft: 'auto' }}>
+            <Typography mb={{ xxs: 4, sm: 5, md: 10 }} variant="subtitle1" component="p" textAlign="center" sx={{ maxWidth: '65ch', marginRight: 'auto', marginLeft: 'auto' }}>
                 {subheading}
             </Typography>
         </Fragment>

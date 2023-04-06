@@ -10,9 +10,9 @@ import ContactsList from './ContactsList';
 const Contacts = () => {
     const theme = useTheme();
     return (
-        <Box border={{ xs: '1px solid #aaa', md: 'none' }} p={2} sx={{ borderRadius: 2 }}>
+        <Box border={{ xxs: '1px solid #aaa', md: 'none' }} p={2} sx={{ borderRadius: 2 }}>
             {/* HEADING */}
-            <Typography mt={{ xs: 0, md: 1 }} variant={'h3'} component={'h3'} textAlign={{ xs: 'center', md: 'start' }}>
+            <Typography mt={{ xxs: 0, md: 1 }} variant={'h3'} component={'h3'} textAlign={{ xxs: 'center', md: 'start' }}>
                 Unde ne poti gasii ?
             </Typography>
             <Divider
@@ -22,19 +22,14 @@ const Contacts = () => {
                     marginTop: '1rem',
                     marginBottom: '2rem',
                     height: '0.2rem',
-                    maxWidth: { xs: '15%', md: '25%' },
-                    ml: { xs: 'auto', md: '0' },
-                    mr: { xs: 'auto', md: '0' },
+                    maxWidth: { xxs: '15%', md: '25%' },
+                    ml: { xxs: 'auto', md: '0' },
+                    mr: { xxs: 'auto', md: '0' },
                 }}
             />
             {/* SUBTITLE TEXT */}
-            <Typography
-                variant={'body1'}
-                component={'p'}
-                sx={{ maxWidth: { xs: 'auto', md: '50ch' }, textAlign: { xs: 'center', md: 'justify' } }}
-            >
-                Mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium
-                viverra aliquam faucibus purus in massa tempor ...
+            <Typography variant={'body1'} component={'p'} sx={{ maxWidth: { xxs: 'auto', md: '50ch' }, textAlign: { xxs: 'center', md: 'justify' } }}>
+                Mattis aliquam faucibus purus in massa tempor nec feugiat nisl pretium fusce id velit ut tortor pretium viverra aliquam faucibus purus in massa tempor ...
             </Typography>
             {/* LIST OF COTNACT DETAILS */}
             <ContactsList />

@@ -39,11 +39,11 @@ function Navbar() {
             <Container maxWidth="lg">
                 {/* LOGO */}
                 <Toolbar disableGutters>
-                    <NavLogo display={{ xs: 'none', md: 'flex' }} variant="h5" flexGrow={0} />
+                    <NavLogo display={{ xxs: 'none', md: 'flex' }} variant="h5" flexGrow={0} />
                     {/* HAMBURGER MENU */}
                     <NavBurgerMenu handleCloseNavMenu={handleCloseNavMenu} handleOpenNavMenu={handleOpenNavMenu} anchorElNav={anchorElNav} />
                     {/* LOGO MIDDLE */}
-                    <NavLogo display={{ xs: 'flex', md: 'none' }} variant="h6" flexGrow={1} />
+                    <NavLogo display={{ xxs: 'flex', md: 'none' }} variant="h6" flexGrow={1} />
                     {/* LINKS */}
                     <NavLinks handleCloseNavMenu={handleCloseNavMenu} />
                     {/* PROFILE BOX */}

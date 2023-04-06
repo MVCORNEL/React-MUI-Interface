@@ -18,7 +18,7 @@ const NavBurgerMenu = ({ handleOpenNavMenu, handleCloseNavMenu, anchorElNav }) =
         <Box
             sx={{
                 flexGrow: 1,
-                display: { xs: 'flex', md: 'none' },
+                display: { xxs: 'flex', md: 'none' },
             }}
         >
             <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleOpenNavMenu} color="inherit">
@@ -40,7 +40,7 @@ const NavBurgerMenu = ({ handleOpenNavMenu, handleCloseNavMenu, anchorElNav }) =
                 onClose={handleCloseNavMenu}
                 sx={{
                     display: {
-                        xs: 'block',
+                        xxs: 'block',
                         md: 'none',
                     },
                 }}

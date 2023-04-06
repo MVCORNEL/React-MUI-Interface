@@ -1,7 +1,7 @@
-import { Card, CardActions, CardContent } from '@mui/material';
-import Button from '@mui/material/Button';
+import { Card, CardContent, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import SvgIcon from '@mui/material/SvgIcon';
+import IconWrapper from '../../ui/IconWrapper';
 
 /**
  * Represents a card component that that display action and content of a single topic.
@@ -13,38 +13,43 @@ import SvgIcon from '@mui/material/SvgIcon';
  * @prop {url} icon - url to image
  */
 const FeatureCard = ({ id, title, text, icon }) => {
+    const theme = useTheme();
+    //All devices smaller than 900px
+    const isSmallDevice = useMediaQuery(theme.breakpoints.down('sm'));
+    //All devices smaller that 600px
+    const isVerySmallDevice = useMediaQuery(theme.breakpoints.down('xs'));
+
+    const iconSize = isVerySmallDevice ? '7rem' : isSmallDevice ? '8rem' : '9rem';
     return (
         <Card
             key={id}
             sx={{
-                paddingTop: { xs: '2rem', md: '3rem' },
-                paddingBottom: { xs: '2rem', md: '3rem' },
-                paddingRight: { xs: '1rem', md: '2rem' },
-                paddingLeft: { xs: '1rem', md: '2rem' },
+                paddingTop: { xxs: '2rem', md: '3rem' },
+                paddingBottom: { xxs: '3rem', md: '4rem' },
+                paddingRight: { xxs: '1rem', md: '2rem' },
+                paddingLeft: { xxs: '1rem', md: '2rem' },
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100%',
                 marginLeft: 'auto',
                 marginRight: 'auto',
-                maxWidth: { xs: 325, md: 425 },
+                maxWidth: { xxs: 325, md: 425 },
             }}
         >
             <CardContent>
                 {/* ICON */}
-                <SvgIcon component={icon} sx={{ fontSize: '6rem', display: 'block', margin: '0 auto', color: '#333' }} />
+                <IconWrapper size={iconSize} marginBottom="2rem" color={theme.palette.primary.main}>
+                    {icon}
+                </IconWrapper>
                 {/* TITLE */}
                 <Typography variant="h3" component="h3" textAlign="center">
-                    {title}
+                    {title?.toUpperCase()}
                 </Typography>
                 {/* TEXT */}
                 <Typography variant="body1" component="p" mt={2} textAlign="center">
                     {text}
                 </Typography>
             </CardContent>
-            {/* BUTTON */}
-            <CardActions sx={{ marginTop: 'auto', justifyContent: 'center' }}>
-                <Button size="small">Learn More</Button>
-            </CardActions>
         </Card>
     );
 };

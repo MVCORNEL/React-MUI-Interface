@@ -57,10 +57,10 @@ const GetInTouchForm = () => {
     };
 
     return (
-        <Box border={{ xs: '1px solid #aaa', md: 'none' }} pt={2} sx={{ borderRadius: 2 }}>
+        <Box border={{ xxs: '1px solid #aaa', md: 'none' }} pt={2} sx={{ borderRadius: 2 }}>
             <form onSubmit={formSubmitHandler}>
                 {/* TITLE */}
-                <Typography variant={'h3'} component={'h3'} ml={2} textAlign={{ xs: 'center', md: 'start' }}>
+                <Typography variant={'h3'} component={'h3'} ml={2} textAlign={{ xxs: 'center', md: 'start' }}>
                     Lasa-ne un mesaj
                 </Typography>
                 <Divider
@@ -70,16 +70,16 @@ const GetInTouchForm = () => {
                         marginTop: '1rem',
                         marginBottom: '2rem',
                         height: '0.2rem',
-                        maxWidth: { xs: '15%', md: '25%' },
-                        ml: { xs: 'auto', md: '1.5rem' },
-                        mr: { xs: 'auto', md: '0' },
+                        maxWidth: { xxs: '15%', md: '25%' },
+                        ml: { xxs: 'auto', md: '1.5rem' },
+                        mr: { xxs: 'auto', md: '0' },
                     }}
                     ml={2}
                 />
 
                 <Grid container columnSpacing={2} rowSpacing={1}>
                     {/* EMAIL */}
-                    <Grid xs={12} sm={6}>
+                    <Grid xxs={12} sm={6}>
                         <Input
                             id={'email'}
                             label="Email"
@@ -92,7 +92,7 @@ const GetInTouchForm = () => {
                         ></Input>
                     </Grid>
                     {/* PHONE */}
-                    <Grid xs={12} sm={6}>
+                    <Grid xxs={12} sm={6}>
                         <Input
                             id={'phone'}
                             label="Phone Number"
@@ -105,7 +105,7 @@ const GetInTouchForm = () => {
                         ></Input>
                     </Grid>
                     {/* COMMENT */}
-                    <Grid xs={12} width="100%">
+                    <Grid xxs={12} width="100%">
                         <Input
                             id={'phone'}
                             label="Ask us"
@@ -119,7 +119,7 @@ const GetInTouchForm = () => {
                         ></Input>
                     </Grid>
                     {/* SUBMIT */}
-                    <Grid xs={12}>
+                    <Grid xxs={12}>
                         <Button size="large" variant="contained" color="primary" type="submit" disabled={!isFormValid}>
                             Trimite
                         </Button>

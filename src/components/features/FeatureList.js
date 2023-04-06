@@ -8,10 +8,10 @@ import FeatureCard from './FeatureCard';
  */
 const FeatureList = ({ featureList }) => {
     return (
-        <Grid container rowSpacing={{ xs: 2, sm: 3, md: 5 }} columnSpacing={{ xs: 2, sm: 2, md: 5, lg: 5 }} justifyContent="center">
+        <Grid container rowSpacing={{ xxs: 2, sm: 3, md: 5 }} columnSpacing={{ xxs: 2, sm: 2, md: 5, lg: 5 }} justifyContent="center">
             {featureList.map((feature) => {
                 return (
-                    <Grid key={feature.id} xs={12} sm={6} lg={4}>
+                    <Grid key={feature.id} xxs={12} sm={6} lg={4}>
                         <FeatureCard id={feature.id} title={feature.title} text={feature.text} icon={feature.icon} />
                     </Grid>
                 );

@@ -3,7 +3,7 @@ import { useTheme } from '@mui/material/styles';
 
 /**
  * Represents a grid of images component.
- * For the devices smaller than xs(600px) the grid has 1x columns, sm(900px) the grid has 2x columns,lg(900px) the grid has 3x columns, otherwise 4
+ * For the devices smaller than xxs(360px) the grid has 1x columns, sm(900px) the grid has 2x columns,lg(900px) the grid has 3x columns, otherwise 4
  *
  * @prop {array} imageList  arrays of images
  */
@@ -14,8 +14,8 @@ const PortofolioGrid = ({ imageList }) => {
     const isLargeDevice = useMediaQuery(theme.breakpoints.down('lg'));
     //All devices smaller than 900px
     const isSmallDevice = useMediaQuery(theme.breakpoints.down('sm'));
-    //All devices smaller that 600px
-    const isVerySmallDevice = useMediaQuery(theme.breakpoints.down('xs'));
+    //All devices smaller that 360px
+    const isVerySmallDevice = useMediaQuery(theme.breakpoints.down('xxs'));
     //Columns count
     const colCount = isVerySmallDevice ? 1 : isSmallDevice ? 2 : isLargeDevice ? 3 : 4;
 

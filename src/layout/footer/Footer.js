@@ -16,17 +16,16 @@ const Footer = () => {
         <Box component="footer" sx={{ backgroundColor: '#24262b', color: 'white' }}>
             <Container maxWidth="lg">
                 <Grid container maxWidth="lg" direction="row" justifyContent="space-between" alignItems="baseline">
-                    <Grid xs={12} md={5} p={4}>
+                    <Grid xxs={12} md={5} p={4}>
                         {/* LOGO */}
                         <FooterLogo />
                         {/* TEXT */}
                         <Typography variant="body1">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
                         </Typography>
                     </Grid>
                     {/* PRIVACY */}
-                    <Grid xs={12} md={5} container justifyContent={'space-between'}>
+                    <Grid xxs={12} md={5} container justifyContent={'space-between'}>
                         <FooterList title={privacyList.title} items={privacyList.items} />
                         <FooterList title={navigationList.title} items={navigationList.items} />
                     </Grid>

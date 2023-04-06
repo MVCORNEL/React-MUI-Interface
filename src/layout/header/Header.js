@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import { Container, Box, Button, Stack, Typography, Divider } from '@mui/material';
-import img1 from './../../images/window.jpg';
+import img1 from './../../images/fitter.jpg';
 import Image from 'mui-image';
 
 /**
@@ -13,12 +13,12 @@ const Header = () => {
         <Container
             component="section"
             sx={{
-                marginTop: { xs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },
-                marginBottom: { xs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },
+                marginTop: { xxs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },
+                marginBottom: { xxs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },
             }}
         >
-            <Grid container spacing={{ xs: 1, md: 1, lg: 10 }}>
-                <Grid xs={12} md={7}>
+            <Grid container spacing={{ xxs: 1, md: 1, lg: 10 }}>
+                <Grid xxs={12} md={7}>
                     <Box>
                         {/* HEADING */}
                         <Typography variant="h1" component="h1" sx={{ width: { md: '115%' } }}>
@@ -31,12 +31,12 @@ const Header = () => {
                         </Typography>
                         {/* BUTTON */}
                         <Box mt={4}>
-                            <Button variant="contained" color="primary" size="large" sx={{ display: { xs: 'none', md: 'block' } }}>
+                            <Button variant="contained" color="primary" size="large" sx={{ display: { xxs: 'none', md: 'block' } }}>
                                 Calculeaza pret estimativ
                             </Button>
                         </Box>
                         {/* EXTRA */}
-                        <Box mt={10} textAlign sx={{ display: { xs: 'none', md: 'block' } }}>
+                        <Box mt={{ xxs: 20, md: 10, lg: 15 }} textAlign sx={{ display: { xxs: 'none', md: 'block' } }}>
                             {/* EXTRA 1*/}
                             <Stack direction="row" spacing={7} divider={<Divider orientation="vertical" flexItem />}>
                                 <Stack>
@@ -61,14 +61,14 @@ const Header = () => {
                     </Box>
                 </Grid>
                 {/* border="1px solid grey" p={2} */}
-                <Grid xs={12} md={5} alignSelf="center" pl={{ md: 10, lg: 3 }}>
+                <Grid xxs={12} md={5} alignSelf="center" pl={{ md: 10, lg: 3 }}>
                     {/* IMAGE */}
-                    <Box width={{ xs: '55%', sm: '30%', md: '100%' }} mr="auto" ml="auto">
+                    <Box width={{ xxs: '55%', sm: '30%', md: '100%' }} mr="auto" ml="auto">
                         <Image src={img1} alt="window image" fit="cover" duration={3000} showLoading={true} easing="ease-in" />
                     </Box>
                     {/* BUTTON */}
-                    <Box mt={{ xs: 4 }} sx={{ textAlign: 'center' }}>
-                        <Button variant="contained" color="primary" size="large" sx={{ width: { xs: '100%', sm: '60%' }, display: { sx: 'block', md: 'none' } }}>
+                    <Box mt={{ xxs: 4 }} sx={{ textAlign: 'center' }}>
+                        <Button variant="contained" color="primary" size="large" sx={{ width: { xxs: '100%', sm: '60%' }, display: { sx: 'block', md: 'none' } }}>
                             Calculeaza pret estimativ
                         </Button>
                     </Box>

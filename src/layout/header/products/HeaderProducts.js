@@ -16,15 +16,15 @@ const HeaderProducts = () => {
             <Container
                 component="section"
                 sx={{
-                    paddingTop: { xs: '5rem', sm: '5rem', md: '7rem', lg: '9rem' },
-                    marginBottom: { xs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },
+                    paddingTop: { xxs: '5rem', sm: '5rem', md: '7rem', lg: '9rem' },
+                    marginBottom: { xxs: '2rem', sm: '3rem', md: '3rem', lg: '5rem' },
                     position: 'relative',
                     zIndex: 1000,
                 }}
             >
-                <Grid container spacing={{ xs: 1, md: 4, lg: 6 }}>
+                <Grid container spacing={{ xxs: 1, md: 4, lg: 6 }}>
                     {/* LEFT SIDE */}
-                    <Grid xs={12} md={6}>
+                    <Grid xxs={12} md={6}>
                         <Box>
                             {/* HEADING */}
                             <Typography variant="h1" component="h1">
@@ -39,7 +39,7 @@ const HeaderProducts = () => {
                         </Box>
                     </Grid>
                     {/* RIGHT SIDE */}
-                    <Grid xs={12} md={6} alignSelf="center">
+                    <Grid xxs={12} md={6} alignSelf="center">
                         {/* CARD */}
                         <HeaderCard />
                     </Grid>

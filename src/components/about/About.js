@@ -14,19 +14,19 @@ const About = () => {
         <SectionBox>
             <Grid container columnSpacing={5} rowSpacing={15}>
                 {/* HEADING + TEXT */}
-                <Grid xs={6}>
+                <Grid xxs={12} md={6}>
                     <AboutDetails title={about.title} details={about.details} />
                 </Grid>
                 {/* IMAGE */}
-                <Grid xs={6}>
+                <Grid xxs={12} md={6}>
                     <Image src={about.image} alt="window image" fit="cover" duration={500} showLoading={true} easing="ease-in" height={'100%'} />
                 </Grid>
                 {/* IMAGE */}
-                <Grid xs={6}>
+                <Grid xxs={12} md={6}>
                     <Image src={quality.image} alt="window image" fit="cover" duration={500} showLoading={true} easing="ease-in" height={'auto'} />
                 </Grid>
                 {/* HEADING + TEXT */}
-                <Grid xs={6}>
+                <Grid xxs={12} md={6}>
                     <AboutDetails title={quality.title} details={quality.details} />
                 </Grid>
             </Grid>

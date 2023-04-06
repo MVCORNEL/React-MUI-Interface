@@ -20,7 +20,7 @@ const HeaderAbout = () => {
                         zIndex: 2000,
                         textAlign: 'center',
                         backgroundColor: 'rgba(0,0,0,0.6)',
-                        marginTop: { xs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },
+                        marginTop: { xxs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },
                         left: '50%',
                         transform: 'translateX(-50%)',
                     }}
