@@ -1,15 +1,15 @@
 import { Divider, Typography, Button, Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
-import Input from '../../ui/Input';
-import useInput from '../../hooks/useInput';
-import { validateEmail, validatePhone, validateComment } from '../../helpers/validators';
+import Input from '../ui/Input';
+import useInput from '../hooks/useInput';
+import { validateEmail, validatePhone, validateComment } from '../helpers/validators';
 import { useTheme } from '@mui/material/styles';
 
 /**
- * Form component with mandatory fields for an email address, a phone number, and a comment.
+ * Form component with mandatory fields for an email address and password
  * The form makes use of the custom react hook "useInput" which is assigned to manage form,
- * and field state and receives a callback function with a custom validator.
- * Until the form is valid, the button is disabled.
+ * Every field state that gets a callback function also gets a unique validator.
+ * The button is disabled until the form is valid.
  *
  */
 const GetInTouchForm = () => {

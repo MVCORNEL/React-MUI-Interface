@@ -49,7 +49,7 @@ function Navbar() {
                     {/* PROFILE BOX */}
                     {isAuth && <NavProfileBox handleOpenUserMenu={handleOpenUserMenu} handleCloseUserMenu={handleCloseUserMenu} anchorElUser={anchorElUser} />}
                     {!isAuth && (
-                        <Button variant="contained" color="primary" component={RouterLink} size="large" to="/auth?mode=login" sx={{ marginLeft: '1rem' }}>
+                        <Button variant="contained" color="primary" component={RouterLink} size="medium" to="/auth?mode=login" sx={{ marginLeft: '1rem' }}>
                             Log in
                         </Button>
                     )}

@@ -36,15 +36,15 @@ let theme = createTheme({
         h1: {
             fontSize: 66,
             fontWeight: 400,
-            color: '#111',
+            color: '#151515',
             fontFamily: 'Lora',
         },
 
         h2: {
-            fontSize: 44,
+            fontSize: 42,
             lineHeight: 1.3,
             fontWeight: 600,
-            color: '#292929',
+            color: '#333',
             fontFamily: 'Lora',
         },
 
@@ -88,6 +88,36 @@ let theme = createTheme({
             color: '#ff5b84',
             fontWeight: 400,
             fontSize: 16,
+        },
+        button: {
+            fontSize: 18,
+        },
+    },
+
+    components: {
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    fontWeight: 600,
+                    textTransform: 'capitalize',
+                },
+            },
+            variants: [
+                {
+                    props: { size: 'large' },
+                    style: {
+                        paddingTop: 12,
+                        paddingBottom: 12,
+                    },
+                },
+                {
+                    props: { size: 'medium' },
+                    style: {
+                        paddingTop: 6,
+                        paddingBottom: 6,
+                    },
+                },
+            ],
         },
     },
 });

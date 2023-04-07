@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import SectionBox from '../../ui/SectionBox';
 import SectionHeading from '../../ui/SectionHeading';
-import GetInTouchForm from './GetInTouchForm';
+import GetInTouchForm from './../../forms/GetInTouchForm';
 import Contacts from './Contacts';
 
 /**
