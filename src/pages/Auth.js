@@ -1,7 +1,7 @@
 import { useSearchParams, Link } from 'react-router-dom';
 import { Stack, Box } from '@mui/material';
 import Image from 'mui-image';
-import image from './../images/loginImage.jpg';
+import image from './../images/auth.png';
 import LoginForm from '../forms/LoginForm';
 import SignupForm from '../forms/SignupForm';
 import ForgotPasswordForm from '../forms/ForgotPasswordForm';
@@ -16,8 +16,8 @@ const Auth = () => {
 
     return (
         <Stack direction="row">
-            <Stack sx={{ flexBasis: '100%', minHeight: '100vh', backgroundColor: '#ffab91', justifyContent: 'center', alignItems: 'center', display: { xxs: 'none', md: 'flex' } }}>
-                <Image src={image} alt="window image" fit="cover" duration={500} showLoading={true} easing="ease-in" width="70%" height="auto" />
+            <Stack sx={{ flexBasis: '100%', backgroundColor: '#f9efe5', justifyContent: 'center', alignItems: 'center', display: { xxs: 'none', md: 'flex' } }}>
+                <Image src={image} alt="window image" fit="cover" duration={500} showLoading={true} easing="ease-in" height="auto" width="90%" />
             </Stack>
             <Box sx={{ flexBasis: '100%' }}>
                 {isLoginMode && <LoginForm />}

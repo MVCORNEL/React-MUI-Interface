@@ -1,32 +1,32 @@
-import ThermostatIcon from '@mui/icons-material/Thermostat';
-import HandshakeIcon from '@mui/icons-material/Handshake';
-import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
-import SecurityRoundedIcon from '@mui/icons-material/SecurityRounded';
+import { ReactComponent as InsulationSvg } from './../icons/insulation.svg';
+import { ReactComponent as NatureSvg } from './../icons/nature.svg';
+import { ReactComponent as LocktSvg } from './../icons/lock.svg';
+import { ReactComponent as GuaranteeSvg } from './../icons/guarantee.svg';
 
 const characteristics = [
     {
         id: 1,
         title: 'Izolare termica',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        icon: ThermostatIcon,
+        icon: <InsulationSvg />,
     },
     {
         id: 2,
         title: 'Intretinere usoara',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-        icon: CleaningServicesIcon,
+        icon: <NatureSvg />,
     },
     {
         id: 3,
         title: 'Siguranta marita',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        icon: SecurityRoundedIcon,
+        icon: <LocktSvg />,
     },
     {
         id: 4,
         title: 'Garantie indelungata',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
-        icon: HandshakeIcon,
+        icon: <GuaranteeSvg />,
     },
 ];
 

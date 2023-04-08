@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import { Container, Box, Button, Typography, Card, CardActions, CardContent } from '@mui/material';
 import HeaderCard from './HeaderCard';
-import backgroundLight from './../../../images/subtlelight.png';
+import backgroundLight from './../../../images/background.jpg';
 
 /**
  * Represents a fully responsive two-segmented responsive header component of the Products/Double Glazed page
@@ -10,9 +10,8 @@ import backgroundLight from './../../../images/subtlelight.png';
  */
 const HeaderProducts = () => {
     return (
-        <Box>
+        <Box sx={{ position: 'relative', backgroundImage: `url(${backgroundLight})`, backgroundSize: 'cover', minHeight: { xss: 'auto', md: '95vh' }, width: '100%' }}>
             {/* BACKGROUND COLOR - FIRST HALF */}
-            <Box sx={{ position: 'absolute', height: '55%', width: '100%', backgroundImage: `url(${backgroundLight})` }}></Box>
             <Container
                 component="section"
                 sx={{
@@ -27,15 +26,10 @@ const HeaderProducts = () => {
                     <Grid xxs={12} md={6}>
                         <Box>
                             {/* HEADING */}
-                            <Typography variant="h1" component="h1">
+                            <Typography variant="h1" component="h1" color="white" backgroundColor="rgba(0,0,0,0.6)" py={2} px={5}>
                                 Termopane de calitate superioara
                             </Typography>
                             {/* BUTTON */}
-                            <Box mt={4}>
-                                <Button variant="contained" color="primary" size="large" sx={{ display: { xs: 'none', md: 'block' } }}>
-                                    Afla mai multe despre noi!
-                                </Button>
-                            </Box>
                         </Box>
                     </Grid>
                     {/* RIGHT SIDE */}

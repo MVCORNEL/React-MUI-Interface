@@ -26,9 +26,8 @@ const router = createBrowserRouter(
                 {/* turn the so called route into an index route making it the default route */}
                 <Route index={true} element={<Home />} />
                 <Route path="about" element={<AboutUs />} />
-
                 <Route path="portofolio" element={<Portofolio />} />
-                <Route path="windows" element={<Products />} />
+                <Route path="products" element={<Products />} />
                 <Route path="user" element={<UserLayout />}>
                     <Route path="messages" element={<UserMessages />} />
                     <Route path="profile" element={<UserProfile />} />

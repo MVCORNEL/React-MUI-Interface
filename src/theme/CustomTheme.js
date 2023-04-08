@@ -31,17 +31,18 @@ let theme = createTheme({
         // Tell MUI what's the font-size on the html element is.
         htmlFontSize: 10,
         fontSize: 16,
+
         fontFamily: ['Quicksand', 'sans-serif', 'Roboto'].join(','),
 
         h1: {
-            fontSize: 66,
-            fontWeight: 400,
-            color: '#151515',
+            fontSize: 60,
+            fontWeight: 500,
+            color: '#303030',
             fontFamily: 'Lora',
         },
 
         h2: {
-            fontSize: 42,
+            fontSize: 44,
             lineHeight: 1.3,
             fontWeight: 600,
             color: '#333',
@@ -70,13 +71,24 @@ let theme = createTheme({
             fontSize: 24,
             fontWeight: 500,
             lineHeight: 1.35,
-            color: '#555',
+            color: '#333',
             textTransform: 'uppercase',
         },
 
+        body1: {
+            fontWeight: 500,
+            color: '#555',
+        },
+
+        body2: {
+            fontWeight: 500,
+            color: '#555',
+        },
+
         subtitle1: {
+            fontWeight: 600,
             fontSize: 20,
-            color: '#333',
+            color: '#555',
         },
 
         cardTitle: {

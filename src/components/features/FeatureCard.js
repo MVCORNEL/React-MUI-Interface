@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import IconWrapper from '../../ui/IconWrapper';
 
 /**
- * Represents a card component that that display action and content of a single topic.
+ * Represents a card component that that display content of a feature card element.
  * Each card consists on four elements (Icon,Title,Text,Button).
  *
  * @prop {string || number} id - key element required for each distinct element in a react list environment
@@ -19,13 +19,13 @@ const FeatureCard = ({ id, title, text, icon }) => {
     //All devices smaller that 600px
     const isVerySmallDevice = useMediaQuery(theme.breakpoints.down('xs'));
 
-    const iconSize = isVerySmallDevice ? '7rem' : isSmallDevice ? '8rem' : '9rem';
+    const iconSize = isVerySmallDevice ? '7rem' : isSmallDevice ? '7rem' : '9rem';
     return (
         <Card
             key={id}
             sx={{
-                paddingTop: { xxs: '2rem', md: '3rem' },
-                paddingBottom: { xxs: '3rem', md: '4rem' },
+                paddingTop: { xxs: '2rem', md: '2rem' },
+                paddingBottom: { xxs: '2rem', md: '2rem' },
                 paddingRight: { xxs: '1rem', md: '2rem' },
                 paddingLeft: { xxs: '1rem', md: '2rem' },
                 display: 'flex',
@@ -33,7 +33,7 @@ const FeatureCard = ({ id, title, text, icon }) => {
                 height: '100%',
                 marginLeft: 'auto',
                 marginRight: 'auto',
-                maxWidth: { xxs: 325, md: 425 },
+                maxWidth: { xxs: 300, sm: 350, md: 375 },
             }}
         >
             <CardContent>

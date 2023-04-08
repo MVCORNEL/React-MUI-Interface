@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Pagination, Container, Box } from '@mui/material';
+import SectionBox from '../../ui/SectionBox';
 import PortofolioMenu from './PortofolioMenu';
 import PortofolioGrid from './PortofolioGrid';
 import { categories, imageList } from './../../consts/portofolioDetails';
@@ -17,16 +18,16 @@ const PortofolioTopic = () => {
     };
 
     return (
-        <Container>
+        <SectionBox>
             {/* MENU */}
             <PortofolioMenu menuItems={categories} />
             {/* IMAGE GALLERY */}
             <PortofolioGrid imageList={imageList} />
             {/* PAGINATION */}
-            <Box display="flex" justifyContent="center" my={8}>
+            {/* <Box display="flex" justifyContent="center" my={8}>
                 <Pagination variant="outlined" color="primary" count={10} page={page} onChange={handleChangePage} />
-            </Box>
-        </Container>
+            </Box> */}
+        </SectionBox>
     );
 };
 

@@ -10,7 +10,6 @@ import { ButtonGroup, Button } from '@mui/material';
  */
 const PortofolioMenu = ({ menuItems }) => {
     const [categoryIndex, setCategoryIndex] = useState(0);
-
     // function used to change the state of the category index, based on the current pressed button
     //@param [event] expect a event object, resulting from clicking a button
     const handleChangeCategory = (event) => {
@@ -18,7 +17,7 @@ const PortofolioMenu = ({ menuItems }) => {
     };
 
     return (
-        <ButtonGroup aria-label="text button group" size="large" sx={{ marginTop: '5rem', marginBottom: '5rem' }}>
+        <ButtonGroup aria-label="text button group" size="medium" sx={{ mb: '2rem', display: 'flex', justifyContent: 'center' }}>
             {menuItems.map((element) => {
                 return (
                     <Button key={element.index} tabIndex={element.index} onClick={handleChangeCategory} variant={element.index === categoryIndex ? 'contained' : 'text'}>

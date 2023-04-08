@@ -21,7 +21,7 @@ const Header = () => {
                 <Grid xxs={12} md={7}>
                     <Box>
                         {/* HEADING */}
-                        <Typography variant="h1" component="h1" sx={{ width: { md: '115%' } }}>
+                        <Typography variant="h1" component="h1">
                             Montare Termopane Ardelenesti
                         </Typography>
                         {/* SUBTITLE TEXT*/}
@@ -64,7 +64,7 @@ const Header = () => {
                 <Grid xxs={12} md={5} alignSelf="center" pl={{ md: 10, lg: 3 }}>
                     {/* IMAGE */}
                     <Box width={{ xxs: '55%', sm: '30%', md: '100%' }} mr="auto" ml="auto">
-                        <Image src={img1} alt="window image" fit="cover" duration={3000} showLoading={true} easing="ease-in" />
+                        <Image src={img1} alt="window image" fit="cover" duration={0} />
                     </Box>
                     {/* BUTTON */}
                     <Box mt={{ xxs: 4 }} sx={{ textAlign: 'center' }}>

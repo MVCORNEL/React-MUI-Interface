@@ -10,19 +10,13 @@ import { useTheme } from '@mui/material/styles';
 const PortofolioGrid = ({ imageList }) => {
     //App theme use to get current theme breakpoints
     const theme = useTheme();
-    //All devices smaller than 1200px
-    const isLargeDevice = useMediaQuery(theme.breakpoints.down('lg'));
     //All devices smaller than 900px
     const isSmallDevice = useMediaQuery(theme.breakpoints.down('sm'));
-    //All devices smaller that 360px
-    const isVerySmallDevice = useMediaQuery(theme.breakpoints.down('xxs'));
     //Columns count
-    const colCount = isVerySmallDevice ? 1 : isSmallDevice ? 2 : isLargeDevice ? 3 : 4;
-
     return (
-        <ImageList sx={{ height: 'auto' }} cols={colCount} gap={10} variant="quilted">
+        <ImageList sx={{ height: 'auto' }} cols={isSmallDevice ? 2 : 6} gap={2} variant="quilted">
             {imageList.map((item) => (
-                <ImageListItem key={item.img}>
+                <ImageListItem key={item.img} cols={item.cols || 1} rows={item.rows || 1}>
                     <img src={`${item.img}?w=164&h=164&fit=crop&auto=format`} srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`} alt={item.title} loading="lazy" />
                 </ImageListItem>
             ))}

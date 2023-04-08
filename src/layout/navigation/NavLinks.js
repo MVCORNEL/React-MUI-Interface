@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Link } from '@mui/material';
 import { NavLink as RouterLink } from 'react-router-dom';
 import navBarItems from './../../consts/navbarItems';
-
+import { useTheme } from '@mui/material/styles';
 /**
  * Represents the list of navigable links(pages) based on a list of navigable items (for xxs devices the links will be hidden)
  *
@@ -12,10 +12,12 @@ import navBarItems from './../../consts/navbarItems';
  */
 
 const NavLinks = React.memo(({ handleCloseNavMenu }) => {
+    const theme = useTheme();
+
     let linkActiveStyle = ({ isActive }) =>
         isActive
             ? {
-                  color: '#ff3366',
+                  color: theme.palette.primary.main,
               }
             : undefined;
 

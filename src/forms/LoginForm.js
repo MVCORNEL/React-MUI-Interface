@@ -49,11 +49,11 @@ const LoginForm = () => {
 
     return (
         <Fragment>
-            <Stack direction="column" alignItems="center" justifyContent="space-between" minHeight="100vh">
-                <Box p={{ xxs: 2, sm: 5 }} sx={{ width: { xxs: '100%', sm: '50rem' } }} justifySelf={'center'}>
+            <Stack direction="column" alignItems="center" justifyContent="center" minHeight={'100vh'}>
+                <Stack p={{ xxs: 2, sm: 5 }} sx={{ width: { xxs: '100%', sm: '50rem', flex: 1 } }} justifyContent={'center'}>
                     <form onSubmit={formSubmitHandler}>
                         {/* TITLE */}
-                        <Typography variant={'h2'} component="h1" textAlign="center" my={6}>
+                        <Typography variant={'h2'} component="h1" textAlign="center" mb={6}>
                             Sign in
                         </Typography>
                         {/* EMAIL */}
@@ -78,7 +78,7 @@ const LoginForm = () => {
                             onBlur={passwordBlurHandler}
                             helperText={`Invalid password format`}
                         ></Input>
-                        <Stack direction="row" justifyContent={'space-between'} alignItems={'center'} mb={8}>
+                        <Stack direction="row" justifyContent={'space-between'} alignItems={'center'} mb={4}>
                             {/* REMEMBER ME */}
                             <FormControlLabel
                                 control={<Checkbox defaultChecked />}
@@ -90,7 +90,7 @@ const LoginForm = () => {
                             />
                             {/* RECOVERY PASSWORD */}
                             <Button component={Link} to="?mode=forgot" sx={{ color: '#222!important' }}>
-                                Forgot Password
+                                Forgotten Password
                             </Button>
                         </Stack>
                         {/* SUBMIT */}
@@ -98,7 +98,7 @@ const LoginForm = () => {
                             Sign In
                         </Button>
                     </form>
-                </Box>
+                </Stack>
                 {/* SIGN UP                  */}
                 <Stack direction="row" justifyContent={'center'} alignItems={'center'} mb={4}>
                     <Typography variant="body1" color="#555">

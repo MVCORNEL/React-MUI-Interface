@@ -40,15 +40,15 @@ const ForgotPasswordForm = () => {
 
     return (
         <Fragment>
-            <Stack direction="column" alignItems="center" justifyContent="space-between" minHeight="100vh">
-                <Box p={{ xxs: 2, sm: 5 }} sx={{ width: { xxs: '100%', sm: '50rem' } }} justifySelf={'center'}>
+            <Stack direction="column" alignItems="center" justifyContent="center" minHeight={'100vh'}>
+                <Stack p={{ xxs: 2, sm: 5 }} sx={{ width: { xxs: '100%', sm: '50rem', flex: 1 } }} justifyContent={'center'}>
                     <form onSubmit={formSubmitHandler}>
                         {/* TITLE */}
-                        <Typography variant={'h2'} component="h1" textAlign="center" my={12}>
+                        <Typography variant={'h2'} component="h1" textAlign="center" mb={6}>
                             Find your account
                         </Typography>
                         {/* TITLE */}
-                        <Typography variant={'body1'} component="p" fontWeight={700}>
+                        <Typography variant={'body2'} component="p" fontWeight={700}>
                             Enter the emaila associated with your account and we will send you a reset link.
                         </Typography>
 
@@ -71,7 +71,7 @@ const ForgotPasswordForm = () => {
                             </Button>
                         </Stack>
                     </form>
-                </Box>
+                </Stack>
 
                 <Stack direction="row" justifyContent={'center'} alignItems={'center'} mb={4}>
                     <Typography variant="body1" color="#555">

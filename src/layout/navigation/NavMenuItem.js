@@ -1,6 +1,6 @@
 import { MenuItem } from '@mui/material';
 import { NavLink as RouterLink } from 'react-router-dom';
-
+import { useTheme } from '@mui/material/styles';
 /**
  * Component used to display each individual MenuItem which will be contained by the Navigation Menu and Settings Menu.
  * Each Item menu will be a NavLink behind the scene taht will provide the destination to a route using the MenuItem styles.
@@ -12,32 +12,33 @@ import { NavLink as RouterLink } from 'react-router-dom';
  *
  */
 const NavMenuItem = ({ id, label, route, handleCloseMenu }) => {
-  //Current route/page is highlighted
-  let activeStyle = ({ isActive }) =>
-    isActive
-      ? {
-          backgroundColor: '#ff3366',
-          color: 'white',
-        }
-      : {};
+    const theme = useTheme();
+    //Current route/page is highlighted
+    let activeStyle = ({ isActive }) =>
+        isActive
+            ? {
+                  backgroundColor: theme.palette.primary.main,
+                  color: 'white',
+              }
+            : {};
 
-  return (
-    <MenuItem
-      key={id}
-      onClick={handleCloseMenu}
-      component={RouterLink}
-      to={route}
-      style={activeStyle}
-      sx={{
-        '&:hover': {
-          backgroundColor: '#EFEFEF!important',
-          color: '#555!important',
-        },
-      }}
-    >
-      {label}
-    </MenuItem>
-  );
+    return (
+        <MenuItem
+            key={id}
+            onClick={handleCloseMenu}
+            component={RouterLink}
+            to={route}
+            style={activeStyle}
+            sx={{
+                '&:hover': {
+                    backgroundColor: '#EFEFEF!important',
+                    color: '#555!important',
+                },
+            }}
+        >
+            {label}
+        </MenuItem>
+    );
 };
 
 export default NavMenuItem;

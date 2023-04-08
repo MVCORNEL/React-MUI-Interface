@@ -15,21 +15,18 @@ import ServiceItem from './ServiceItem';
  * @prop {url} image - url to image
  * @prop {url} link - url to a page or id
  * @prop {boolean} isPlacedRight - url to image
+ * @prop {number} isPlacedRight - bottom margin of the section
  *
  */
-const ServiceTopic = ({ title, subtitle, list, image, link, isPlacedRight }) => {
+const ServiceTopic = ({ title, list, image, link, isPlacedRight, mb }) => {
     return (
         <SectionBox>
-            <Grid mb={{ xxs: '-4rem', sm: '-5rem', md: '-7rem', lg: '-10rem' }} container spacing={{ xxs: 4, ms: 10, md: 7, lg: 9 }}>
-                <Grid xxs={12} md={7} sx={{ order: isPlacedRight ? '0' : '2' }}>
+            <Grid mb={mb} container spacing={{ xxs: 4, ms: 6, md: 5, lg: 6 }}>
+                <Grid xxs={12} md={6} sx={{ order: isPlacedRight ? '0' : '2' }}>
                     <Stack>
                         {/* TITLE */}
-                        <Typography variant="h2" component="h2" mb={3}>
+                        <Typography variant="h2" component="h2">
                             {title}
-                        </Typography>
-                        {/* SUBTITLE */}
-                        <Typography variant="body1" component="p" mb={1}>
-                            {subtitle}
                         </Typography>
                         {/* TEXT ELEMENTS */}
                         <Box>
@@ -46,8 +43,8 @@ const ServiceTopic = ({ title, subtitle, list, image, link, isPlacedRight }) => 
                     </Button>
                 </Grid>
                 {/* IMAGE */}
-                <Grid xxs={12} md={5} sx={{ display: { xxs: 'none', md: 'flex' }, alignItems: 'center' }}>
-                    <Image src={image} alt="window image" fit="cover" duration={3000} showLoading={true} easing="ease-in" height="85%" />
+                <Grid xxs={12} md={6} sx={{ display: { xxs: 'none', md: 'flex' }, alignItems: 'center' }}>
+                    <Image src={image} alt="window image" fit="cover" duration={3000} showLoading={true} easing="ease-in" height="100%" />
                 </Grid>
             </Grid>
         </SectionBox>

@@ -19,20 +19,20 @@ const TeamCard = ({ id, name, title, text, image }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100%',
-                maxWidth: { xxs: '360px', sm: '400px', md: '360px', lg: '330px', xl: '360px' },
+                maxWidth: { xxs: '360px', xl: '360px' },
                 borderRadius: 0,
-                padding: '1rem',
+                padding: { xxs: '0.5rem', xs: '1rem' },
             }}
         >
             <CardContent>
                 {/* ICON */}
-                <Avatar src={image} alt={name} sx={{ width: 240, height: 240, marginLeft: 'auto', marginRight: 'auto' }} />
+                <Avatar src={image} alt={name} sx={{ width: { xxs: 180, xs: 200, md: 240 }, height: { xxs: 180, xs: 200, md: 240 }, marginLeft: 'auto', marginRight: 'auto' }} />
                 {/* NAME */}
-                <Typography variant="cardTitle" component="h3" textAlign="center" mt="3rem">
+                <Typography variant="h3" component="h2" textAlign="center" mt="3rem">
                     {name.toUpperCase()}
                 </Typography>
                 {/* TITLE */}
-                <Typography variant="cardSubTitle" component="h3" textAlign="center" mt="0.5rem">
+                <Typography variant="cardSubTitle" component="p" textAlign="center" mt="0.5rem">
                     {title.toLowerCase()}
                 </Typography>
                 {/* TEXT */}

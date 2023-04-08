@@ -33,7 +33,7 @@ const HeaderAbout = () => {
                 <Image src={team} alt="window image" fit="cover" duration={500} showLoading={true} easing="ease-in" height={'60rem'} />
             </Box>
             {/* TEAM CARDS */}
-            <Container sx={{ marginTop: '-35rem', marginBottom: { md: '-10rem' }, zIndex: '2000', marginLeft: '50%', transform: 'translateX(-50%)' }}>
+            <Container sx={{ marginTop: '-40rem', marginBottom: { md: '-10rem' }, zIndex: '2000', marginLeft: '50%', transform: 'translateX(-50%)' }}>
                 <TeamTopic />
             </Container>
         </Box>

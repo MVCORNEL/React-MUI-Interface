@@ -86,13 +86,13 @@ const SignupForm = () => {
 
     return (
         <Fragment>
-            <Stack direction="column" alignItems="center" justifyContent="space-between" minHeight="100vh">
-                <Box p={{ xxs: 2, sm: 5 }} sx={{ width: { xxs: '100%', sm: '60rem' } }} justifySelf={'center'}>
+            <Stack direction="column" alignItems="center" minHeight="100vh">
+                <Stack p={{ xxs: 2, sm: 5 }} sx={{ width: { xxs: '100%', sm: '50rem', md: '60rem' }, flex: 1 }} justifyContent={'center'}>
                     <form onSubmit={formSubmitHandler}>
                         <Grid container columnSpacing={1}>
                             {/* TITLE */}
                             <Grid xxs={12}>
-                                <Typography variant={'h2'} component="h1" textAlign="center" my={6}>
+                                <Typography variant={'h2'} component="h1" textAlign="center" mb={6}>
                                     Register
                                 </Typography>
                             </Grid>
@@ -175,13 +175,13 @@ const SignupForm = () => {
                                     helperText={`The passwords do not match`}
                                 ></Input>
                             </Grid>
-                            <Grid xxs={12} display="flex" direction="row" alignItems={'center'} justifyContent={'center'} mb={8}>
+                            <Grid xxs={12} display="flex" direction="row" alignItems={'center'} justifyContent={'center'} mb={4}>
                                 {/* REGISTER TERMS AND AGREEMENT */}
                                 <FormControlLabel
                                     control={<Checkbox defaultChecked />}
                                     label={
                                         <Typography color="#555" variant="body2">
-                                            Accept terns ang agreement!
+                                            Accept terns and conditions!
                                         </Typography>
                                     }
                                 />
@@ -194,14 +194,14 @@ const SignupForm = () => {
                             </Grid>
                         </Grid>
                     </form>
-                </Box>
+                </Stack>
                 {/* LOGIN FORM */}
                 <Stack direction="row" justifyContent={'center'} alignItems={'center'} mb={4}>
                     <Typography variant="body1" color="#555">
                         Already have an account ?
                     </Typography>
                     <Button component={Link} to="?mode=login" sx={{ color: '#222!important' }}>
-                        Login
+                        Sign Up
                     </Button>
                 </Stack>
             </Stack>
