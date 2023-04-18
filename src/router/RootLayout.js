@@ -10,16 +10,16 @@ import Footer from '../layout/footer/Footer';
  *
  */
 function RootLayout() {
-  return (
-    <React.Fragment>
-      <Navbar />
-      <main>
-        <Outlet />
-      </main>
+    return (
+        <React.Fragment>
+            <Navbar />
+            <main>
+                <Outlet />
+            </main>
 
-      <Footer />
-    </React.Fragment>
-  );
+            <Footer />
+        </React.Fragment>
+    );
 }
 
 export default RootLayout;

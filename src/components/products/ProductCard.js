@@ -5,11 +5,11 @@ import { Card, CardContent, CardMedia, Typography } from '@mui/material';
  * Each card consists on four elements (Icon,Title,Text,Button).
  *
  * @prop {string || number} id - key element required for each distinct element in a react list environment
- * @prop {string} type - title of the card
- * @prop {string} text - text content of the card
- * @prop {url} image - url to image
+ * @prop {string} name - title of the card
+ * @prop {string} summary - text content of the card
+ * @prop {string} imgUrl - url to image
  */
-const ProductCard = ({ id, type, text, image }) => {
+const ProductCard = ({ id, name, summary, imgUrl }) => {
     return (
         <Card
             key={id}
@@ -27,15 +27,27 @@ const ProductCard = ({ id, type, text, image }) => {
         >
             <CardMedia>
                 {/* ICON */}
-                <CardMedia component={'img'} sx={{ height: { xxs: 175, xs: 200, sm: 225, md: 250 }, objectFit: 'fill' }} src={image} alt={type} />
-                <Typography variant="h3" p={1} component="h3" color="white" textAlign={'center'} sx={{ backgroundColor: 'rgb(255,87,34, 0.9)' }}>
-                    {type}
+                <CardMedia
+                    component={'img'}
+                    sx={{ height: { xxs: 175, xs: 200, sm: 225, md: 250 }, objectFit: 'fill' }}
+                    src={imgUrl}
+                    alt={name}
+                />
+                <Typography
+                    variant="h3"
+                    p={1}
+                    component="h3"
+                    color="white"
+                    textAlign={'center'}
+                    sx={{ backgroundColor: 'rgb(255,87,34, 0.9)' }}
+                >
+                    {name}
                 </Typography>
             </CardMedia>
             <CardContent>
                 {/* TEXT */}
                 <Typography variant="body2" component="p" mt={2} textAlign={'justify'}>
-                    {text}
+                    {summary}
                 </Typography>
             </CardContent>
         </Card>

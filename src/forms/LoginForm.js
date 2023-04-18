@@ -76,7 +76,7 @@ const LoginForm = () => {
                             error={passwordHasError}
                             onChange={passwordChangeHandler}
                             onBlur={passwordBlurHandler}
-                            helperText={`Invalid password format`}
+                            helperText={`Invalid password`}
                         ></Input>
                         <Stack direction="row" justifyContent={'space-between'} alignItems={'center'} mb={4}>
                             {/* REMEMBER ME */}

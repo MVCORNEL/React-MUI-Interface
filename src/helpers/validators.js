@@ -50,7 +50,7 @@ export const validatePassword = (password) => {
     //(?=.*[A-Z])  positive look ahead used to check if there is at least one letter between A-Z
     //(?=.*[0-9]) positive look ahead used to check if there is at least one digit between 0-9
     //. usd to specify that the password can be of any type of characters , and {8} password range.
-    const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8}$/;
+    const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$/;
     return PASSWORD_REGEX.test(password);
 };
 
