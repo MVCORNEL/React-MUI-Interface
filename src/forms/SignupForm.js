@@ -1,27 +1,28 @@
-import { Button, Box, Typography, FormControlLabel, Checkbox, Stack } from '@mui/material';
+import { Button, Typography, FormControlLabel, Checkbox, Stack } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
-import { authActions } from '../store/auth-slice';
-import { useDispatch } from 'react-redux';
 import Input from '../ui/Input';
 import useInput from '../hooks/useInput';
 import { validateEmail, validatePassword, validatePhone, validateName, validateRetypedPassword } from '../helpers/validators';
-import { useSearchParams, Link } from 'react-router-dom';
+import { Link, useActionData, useNavigation } from 'react-router-dom';
 import { Fragment } from 'react';
+import { Form } from 'react-router-dom';
 
 /**
  * Signup form control with necessary first name, last name, email address, phone number and password fields used to create an user account.
  * The form makes use of the custom react hook "useInput" which is assigned to manage form state.
  * Every field state that gets a callback function also gets a unique validator.
- *
+ * The submitted form will be redirected further to the router action function, that is responsible for communicating further with the server.
+ * The post submitted button is disabled until the form is valid.
  */
 const SignupForm = () => {
-    //useSearchParams returns the query parameters and allows change in the component functionality without using the component state
-    //alternative way of using state, but now we can directly link to a page into a certain mode
-    const [searchParams, setSearchParam] = useSearchParams();
-    const isLoginMode = searchParams.get('mode') === 'login';
-    const dispatch = useDispatch();
-    const loginHandler = () => {
-        dispatch(authActions.login());
+    //Error data returned from the action request handler
+    const data = useActionData();
+    //If the current form is submitting the button appearance will change for a moment
+    const navigation = useNavigation();
+    const isSubmitting = navigation.state === 'submitting';
+
+    const siginHandler = () => {
+        console.log('Called');
     };
 
     const {
@@ -76,26 +77,27 @@ const SignupForm = () => {
         valueChangeHandler: retypedPasswordChangeHandler,
         inputBlurHandler: retypedPasswordBlurHandler,
         reset: resetRetypedPassword,
-    } = useInput(validateRetypedPassword);
+    } = useInput(validateRetypedPassword(passwordValue));
 
-    const isFormValid = () => {
-        return emailIsValid && passwordIsValid;
-    };
-
-    const formSubmitHandler = () => {};
+    const isFormValid = emailIsValid && passwordIsValid && firstNameIsValid && lastNameIsValid && phoneIsValid && retypedPasswordIsValid;
 
     return (
         <Fragment>
             <Stack direction="column" alignItems="center" minHeight="100vh">
                 <Stack p={{ xxs: 2, sm: 5 }} sx={{ width: { xxs: '100%', sm: '50rem', md: '60rem' }, flex: 1 }} justifyContent={'center'}>
-                    <form onSubmit={formSubmitHandler}>
+                    {/* The request will not be sent automatically to the backend but instead  to the action. */}
+                    <Form method="post">
                         <Grid container columnSpacing={1}>
                             {/* TITLE */}
                             <Grid xxs={12}>
-                                <Typography variant={'h2'} component="h1" textAlign="center" mb={6}>
+                                <Typography variant={'h2'} component="h1" textAlign="center" mb={8}>
                                     Register
                                 </Typography>
+                                <Typography variant={'subtitle1'} component="p" textAlign="center" mb={6} color={data ? 'red' : '#222'}>
+                                    {data ? data : ''}
+                                </Typography>
                             </Grid>
+
                             {/* FIRST NAME */}
 
                             <Grid xxs={12} md={6}>
@@ -175,6 +177,7 @@ const SignupForm = () => {
                                     helperText={`The passwords do not match`}
                                 ></Input>
                             </Grid>
+
                             <Grid xxs={12} display="flex" direction="row" alignItems={'center'} justifyContent={'center'} mb={4}>
                                 {/* REGISTER TERMS AND AGREEMENT */}
                                 <FormControlLabel
@@ -186,22 +189,23 @@ const SignupForm = () => {
                                     }
                                 />
                             </Grid>
+
                             {/* SUBMIT */}
                             <Grid xxs={12}>
-                                <Button size="large" variant="contained" color="primary" type="submit" disabled={!isFormValid} sx={{ width: '100%' }}>
-                                    Sign In
+                                <Button disabled={!isFormValid} size="large" variant="contained" color="primary" type="submit" sx={{ width: '100%' }}>
+                                    {isSubmitting ? 'Submitting' : 'Sign Up'}
                                 </Button>
                             </Grid>
                         </Grid>
-                    </form>
+                    </Form>
                 </Stack>
                 {/* LOGIN FORM */}
-                <Stack direction="row" justifyContent={'center'} alignItems={'center'} mb={4}>
+                <Stack direction="row" justifyContent={'center'} alignItems={'center'} mb={8}>
                     <Typography variant="body1" color="#555">
                         Already have an account ?
                     </Typography>
                     <Button component={Link} to="?mode=login" sx={{ color: '#222!important' }}>
-                        Sign Up
+                        Login !
                     </Button>
                 </Stack>
             </Stack>

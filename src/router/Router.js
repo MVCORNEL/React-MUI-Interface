@@ -9,19 +9,18 @@ import UserLayout from '../pages/User/UserLayout';
 import UserMessages from '../pages/User/UserMessages';
 import UserProfile from '../pages/User/UserSettings';
 import Logout from '../pages/Auth/Logout';
+import authActions from '../helpers/actions';
 import Auth from '../pages/Auth';
 
 /**
- * The router component responsible for all tge route configuration functionality
- * The router contains a RootLayout element that behaves a place holder where each route will be displayed within
- *
+ * The router component responsible for all the route configuration functionality
+ * The router contains a RootLayout element that behaves a place holder where each route will be displayed.
+ * createBrowser and createRoutesFromElements were used  instead of JSX Route/Routes elements because enables new Router 6.4 features
  */
-//createBrowser and createRoutesFromElements were used  instead of JSX Route/Routes elements because enables new Router 6.4 features
 const router = createBrowserRouter(
     //Create routes from JSX ELEMENTS
     createRoutesFromElements(
-        //Route layout uses the Outlet component, which will act like a placeholder entry point where all routes will be added
-        <Route path="/" errorElement={<ErrorPage />}>
+        <Route path="/" errorElement={<ErrorPage />} loader={null} id="root">
             <Route element={<RootLayout />}>
                 {/* turn the so called route into an index route making it the default route */}
                 <Route index={true} element={<Home />} />
@@ -34,7 +33,8 @@ const router = createBrowserRouter(
                 </Route>
                 <Route path="logout" element={<Logout />} />
             </Route>
-            <Route path="auth" element={<Auth />} />
+            {/* All the forms used with Form tag submission handling will be redirect to authAction*/}
+            <Route path="auth" element={<Auth />} action={authActions} />
         </Route>
     )
 );

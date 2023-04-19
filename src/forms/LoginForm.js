@@ -1,27 +1,22 @@
-import { Button, Box, Typography, FormControlLabel, Checkbox, Stack } from '@mui/material';
-import { authActions } from '../store/auth-slice';
-import { useDispatch } from 'react-redux';
+import { Button, Typography, FormControlLabel, Checkbox, Stack } from '@mui/material';
 import Input from '../ui/Input';
 import useInput from '../hooks/useInput';
 import { validateEmail, validatePassword } from '../helpers/validators';
-import { useSearchParams, Link } from 'react-router-dom';
+import { Link, useActionData } from 'react-router-dom';
 import { Fragment } from 'react';
+import { Form } from 'react-router-dom';
 
 /**
  * Login Form control with necessary email address and password fields used to login to the platform a registered user.
  * The form makes use of the custom react hook "useInput" which is assigned to manage form state,
  * Every field state that gets a callback function also gets a unique validator.
- *
+ * The post submitted form will be redirected further to the router action function, that is responsible for communicating further with the server.
+ * The submitted button is disabled until the form is valid.
  */
 const LoginForm = () => {
-    //useSearchParams returns the query parameters and allows change in the component functionality without using the component state
-    //alternative way of using state, but now we can directly link to a page into a certain mode
-    const [searchParams, setSearchParam] = useSearchParams();
-    const dispatch = useDispatch();
+    //Error data returned from the action request handler
+    const data = useActionData();
 
-    const loginHandler = () => {
-        dispatch(authActions.login());
-    };
     //EMAIL
     const {
         value: emailValue,
@@ -41,20 +36,21 @@ const LoginForm = () => {
         reset: resetPassword,
     } = useInput(validatePassword);
     //VALIDATOR FUNCTION
-    const isFormValid = () => {
-        return emailIsValid && passwordIsValid;
-    };
+    const isFormValid = emailIsValid && passwordIsValid;
+
     //SUBMIT HANDLER
-    const formSubmitHandler = () => {};
 
     return (
         <Fragment>
             <Stack direction="column" alignItems="center" justifyContent="center" minHeight={'100vh'}>
                 <Stack p={{ xxs: 2, sm: 5 }} sx={{ width: { xxs: '100%', sm: '50rem', flex: 1 } }} justifyContent={'center'}>
-                    <form onSubmit={formSubmitHandler}>
+                    <Form method="post">
                         {/* TITLE */}
-                        <Typography variant={'h2'} component="h1" textAlign="center" mb={6}>
+                        <Typography variant={'h2'} component="h1" textAlign="center" mb={8}>
                             Sign in
+                        </Typography>
+                        <Typography variant={'body2'} component="p" textAlign="center" mb={6} color={data ? 'red' : '#222'}>
+                            {data ? data : ''}
                         </Typography>
                         {/* EMAIL */}
                         <Input
@@ -97,10 +93,10 @@ const LoginForm = () => {
                         <Button size="large" variant="contained" color="primary" type="submit" disabled={!isFormValid} sx={{ width: '100%' }}>
                             Sign In
                         </Button>
-                    </form>
+                    </Form>
                 </Stack>
                 {/* SIGN UP                  */}
-                <Stack direction="row" justifyContent={'center'} alignItems={'center'} mb={4}>
+                <Stack direction="row" justifyContent={'center'} alignItems={'center'} mb={8}>
                     <Typography variant="body1" color="#555">
                         Don't have an account yet ?
                     </Typography>

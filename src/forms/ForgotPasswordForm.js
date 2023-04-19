@@ -1,28 +1,20 @@
-import { Button, Box, Typography, FormControlLabel, Checkbox, Stack } from '@mui/material';
-import { authActions } from '../store/auth-slice';
-import { useDispatch } from 'react-redux';
+import { Button, Typography, Stack } from '@mui/material';
 import Input from '../ui/Input';
 import useInput from '../hooks/useInput';
 import { validateEmail } from '../helpers/validators';
-import { useSearchParams, Link } from 'react-router-dom';
+import { Form, Link, useActionData } from 'react-router-dom';
 import { Fragment } from 'react';
-
 /**
  * Form control with necessary email address, used to send a reset link to the specified email address.
  * The form makes use of the custom react hook "useInput" which is assigned to manage form state,
  * The field state that gets a callback function also gets a unique validator.
- *
+ * The submitted form will be redirected further to the router action function, that is responsible for communicating further with the server.
+ * The submitted button is disabled until the form is valid.
  */
 const ForgotPasswordForm = () => {
-    //useSearchParams returns the query parameters and allows change in the component functionality without using the component state
-    //alternative way of using state, but now we can directly link to a page into a certain mode
-    const [searchParams, setSearchParam] = useSearchParams();
-    const dispatch = useDispatch();
-
-    const loginHandler = () => {
-        dispatch(authActions.login());
-    };
     //EMAIL
+    //Error data returned from the action request handler
+    const data = useActionData();
     const {
         value: emailValue,
         isValid: emailIsValid,
@@ -32,24 +24,20 @@ const ForgotPasswordForm = () => {
         reset: resetEmail,
     } = useInput(validateEmail);
     //VALIDATOR FUNCTION
-    const isFormValid = () => {
-        return emailIsValid;
-    };
-    //SUBMIT HANDLER
-    const formSubmitHandler = () => {};
+    const isFormValid = emailIsValid;
 
     return (
         <Fragment>
             <Stack direction="column" alignItems="center" justifyContent="center" minHeight={'100vh'}>
                 <Stack p={{ xxs: 2, sm: 5 }} sx={{ width: { xxs: '100%', sm: '50rem', flex: 1 } }} justifyContent={'center'}>
-                    <form onSubmit={formSubmitHandler}>
+                    <Form method="post">
                         {/* TITLE */}
                         <Typography variant={'h2'} component="h1" textAlign="center" mb={6}>
                             Find your account
                         </Typography>
-                        {/* TITLE */}
-                        <Typography variant={'body2'} component="p" fontWeight={700}>
-                            Enter the emaila associated with your account and we will send you a reset link.
+                        {/* SUBTITLE */}
+                        <Typography variant={'body2'} component="p" textAlign="center" mb={6} color={data ? 'red' : '#222'}>
+                            {data ? data : ' Enter the email associated with your account and we will send you a reset link.! '}
                         </Typography>
 
                         {/* EMAIL */}
@@ -70,10 +58,10 @@ const ForgotPasswordForm = () => {
                                 Send Reset Link
                             </Button>
                         </Stack>
-                    </form>
+                    </Form>
                 </Stack>
 
-                <Stack direction="row" justifyContent={'center'} alignItems={'center'} mb={4}>
+                <Stack direction="row" justifyContent={'center'} alignItems={'center'} mb={8}>
                     <Typography variant="body1" color="#555">
                         Already have an account ?
                     </Typography>

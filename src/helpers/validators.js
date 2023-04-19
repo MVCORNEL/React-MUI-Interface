@@ -60,9 +60,11 @@ export const validatePassword = (password) => {
  *@param  {string} retypedPassword valid String value
  *@returns boolean
  */
-export const validateRetypedPassword = (password, retypedPassword) => {
-    if (password === retypedPassword) {
-        return true;
-    }
-    return false;
+export const validateRetypedPassword = (password) => {
+    return (retypedPassword) => {
+        if (password === retypedPassword) {
+            return true;
+        }
+        return false;
+    };
 };

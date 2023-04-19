@@ -17,8 +17,8 @@ import authSlice from './auth-slice';
 //configuration store where we set the reducer properties
 //When work with multiple slices you still have only one store, reducers being merge
 const store = configureStore({
-  //creating a map of reducers, underneath the scene the reducers will be marge into a bif reducer
-  reducer: { auth: authSlice.reducer },
+    //creating a map of reducers, underneath the scene the reducers will be marge into a bif reducer
+    reducer: { auth: authSlice.reducer },
 });
 
 export default store;

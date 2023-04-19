@@ -22,6 +22,7 @@ const Input = ({ type, label, value, helperText, error, id, onChange, onBlur, mu
                 type={type}
                 id={id}
                 label={label}
+                name={id}
                 value={value}
                 onChange={onChange}
                 onBlur={onBlur}

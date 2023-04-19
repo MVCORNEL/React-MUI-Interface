@@ -16,7 +16,6 @@ function RootLayout() {
             <main>
                 <Outlet />
             </main>
-
             <Footer />
         </React.Fragment>
     );

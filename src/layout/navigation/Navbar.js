@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useRouteLoaderData } from 'react-router-dom';
 import { Toolbar, Container, Button, AppBar } from '@mui/material';
 import NavLogo from './NavLogo';
 import NavLinks from './NavLinks';
@@ -17,7 +17,7 @@ function Navbar() {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     //user login state
-    const isAuth = useSelector((state) => state.auth.isAuthentificated);
+    const token = useRouteLoaderData('root');
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -47,9 +47,22 @@ function Navbar() {
                     {/* LINKS */}
                     <NavLinks handleCloseNavMenu={handleCloseNavMenu} />
                     {/* PROFILE BOX */}
-                    {isAuth && <NavProfileBox handleOpenUserMenu={handleOpenUserMenu} handleCloseUserMenu={handleCloseUserMenu} anchorElUser={anchorElUser} />}
-                    {!isAuth && (
-                        <Button variant="contained" color="primary" component={RouterLink} size="medium" to="/auth?mode=login" sx={{ marginLeft: '1rem' }}>
+                    {token && (
+                        <NavProfileBox
+                            handleOpenUserMenu={handleOpenUserMenu}
+                            handleCloseUserMenu={handleCloseUserMenu}
+                            anchorElUser={anchorElUser}
+                        />
+                    )}
+                    {!token && (
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            component={RouterLink}
+                            size="medium"
+                            to="/auth?mode=login"
+                            sx={{ marginLeft: '1rem' }}
+                        >
                             Log in
                         </Button>
                     )}
