@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Link as RouterLink, useRouteLoaderData } from 'react-router-dom';
 import { Toolbar, Container, Button, AppBar } from '@mui/material';
 import NavLogo from './NavLogo';
@@ -17,7 +16,7 @@ function Navbar() {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     //user login state
-    const token = useRouteLoaderData('root');
+    const user = useRouteLoaderData('root');
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -47,14 +46,14 @@ function Navbar() {
                     {/* LINKS */}
                     <NavLinks handleCloseNavMenu={handleCloseNavMenu} />
                     {/* PROFILE BOX */}
-                    {token && (
+                    {user && (
                         <NavProfileBox
                             handleOpenUserMenu={handleOpenUserMenu}
                             handleCloseUserMenu={handleCloseUserMenu}
                             anchorElUser={anchorElUser}
                         />
                     )}
-                    {!token && (
+                    {!user && (
                         <Button
                             variant="contained"
                             color="primary"

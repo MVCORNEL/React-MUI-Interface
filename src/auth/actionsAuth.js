@@ -37,6 +37,7 @@ async function action({ request }) {
             password: data.get('password'),
         };
     }
+
     //FORGOT
     if (mode === 'forgot') {
         userData = {
@@ -46,21 +47,30 @@ async function action({ request }) {
     //SEND REQUEST
     const response = await fetch(`http://127.0.0.1:8000/api/v1/users/${mode}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: 'my-auth-token' },
-        withCredentials: true,
+        headers: { 'Content-Type': 'application/json' },
+        // withCredentials: true,
         credentials: 'include',
         body: JSON.stringify(userData),
     });
 
     //4 Parse the data into js objects.
     const responseData = await response.json();
+    console.log(responseData);
 
     //5 Propagate the error further to the useActionData hook within the form, within the body are details about the errors.
     if (responseData.status === 'fail') {
         return responseData.message;
     }
+    //5.1 Propagate the error into router error handler
+    if (responseData.status === 'error') {
+        throw new Error(`${responseData.message}`);
+    }
+    //6 Set user to data to the local Storage
+    if (mode === 'signup' || mode === 'login') {
+        localStorage.setItem('user', JSON.stringify(responseData.data.user));
+    }
 
-    //6 Everything went as expected
+    //7 Everything went as expected
     return redirect('/');
 }
 

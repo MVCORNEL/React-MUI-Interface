@@ -8,10 +8,10 @@ import AboutUs from '../pages/AboutUs';
 import UserLayout from '../pages/User/UserLayout';
 import UserMessages from '../pages/User/UserMessages';
 import UserProfile from '../pages/User/UserSettings';
-import Logout from '../pages/Auth/Logout';
-import authActions from '../helpers/actions';
+import authActions from '../auth/actionsAuth';
+import logoutAction from '../auth/actionLogout';
 import Auth from '../pages/Auth';
-
+import { getUserData } from '../auth/user';
 /**
  * The router component responsible for all the route configuration functionality
  * The router contains a RootLayout element that behaves a place holder where each route will be displayed.
@@ -20,7 +20,10 @@ import Auth from '../pages/Auth';
 const router = createBrowserRouter(
     //Create routes from JSX ELEMENTS
     createRoutesFromElements(
-        <Route path="/" errorElement={<ErrorPage />} loader={null} id="root">
+        //Route layout uses the Outlet component, which will act like a placeholder entry point where all routes will be added
+        //Loader used to look at the cookie and extract it, automatically re-evalaute if the logout
+        //The id is given in order to be easily accessed in other child elements with by using useRouteLoaderData() hook.
+        <Route path="/" errorElement={<ErrorPage />} loader={getUserData} id="root">
             <Route element={<RootLayout />}>
                 {/* turn the so called route into an index route making it the default route */}
                 <Route index={true} element={<Home />} />
@@ -31,10 +34,10 @@ const router = createBrowserRouter(
                     <Route path="messages" element={<UserMessages />} />
                     <Route path="profile" element={<UserProfile />} />
                 </Route>
-                <Route path="logout" element={<Logout />} />
             </Route>
             {/* All the forms used with Form tag submission handling will be redirect to authAction*/}
             <Route path="auth" element={<Auth />} action={authActions} />
+            <Route path="logout" action={logoutAction} />
         </Route>
     )
 );
