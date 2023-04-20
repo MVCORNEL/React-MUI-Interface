@@ -11,7 +11,7 @@ import UserProfile from '../pages/User/UserSettings';
 import authActions from '../auth/actionsAuth';
 import logoutAction from '../auth/actionLogout';
 import Auth from '../pages/Auth';
-import { getUserData } from '../auth/user';
+import { checkUserIsAuthentificated, getUserData } from '../auth/user';
 /**
  * The router component responsible for all the route configuration functionality
  * The router contains a RootLayout element that behaves a place holder where each route will be displayed.
@@ -30,7 +30,8 @@ const router = createBrowserRouter(
                 <Route path="about" element={<AboutUs />} />
                 <Route path="portofolio" element={<Portofolio />} />
                 <Route path="products" element={<Products />} />
-                <Route path="user" element={<UserLayout />}>
+                {/* RESTRICTING ACCESS FOR THE USER ROUTE AND ITS CHILDREN FOR THE LOGGEN IN US */}
+                <Route path="user" element={<UserLayout />} loader={checkUserIsAuthentificated}>
                     <Route path="messages" element={<UserMessages />} />
                     <Route path="profile" element={<UserProfile />} />
                 </Route>

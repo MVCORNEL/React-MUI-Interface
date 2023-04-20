@@ -55,7 +55,6 @@ async function action({ request }) {
 
     //4 Parse the data into js objects.
     const responseData = await response.json();
-    console.log(responseData);
 
     //5 Propagate the error further to the useActionData hook within the form, within the body are details about the errors.
     if (responseData.status === 'fail') {
@@ -65,9 +64,11 @@ async function action({ request }) {
     if (responseData.status === 'error') {
         throw new Error(`${responseData.message}`);
     }
-    //6 Set user to data to the local Storage
+    //6 Set user to data to the local Storage, and the token expiration time
+    //  The JWT token cannot be accessed programatically by the client, because it is sent as a http cookie
     if (mode === 'signup' || mode === 'login') {
         localStorage.setItem('user', JSON.stringify(responseData.data.user));
+        localStorage.setItem('tokenExpiringDate', responseData.data.tokenExpiringDate);
     }
 
     //7 Everything went as expected

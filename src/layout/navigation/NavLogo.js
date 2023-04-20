@@ -1,7 +1,7 @@
 import AdbIcon from '@mui/icons-material/Adb';
 import React from 'react';
 import { Typography } from '@mui/material';
-
+import { NavLink as RouterLink } from 'react-router-dom';
 /**
  * Component for displaying a navigation bar Logo and its text
  * 
@@ -25,8 +25,8 @@ const NavLogo = React.memo(({ variant, display, flexGrow }) => {
             <Typography
                 variant={variant}
                 noWrap
-                component="a"
-                href="/"
+                component={RouterLink}
+                to="/"
                 sx={{
                     mr: 2,
                     display: { ...display },

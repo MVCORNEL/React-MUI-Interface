@@ -17,7 +17,6 @@ function Navbar() {
     const [anchorElUser, setAnchorElUser] = useState(null);
     //user login state
     const user = useRouteLoaderData('root');
-
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };

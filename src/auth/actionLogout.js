@@ -8,6 +8,7 @@ import { redirect } from 'react-router-dom';
  */
 const action = async () => {
     localStorage.removeItem('user');
+    localStorage.removeItem('tokenExpiringDate');
     //1 SEND REQUEST
     const response = await fetch(`http://127.0.0.1:8000/api/v1/users/logout`, { credentials: 'include' });
     //2 Parse the data into js objects.
