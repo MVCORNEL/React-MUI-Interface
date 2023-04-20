@@ -17,8 +17,8 @@ function RootLayout() {
     const user = getUserData();
     //Used to programatically submit a form
     const submit = useSubmit();
-
     //Function that executes only once, and only when one of the one its dependecy variables is changed
+    //Very important that a cleanup function to be used, otherwise this function might execute multiple times.
     useEffect(() => {
         //There is not user to be logged out, skip
         if (!user) {
@@ -31,10 +31,16 @@ function RootLayout() {
         }
         const tokenDuration = getTokenDuration();
         //There is a user and the token is still valid, set a logout timer based on the user token's expriation time left.
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             //Automatically post the submit form logic if the token expired.
             submit(null, { action: '/logout', method: 'post' });
         }, tokenDuration);
+
+        //cleanup function, this will work as a cleanup effect before use effect executes this function
+        //expects for the very first time when it runs
+        return () => {
+            clearTimeout(timeout);
+        };
     }, [user, submit]);
 
     return (
