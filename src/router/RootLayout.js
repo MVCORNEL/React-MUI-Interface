@@ -4,6 +4,9 @@ import Navbar from '../layout/navigation/Navbar';
 import Footer from '../layout/footer/Footer';
 import { useEffect } from 'react';
 import { getTokenDuration, getUserData } from '../auth/user';
+import { CssBaseline } from '@mui/material';
+
+import PushFooterBottomBox from '../ui/PushFooterBottomBox';
 /**
  * The root component where all the child routes are render, within the OUTLET element.
  * The RootLayout will be used as a place holder for all its children componenets.
@@ -19,6 +22,7 @@ function RootLayout() {
     const submit = useSubmit();
     //Function that executes only once, and only when one of the one its dependecy variables is changed
     //Very important that a cleanup function to be used, otherwise this function might execute multiple times.
+    //When the user logges in and out multiple times, the timer will be kept, has to be remove otherwise will excute based on the old expiration time token.
     useEffect(() => {
         //There is not user to be logged out, skip
         if (!user) {
@@ -44,13 +48,23 @@ function RootLayout() {
     }, [user, submit]);
 
     return (
-        <React.Fragment>
+        <PushFooterBottomBox
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                minHeight: '100vh',
+                '& > *:last-child': {
+                    marginTop: 'auto',
+                },
+            }}
+        >
+            <CssBaseline />
             <Navbar />
             <main>
                 <Outlet />
             </main>
             <Footer />
-        </React.Fragment>
+        </PushFooterBottomBox>
     );
 }
 

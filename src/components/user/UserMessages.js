@@ -1,5 +1,5 @@
 const UserMessages = () => {
-  return <div>UserMessages</div>;
+    return <div>Message</div>;
 };
 
 export default UserMessages;

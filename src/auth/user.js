@@ -35,6 +35,7 @@ export const checkUserIsAuthentificated = () => {
     if (!user) {
         return redirect('/auth?mode=login');
     }
+    return null;
 };
 
 /**

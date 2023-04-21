@@ -1,13 +1,8 @@
 const settings = [
     {
-        id: 'profile',
+        id: 'user',
         label: 'Profile',
-        route: '/user/profile',
-    },
-    {
-        id: 'messages',
-        label: 'Messages',
-        route: '/user/messages',
+        route: '/user?tab=me',
     },
 ];
 

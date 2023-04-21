@@ -7,7 +7,7 @@ import Router from './router/Router';
 function App() {
     return (
         <Provider store={store}>
-            <CustomTheme className={reset}>
+            <CustomTheme>
                 <Router />
             </CustomTheme>
         </Provider>

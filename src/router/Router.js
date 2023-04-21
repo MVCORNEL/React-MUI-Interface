@@ -5,13 +5,12 @@ import Home from '../pages/Home';
 import Products from '../pages/Products';
 import Portofolio from '../pages/Portofolio';
 import AboutUs from '../pages/AboutUs';
-import UserLayout from '../pages/User/UserLayout';
-import UserMessages from '../pages/User/UserMessages';
-import UserProfile from '../pages/User/UserSettings';
+import User from '../pages/User';
 import authActions from '../auth/actionsAuth';
 import logoutAction from '../auth/actionLogout';
 import Auth from '../pages/Auth';
 import { checkUserIsAuthentificated, getUserData } from '../auth/user';
+
 /**
  * The router component responsible for all the route configuration functionality
  * The router contains a RootLayout element that behaves a place holder where each route will be displayed.
@@ -31,10 +30,7 @@ const router = createBrowserRouter(
                 <Route path="portofolio" element={<Portofolio />} />
                 <Route path="products" element={<Products />} />
                 {/* RESTRICTING ACCESS FOR THE USER ROUTE AND ITS CHILDREN FOR THE LOGGEN IN US */}
-                <Route path="user" element={<UserLayout />} loader={checkUserIsAuthentificated}>
-                    <Route path="messages" element={<UserMessages />} />
-                    <Route path="profile" element={<UserProfile />} />
-                </Route>
+                <Route path="user" element={<User />} loader={checkUserIsAuthentificated} />
             </Route>
             {/* All the forms used with Form tag submission handling will be redirect to authAction*/}
             <Route path="auth" element={<Auth />} action={authActions} />

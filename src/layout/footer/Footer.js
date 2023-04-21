@@ -5,6 +5,7 @@ import Divider from '@mui/material/Divider';
 import FooterList from './FooterList';
 import { navigationList } from '../../consts/footerItems';
 import { privacyList } from '../../consts/footerItems';
+import { autoBatchEnhancer } from '@reduxjs/toolkit';
 
 /**
  * Represents the responsive application footer component. The footer contains 3 section.
@@ -13,7 +14,16 @@ import { privacyList } from '../../consts/footerItems';
  */
 const Footer = () => {
     return (
-        <Box component="footer" sx={{ backgroundColor: '#24262b', color: 'white' }}>
+        <Box
+            component="footer"
+            sx={{
+                backgroundColor: '#24262b',
+                color: 'white',
+                display: 'block',
+                marginTop: '20rem',
+                width: ' 100%',
+            }}
+        >
             <Container maxWidth="lg">
                 <Grid container maxWidth="lg" direction="row" justifyContent="space-between" alignItems="baseline">
                     <Grid xxs={12} md={5} p={4}>
@@ -21,7 +31,8 @@ const Footer = () => {
                         <FooterLogo />
                         {/* TEXT */}
                         <Typography variant="body1">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua. Ut enim ad minim veniam.
                         </Typography>
                     </Grid>
                     {/* PRIVACY */}
