@@ -1,6 +1,5 @@
 import UserMenu from '../components/user/Menu/UserMenu';
-import { Stack } from '@mui/material';
-import SectionBox from '../ui/SectionBox';
+import { Stack, Container, Box } from '@mui/material';
 import { useSearchParams } from 'react-router-dom';
 import UserMessages from '../components/user/UserMessages';
 import UserProfile from '../components/user/UserMe';
@@ -17,17 +16,32 @@ const User = () => {
     const isMessasgesTab = searchParams.get('tab') === 'messages';
     const isReviewsTab = searchParams.get('tab') === 'reviews';
     const isThemeTab = searchParams.get('tab') === 'theme';
-    console.log('User');
+
     return (
-        <SectionBox>
-            <Stack direction="row" sx={{ boxShadow: '4px 4px 8px 4px rgba(0,0,0,0.3);' }}>
+        <Container
+            sx={{
+                marginTop: { xxs: '4rem', sm: '5rem', lg: '7rem' },
+                marginBottom: { xxs: '4rem', sm: '5rem', lg: '7rem' },
+            }}
+        >
+            <Stack
+                direction={{ xxs: 'column', md: 'row' }}
+                sx={{
+                    width: '100%',
+
+                    boxShadow: '4px 4px 8px 4px rgba(0,0,0,0.3);',
+                }}
+            >
                 <UserMenu />
-                {isProfileTab && <UserProfile />}
-                {isMessasgesTab && <UserMessages />}
-                {isReviewsTab && <UserReviews />}
-                {isThemeTab && <UserTheme />}
+
+                <Box mx={'auto'} mt={8} mb={8} sx={{ width: { xxs: '90%', md: '45rem', lg: '55rem' } }}>
+                    {isProfileTab && <UserProfile />}
+                    {isMessasgesTab && <UserMessages />}
+                    {isReviewsTab && <UserReviews />}
+                    {isThemeTab && <UserTheme />}
+                </Box>
             </Stack>
-        </SectionBox>
+        </Container>
     );
 };
 

@@ -99,7 +99,6 @@ const SignupForm = () => {
                             </Grid>
 
                             {/* FIRST NAME */}
-
                             <Grid xxs={12} md={6}>
                                 <Input
                                     id={'fname'}

@@ -13,8 +13,8 @@ import { useSearchParams } from 'react-router-dom';
 export default function UserMenu({ children }) {
     const theme = useTheme();
     return (
-        <Box sx={{ backgroundImage: `linear-gradient(to right, ${theme.palette.primary.light} , ${theme.palette.primary.dark})`, minHeight: '55rem', padding: 3 }}>
-            <List sx={{ width: 280 }}>
+        <Box sx={{ backgroundImage: `linear-gradient(to right, ${theme.palette.primary.light} , ${theme.palette.primary.dark})`, minHeight: { xs: 'auto', md: '55rem' }, padding: 3 }}>
+            <List sx={{ width: { md: 280 } }}>
                 {profileSettings.map((item) => {
                     return <UserMenuItem key={item.id} label={item.label} icon={item.icon} link={item.link}></UserMenuItem>;
                 })}

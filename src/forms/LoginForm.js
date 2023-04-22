@@ -26,6 +26,7 @@ const LoginForm = () => {
         inputBlurHandler: emailBlurHandler,
         reset: resetEmail,
     } = useInput(validateEmail);
+
     //PASSWORD
     const {
         value: passwordValue,
@@ -39,11 +40,10 @@ const LoginForm = () => {
     const isFormValid = emailIsValid && passwordIsValid;
 
     //SUBMIT HANDLER
-
     return (
         <Fragment>
             <Stack direction="column" alignItems="center" justifyContent="center" minHeight={'100vh'}>
-                <Stack p={{ xxs: 2, sm: 5 }} sx={{ width: { xxs: '100%', sm: '50rem', flex: 1 } }} justifyContent={'center'}>
+                <Stack p={{ xxs: 2, sm: 5 }} sx={{ width: { xxs: '100%', sm: '50rem' } }} justifyContent={'center'}>
                     <Form method="post">
                         {/* TITLE */}
                         <Typography variant={'h2'} component="h1" textAlign="center" mb={8}>

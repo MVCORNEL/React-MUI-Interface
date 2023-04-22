@@ -1,7 +1,7 @@
-import { Box } from '@mui/material';
+import SettigsForm from '../../forms/SettingsForm';
 
 const UserProfile = () => {
-    return <div>Me</div>;
+    return <SettigsForm />;
 };
 
 export default UserProfile;

@@ -2,6 +2,7 @@ import { ListItemIcon, ListItemButton, ListItemText, ListItem, Typography, SvgIc
 import { NavLink as RouterLink } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { useSearchParams } from 'react-router-dom';
+
 /**
  * Component used to display each individual MenuItem which will be contained by the User Menu
  * Each Item menu will be a NavLink behind the scene that will provide the destination to a route using the ListItem default styles.
@@ -34,7 +35,7 @@ const UserMenuItem = ({ id, icon, label, link }) => {
             to={`?tab=${link}`}
             style={activeStyle}
             sx={{
-                width: '100%',
+                mx: 'auto',
                 '&:hover': {
                     backgroundColor: theme.palette.primary.light,
                 },
