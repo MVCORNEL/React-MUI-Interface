@@ -90,7 +90,7 @@ const SettigsForm = () => {
                 helperText={`At least 2 character required`}
             ></Input>
             {/* PHOTO */}
-            <Stack direction="row" alignItems="center" spacing={2}>
+            <Stack direction="row" alignItems="center" spacing={2} mt={1}>
                 <Avatar alt="current user" src={photo ? photoUrl : oldImage} sx={{ width: 60, height: 60 }} />
                 <Button variant="outlined" component="label" size="small" endIcon={<FileUploadIcon />}>
                     Add a new photo

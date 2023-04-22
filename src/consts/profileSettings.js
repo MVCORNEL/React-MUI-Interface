@@ -10,10 +10,10 @@ const profileSettings = [
         link: 'me',
     },
     {
-        id: 'messages',
-        label: 'Messages',
+        id: 'askus',
+        label: 'Ask Us',
         icon: MessageOutlinedIcon,
-        link: 'messages',
+        link: 'ask',
     },
     {
         id: 'reviews',

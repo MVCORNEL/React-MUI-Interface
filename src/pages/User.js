@@ -1,7 +1,7 @@
 import UserMenu from '../components/user/Menu/UserMenu';
 import { Stack, Container, Box } from '@mui/material';
 import { useSearchParams } from 'react-router-dom';
-import UserMessages from '../components/user/UserMessages';
+import UserAskUs from '../components/user/UserAskUs';
 import UserProfile from '../components/user/UserMe';
 import UserReviews from '../components/user/UserReviews';
 import UserTheme from '../components/user/UserTheme';
@@ -13,7 +13,7 @@ import UserTheme from '../components/user/UserTheme';
 const User = () => {
     const [searchParams] = useSearchParams();
     const isProfileTab = searchParams.get('tab') === 'me';
-    const isMessasgesTab = searchParams.get('tab') === 'messages';
+    const isMessasgesTab = searchParams.get('tab') === 'ask';
     const isReviewsTab = searchParams.get('tab') === 'reviews';
     const isThemeTab = searchParams.get('tab') === 'theme';
 
@@ -34,9 +34,9 @@ const User = () => {
             >
                 <UserMenu />
 
-                <Box mx={'auto'} mt={8} mb={8} sx={{ width: { xxs: '90%', md: '45rem', lg: '55rem' } }}>
+                <Box mx={'auto'} mt={8} mb={8} sx={{ width: { xxs: '90%', md: '45rem', lg: '60rem' } }}>
                     {isProfileTab && <UserProfile />}
-                    {isMessasgesTab && <UserMessages />}
+                    {isMessasgesTab && <UserAskUs />}
                     {isReviewsTab && <UserReviews />}
                     {isThemeTab && <UserTheme />}
                 </Box>
