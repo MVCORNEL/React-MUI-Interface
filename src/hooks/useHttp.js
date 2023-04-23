@@ -28,12 +28,17 @@ const useHttp = (requestConfiguration, processData, extra = {}) => {
                     body: config.body ? config.body : null,
                     ...extra,
                 });
-                //Error
-                if (!response.ok) {
-                    throw new Error('Something went wrong');
-                }
                 //Parse json as Javascript object
                 const data = await response.json();
+                //Display user the fail code
+                if (data?.status === 'fail') {
+                    setHasError(data.message);
+                    return;
+                }
+                //Display the error page from router
+                if (data?.status === 'error') {
+                    throw new Error(data.message);
+                }
                 //Processing data in the required format
                 const processedData = processData(data.data);
                 setData(processedData);

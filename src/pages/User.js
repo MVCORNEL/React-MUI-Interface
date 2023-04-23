@@ -1,10 +1,10 @@
-import UserMenu from '../components/user/Menu/UserMenu';
+import UserMenu from '../components/profile/Menu/UserMenu';
 import { Stack, Container, Box } from '@mui/material';
 import { useSearchParams } from 'react-router-dom';
-import UserAskUs from '../components/user/UserAskUs';
-import UserProfile from '../components/user/UserMe';
-import UserReviews from '../components/user/UserReviews';
-import UserTheme from '../components/user/UserTheme';
+import UserAskUs from '../components/profile/UserAskUs';
+import UserProfile from '../components/profile/UserMe';
+import UserReviews from '../components/profile/UserReviews';
+import UserTheme from '../components/profile/UserTheme';
 
 /**
  * The user page component page. The main components of the current page are rendered based on the query parameter.

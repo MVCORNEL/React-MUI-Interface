@@ -9,7 +9,7 @@ import { validateName, validatePhone } from '../helpers/validators';
 import me from '../images/team-0.jpg';
 import Avatar from '@mui/material/Avatar';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
-import userActions from '../auth/actionsUser';
+import { useActionData, useNavigation } from 'react-router-dom';
 
 /**
  * Settings Form function component.
@@ -19,7 +19,13 @@ import userActions from '../auth/actionsUser';
  * The submitted button is disabled until the form is valid.
  */
 const SettigsForm = () => {
+    //Error data returned from the action request handler
+    const errorEdit = useActionData();
+    //If the current form is submitting the button appearance will change for a moment
+    const navigation = useNavigation();
+    //Hard coded image TODO
     const oldImage = me;
+
     //FNAME
     const {
         value: firstNameValue,
@@ -108,6 +114,10 @@ const SettigsForm = () => {
             {/* TITLE */}
             <Typography variant={'h4'} component="h1" mb={6}>
                 ACCOUNT SETTINGS
+            </Typography>
+            {/* DIPSLAY ERRORS */}
+            <Typography variant={'body2'} component="p" textAlign="center" mb={6} color={hasError ? 'red' : 'error'}>
+                {hasError ? hasError : ''} {errorEdit ? errorEdit : ''}
             </Typography>
 
             {/* PHONE */}

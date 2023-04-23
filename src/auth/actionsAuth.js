@@ -1,11 +1,11 @@
 import { redirect } from 'react-router-dom';
 
 /**
- * After a form is submitted, an action router function is used to process the data and forward the desired request.
- * By using the router Form tag, you can prevent the browser from sending a request to the backend by default * but it will still give the request to the function that will be directly in charge of the subsequent actions.
- * Additionally, the action needs to be added to the route definition. * action will include all the data as specified for the part of the form.
- * @param {object} request object containing all the details related with the submitted form.
- * @returns an error string that will be displayed within the used form coming from the server. If the request is successful redirect to the main page.
+ * The current action router function is used to process the data and send the desired request after the loginForm,signupForm or forgotPassword form have been submitted.
+ * Instead of using the standard form tag, the Form router element prevents the browser's default behaviour of automatically sending a request to the backend.
+ * However, the current action function is used to process all form data and create the desired request configurations before sending a server request.
+ * The route definition where the form exists also needs to include the action, which will contain all the data that was specified for the relevant part of the form.
+ * @returns The user is directed to the main page if the request is successful; otherwise, handle the errors.
  */
 async function action({ request }) {
     //1 Get the search params of the current page, URL default constructor provided by the browser
@@ -48,7 +48,7 @@ async function action({ request }) {
     const response = await fetch(`http://127.0.0.1:8000/api/v1/users/${mode}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // withCredentials: true,
+        withCredentials: true,
         credentials: 'include',
         body: JSON.stringify(userData),
     });

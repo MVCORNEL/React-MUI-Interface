@@ -9,6 +9,7 @@ import User from '../pages/User';
 import authActions from '../auth/actionsAuth';
 import userActions from '../auth/actionsUser';
 import logoutAction from '../auth/actionLogout';
+import deleteAction from '../auth/actionDeleteMe';
 import Auth from '../pages/Auth';
 import { checkUserIsAuthentificated, getUserData } from '../auth/user';
 
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
             {/* All the forms used with Form tag submission handling will be redirect to authAction*/}
             <Route path="auth" element={<Auth />} action={authActions} />
             <Route path="logout" action={logoutAction} />
+            <Route path="deleteMe" action={deleteAction} />
         </Route>
     )
 );

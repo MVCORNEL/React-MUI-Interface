@@ -35,8 +35,9 @@ const ForgotPasswordForm = () => {
                         <Typography variant={'h2'} component="h1" textAlign="center" mb={6}>
                             Find your account
                         </Typography>
+
                         {/* SUBTITLE */}
-                        <Typography variant={'body2'} component="p" textAlign="center" mb={6} color={data ? 'red' : '#222'}>
+                        <Typography variant={'body2'} component="p" textAlign="center" mb={6} color={data ? 'error' : '#222'}>
                             {data ? data : ' Enter the email associated with your account and we will send you a reset link.! '}
                         </Typography>
 

@@ -1,7 +1,7 @@
 import { redirect } from 'react-router-dom';
 
 /**
- * The current action router function is used to process the data and send the desired request after the logoutForm form has been submitted.
+ * The current action router function is used to process the data and send the desired request after the deteleMe form has been submitted.
  * Instead of using the standard form tag, the Form router element prevents the browser's default behaviour of automatically sending a request to the backend.
  * However, the current action function is used to process all form data and create the desired request configurations before sending a server request.
  * The route definition where the form exists also needs to include the action, which will contain all the data that was specified for the relevant part of the form.
@@ -10,18 +10,32 @@ import { redirect } from 'react-router-dom';
 const action = async () => {
     localStorage.removeItem('user');
     localStorage.removeItem('tokenExpiringDate');
-    //1 SEND REQUEST
-    const response = await fetch(`http://127.0.0.1:8000/api/v1/users/logout`, { credentials: 'include' });
-    //2 Parse the data into js objects.
+
+    //1 SEND DELETE REQUEST
+    const response = await fetch(`http://127.0.0.1:8000/api/v1/users/deleteMe`, {
+        method: 'DELETE',
+        withCredentials: true,
+        credentials: 'include',
+    });
+
+    //2 Redirect because because 204 is a terminate operation, and won't allow for processign the response
+    if (response.status === 204) {
+        alert('Your account has been successfully deleted');
+        return redirect('/');
+    }
+
+    //3 Parse the data into js objects.
     const responseData = await response.json();
-    //3 Propagate the error further to the useActionData hook within the form, within the body are details about the errors.
+
+    //4 Propagate the error further to the useActionData hook within the form, within the body are details about the errors.
     if (responseData.status === 'fail') {
         alert(responseData.message);
+        return redirect('/');
     }
     if (responseData.status === 'error') {
         throw new Error(responseData.message);
     }
-    //4 Everything went as expected
+
     return redirect('/');
 };
 

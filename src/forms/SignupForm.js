@@ -21,10 +21,6 @@ const SignupForm = () => {
     const navigation = useNavigation();
     const isSubmitting = navigation.state === 'submitting';
 
-    const siginHandler = () => {
-        console.log('Called');
-    };
-
     const {
         value: firstNameValue,
         isValid: firstNameIsValid,
@@ -93,7 +89,7 @@ const SignupForm = () => {
                                 <Typography variant={'h2'} component="h1" textAlign="center" mb={8}>
                                     Register
                                 </Typography>
-                                <Typography variant={'subtitle1'} component="p" textAlign="center" mb={6} color={data ? 'red' : '#222'}>
+                                <Typography variant={'body2'} component="p" textAlign="center" mb={6} color={data ? 'red' : 'error'}>
                                     {data ? data : ''}
                                 </Typography>
                             </Grid>

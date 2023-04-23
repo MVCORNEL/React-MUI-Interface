@@ -49,7 +49,7 @@ const LoginForm = () => {
                         <Typography variant={'h2'} component="h1" textAlign="center" mb={8}>
                             Sign in
                         </Typography>
-                        <Typography variant={'body2'} component="p" textAlign="center" mb={6} color={data ? 'red' : '#222'}>
+                        <Typography variant={'body2'} component="p" textAlign="center" mb={6} color={data ? 'red' : 'error'}>
                             {data ? data : ''}
                         </Typography>
                         {/* EMAIL */}
