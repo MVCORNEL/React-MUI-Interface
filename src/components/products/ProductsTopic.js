@@ -49,12 +49,7 @@ const ProductsTopic = () => {
 
     return (
         <SectionBox isGray={true}>
-            <SectionHeading
-                heading={'Produsele nostre'}
-                subheading={
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-                }
-            />
+            <SectionHeading heading={'Produsele nostre'} subheading={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'} />
             {!isLoading && data.length > 0 && <ProductsGrid productList={data} />}
             {!isLoading && data.length === 0 && !hasError && <p>No products found</p>}
             {isLoading && <p>Loading</p>}

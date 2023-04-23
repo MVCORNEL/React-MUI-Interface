@@ -5,10 +5,11 @@ import { useCallback, useState } from 'react';
  * Reusable configurable custom hook used to send request to the server, receive and process returned data.
  * Has 3 current state, loading, hassError, and normal.
  * @param {function} requestConfiguration expects a function that will never re-evaluate, returning a configuration request componenets
- * @param {function} processData
+ * @param {function} processData process the fetched data function, into a more desirable format
+ * @param {boolean} withCredentials does the request sends http cookies to the server
  * @returns
  */
-const useHttp = (requestConfiguration, processData) => {
+const useHttp = (requestConfiguration, processData, extra = {}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [hasError, setHasError] = useState(null);
     const [data, setData] = useState({});
@@ -25,6 +26,7 @@ const useHttp = (requestConfiguration, processData) => {
                     method: config.method ? config.method : 'GET',
                     headers: config.headers ? config.headers : {},
                     body: config.body ? config.body : null,
+                    ...extra,
                 });
                 //Error
                 if (!response.ok) {

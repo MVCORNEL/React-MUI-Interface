@@ -33,6 +33,7 @@ const useInput = (validatorFunction) => {
         valueChangeHandler,
         inputBlurHandler,
         reset,
+        setValue,
     };
 };
 

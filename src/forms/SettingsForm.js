@@ -2,6 +2,8 @@ import { Form } from 'react-router-dom';
 import { Typography, Stack, Button } from '@mui/material';
 import Input from './../ui/Input';
 import useInput from '../hooks/useInput';
+import useHttp from '../hooks/useHttp';
+import { useCallback, useEffect } from 'react';
 import useImageUploader from '../hooks/useImageUploader';
 import { validateName, validatePhone } from '../helpers/validators';
 import me from '../images/team-0.jpg';
@@ -9,7 +11,8 @@ import Avatar from '@mui/material/Avatar';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 
 /**
- * Settings Form control
+ * Settings Form function component.
+ * When the form is first render a request is made to the server, fetching the initials values of the fields, throug a custom useHttp hook.
  * The form makes use of the custom react hook "useInput" which is assigned to manage form input state, and useImageUploader hook to manage the image upload state.
  * Every field state that gets a callback function also gets a unique validator.
  * The submitted button is disabled until the form is valid.
@@ -24,6 +27,7 @@ const SettigsForm = () => {
         valueChangeHandler: firstNameChangeHandler,
         inputBlurHandler: firstNameBlurHandler,
         reset: resetFirstName,
+        setValue: setFirstName,
     } = useInput(validateName);
     //LNAME
     const {
@@ -33,6 +37,7 @@ const SettigsForm = () => {
         valueChangeHandler: lastNameChangeHandler,
         inputBlurHandler: lastNameBlurHandler,
         reset: resetLastName,
+        setValue: setLastName,
     } = useInput(validateName);
     //PHONE
     const {
@@ -42,12 +47,60 @@ const SettigsForm = () => {
         valueChangeHandler: phoneChangeHandler,
         inputBlurHandler: phoneBlurHandler,
         reset: resetPhone,
+        setValue: setPhoneNumber,
     } = useInput(validatePhone);
-
+    //IMAGE HOOK
     const { image: photo, imageAsUrl: photoUrl, imageUploadedHandler: photoChangeHandler } = useImageUploader();
 
-    //VALIDATOR FUNCTION
+    /**
+     *Function used to return a request object for the url configuration, this function is used as a configuration for the useHttp custom hook.
+     *Wrapped inside the useCallback custom hook, this function ensures that it won't re-render when the current component is evaluated, preventing the issue with infinite loops.
+     */
+    const ceateRequestConfig = useCallback(() => {
+        return { url: 'http://127.0.0.1:8000/api/v1/users/getMe' };
+    }, []);
+
+    /**
+     *Function used to return an request object configuration for cookie credentials, this function will be passed as configuration for the useHttp custom hook.
+     *Wrapped inside the useCallback custom hook, this function ensures that it won't re-render when the current component is evaluated, preventing the issue with infinite loops.
+     */
+    const extraConfigDetails = useCallback(() => {
+        return { credentials: 'include', withCredentials: true };
+    }, []);
+
+    /**
+     *Function trigerred when data the request data is available. Used to set the default values of the InputFields.
+     *Wrapped inside the useCallback custom hook, this function ensures that it won't re-render when the current component is evaluated, preventing the issue with infinite loops.
+     *
+     * @param {object} data expect a response object resulting from a http request
+     */
+    const tranformUserData = useCallback((data) => {
+        setPhoneNumber(data.user.phoneNumber);
+        setFirstName(data.user.firstName);
+        setLastName(data.user.lastName);
+        return data.user;
+    }, []);
+
+    //Fetch old user data.
+    const { data: oldUser, isLoading, hasError, sendRequest: fetchUserData } = useHttp(ceateRequestConfig, tranformUserData, extraConfigDetails());
+
+    useEffect(() => {
+        //fetch data only once when the current for is loaded
+        fetchUserData();
+        //When this function is called, some states within the custom useHttp hook will be set.
+        //The component where the useHttp hook is used re-renders when ne states are set, creating an infinite loop.
+        //The work around is to wrap function sendRequest coming from useHttp hook into a callback hook, also all its dependecies
+    }, [fetchUserData]);
+
+    //Check if the user changed any fields
+    const isFNameChanged = oldUser.firstName !== firstNameValue;
+    const isLNameChanged = oldUser.lastName !== lastNameValue;
+    const isPhoneChanged = oldUser.phoneNumber !== phoneValue;
+    const anyFieldChanged = isFNameChanged || isLNameChanged || isPhoneChanged;
+    //Check if the client side validty is passed.
     const isFormValid = firstNameIsValid && lastNameIsValid && phoneIsValid;
+    //Check if the form can be submitted
+    const canSubmit = anyFieldChanged && isFormValid;
 
     return (
         <Form>
@@ -99,7 +152,7 @@ const SettigsForm = () => {
             </Stack>
             {/* SAVE */}
             <Button
-                disabled={!isFormValid}
+                disabled={!canSubmit}
                 size="large"
                 variant="contained"
                 color="primary"
