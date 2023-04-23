@@ -1,8 +1,8 @@
 import Box from '@mui/material/Box';
-import { IconButton, Tooltip, Menu, Avatar, MenuItem } from '@mui/material';
+import { IconButton, Tooltip, Menu, Avatar } from '@mui/material';
 import NavMenuItem from './NavMenuItem';
 import userSettings from '../../consts/userSettings';
-import { Form } from 'react-router-dom';
+import LogoutForm from '../../forms/LogoutForm';
 
 /**
  * Component used for showing and interactive settings box, all its options will be based on the list of userSetting elements.
@@ -43,22 +43,7 @@ const NavSettingsBox = ({ handleOpenUserMenu, handleCloseUserMenu, anchorElUser 
                     <NavMenuItem key={setting.id} label={setting.label} route={setting.route} handleCloseMenu={handleCloseUserMenu} />
                 ))}
                 {/* LOGOUT */}
-                <Form method="post" action="/logout">
-                    <MenuItem
-                        sx={{
-                            '&:hover': {
-                                backgroundColor: '#EFEFEF!important',
-                                color: '#555!important',
-                            },
-                            width: '100%',
-                        }}
-                        key={'logout'}
-                        component={'button'}
-                        type="submit"
-                    >
-                        Logout
-                    </MenuItem>
-                </Form>
+                <LogoutForm />
             </Menu>
         </Box>
     );

@@ -1,6 +1,6 @@
 import { Form } from 'react-router-dom';
 import { Typography, Stack, Button } from '@mui/material';
-import Input from './../ui/Input';
+import Input from '../ui/Input';
 import useInput from '../hooks/useInput';
 import useHttp from '../hooks/useHttp';
 import { useCallback, useEffect } from 'react';
@@ -9,6 +9,7 @@ import { validateName, validatePhone } from '../helpers/validators';
 import me from '../images/team-0.jpg';
 import Avatar from '@mui/material/Avatar';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
+import userActions from '../auth/actionsUser';
 
 /**
  * Settings Form function component.
@@ -103,7 +104,7 @@ const SettigsForm = () => {
     const canSubmit = anyFieldChanged && isFormValid;
 
     return (
-        <Form>
+        <Form method="patch">
             {/* TITLE */}
             <Typography variant={'h4'} component="h1" mb={6}>
                 ACCOUNT SETTINGS
@@ -162,16 +163,6 @@ const SettigsForm = () => {
                 {/* {isSubmitting ? 'Submitting' : 'Sign Up'} */}
                 Save New Settings
             </Button>
-            {/* DELETE */}
-            <Stack direction={{ xxs: 'column', md: 'row' }} justifyContent={'center'} alignItems={'center'}>
-                {/* DELETE ACCOUNT */}
-                <Typography variant="body1" color="#555">
-                    Would you like to delete your account ?
-                </Typography>
-                <Button size="small" color="error">
-                    Delete Me
-                </Button>
-            </Stack>
         </Form>
     );
 };

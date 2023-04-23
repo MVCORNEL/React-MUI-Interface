@@ -7,6 +7,7 @@ import Portofolio from '../pages/Portofolio';
 import AboutUs from '../pages/AboutUs';
 import User from '../pages/User';
 import authActions from '../auth/actionsAuth';
+import userActions from '../auth/actionsUser';
 import logoutAction from '../auth/actionLogout';
 import Auth from '../pages/Auth';
 import { checkUserIsAuthentificated, getUserData } from '../auth/user';
@@ -30,7 +31,7 @@ const router = createBrowserRouter(
                 <Route path="portofolio" element={<Portofolio />} />
                 <Route path="products" element={<Products />} />
                 {/* RESTRICTING ACCESS FOR THE USER ROUTE AND ITS CHILDREN FOR THE LOGGEN IN US */}
-                <Route path="user" element={<User />} loader={checkUserIsAuthentificated} />
+                <Route path="user" element={<User />} loader={checkUserIsAuthentificated} action={userActions} />
             </Route>
             {/* All the forms used with Form tag submission handling will be redirect to authAction*/}
             <Route path="auth" element={<Auth />} action={authActions} />
