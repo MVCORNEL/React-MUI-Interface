@@ -4,7 +4,6 @@ import { useSearchParams } from 'react-router-dom';
 import UserAskUs from '../components/profile/UserAskUs';
 import UserProfile from '../components/profile/UserMe';
 import UserReviews from '../components/profile/UserReviews';
-import UserTheme from '../components/profile/UserTheme';
 
 /**
  * The user page component page. The main components of the current page are rendered based on the query parameter.
@@ -15,7 +14,6 @@ const User = () => {
     const isProfileTab = searchParams.get('tab') === 'me';
     const isMessasgesTab = searchParams.get('tab') === 'ask';
     const isReviewsTab = searchParams.get('tab') === 'reviews';
-    const isThemeTab = searchParams.get('tab') === 'theme';
 
     return (
         <Container
@@ -38,7 +36,6 @@ const User = () => {
                     {isProfileTab && <UserProfile />}
                     {isMessasgesTab && <UserAskUs />}
                     {isReviewsTab && <UserReviews />}
-                    {isThemeTab && <UserTheme />}
                 </Box>
             </Stack>
         </Container>

@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
-import { Container, Box, Button, Typography, Card, CardActions, CardContent } from '@mui/material';
+import { Container, Box, Typography } from '@mui/material';
 import HeaderCard from './HeaderCard';
 import backgroundLight from './../../../images/background.jpg';
 
@@ -10,7 +10,7 @@ import backgroundLight from './../../../images/background.jpg';
  */
 const HeaderProducts = () => {
     return (
-        <Box sx={{ position: 'relative', backgroundImage: `url(${backgroundLight})`, backgroundSize: 'cover', minHeight: { xss: 'auto', md: '95vh' }, width: '100%' }}>
+        <Box sx={{ position: 'relative', backgroundImage: `url(${backgroundLight})`, backgroundSize: 'cover', minHeight: { xss: 'auto', md: '92vh' }, width: '100%' }}>
             {/* BACKGROUND COLOR - FIRST HALF */}
             <Container
                 component="section"

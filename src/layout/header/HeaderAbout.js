@@ -1,6 +1,5 @@
-import { Container, Box, Typography } from '@mui/material';
-import Image from 'mui-image';
-import team from './../../images/team.jpg';
+import { Container, Box, Typography, Grid } from '@mui/material';
+import background from './../../images/team.jpg';
 import TeamTopic from '../../components/team/TeamTopic';
 
 /**
@@ -11,30 +10,25 @@ import TeamTopic from '../../components/team/TeamTopic';
  */
 const HeaderAbout = () => {
     return (
-        <Box mr="auto" ml="auto" sx={{ position: 'relative' }}>
-            <Box sx={{ position: 'relative' }}>
-                {/* TITLE */}
-                <Box
-                    sx={{
-                        position: 'absolute',
-                        zIndex: 2000,
-                        textAlign: 'center',
-                        backgroundColor: 'rgba(0,0,0,0.6)',
-                        marginTop: { xxs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                    }}
-                >
-                    <Typography variant="h1" component="h1" color="white" py={2} px={5}>
-                        DESPRE NOI
+        <Box sx={{ position: 'relative', backgroundImage: `url(${background})`, backgroundSize: 'cover', width: '100%', height: 'auto' }}>
+            {/* BACKGROUND COLOR - FIRST HALF */}
+            <Container
+                component="section"
+                sx={{
+                    paddingTop: { xxs: '5rem', sm: '5rem', md: '7rem', lg: '9rem' },
+                    position: 'relative',
+                }}
+            >
+                {/* HEADING */}
+                <Box textAlign="center">
+                    <Typography variant="h1" component="h1" color="white" backgroundColor="rgba(0,0,0,0.6)" py={2} px={6} display={'inline-block'}>
+                        Despre noi
                     </Typography>
                 </Box>
-                {/* IMAGE */}
-                <Image src={team} alt="window image" fit="cover" duration={500} showLoading={true} easing="ease-in" height={'60rem'} />
-            </Box>
-            {/* TEAM CARDS */}
-            <Container sx={{ marginTop: '-40rem', marginBottom: { md: '-10rem' }, zIndex: '2000', marginLeft: '50%', transform: 'translateX(-50%)' }}>
-                <TeamTopic />
+
+                <Box position={'relative'} sx={{ bottom: '-32rem', marginTop: '-30rem', marginBottom: { xxs: '32rem', md: '26rem', lg: '22rem' } }}>
+                    <TeamTopic />
+                </Box>
             </Container>
         </Box>
     );

@@ -16,7 +16,7 @@ import * as React from 'react';
 const ContactItem = ({ title, text, icon }) => {
     return (
         <ListItem sx={{ paddingLeft: 0 }}>
-            <ListItemAvatar>
+            <ListItemAvatar sx={{ display: { xxs: 'none', xs: 'block' } }}>
                 <Avatar sx={{ width: '5rem', height: '5rem', color: 'primary.main' }}>
                     <SvgIcon component={icon} sx={{ fontSize: '3rem', color: '#333' }} />
                 </Avatar>

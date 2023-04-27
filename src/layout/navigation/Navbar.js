@@ -45,22 +45,9 @@ function Navbar() {
                     {/* LINKS */}
                     <NavLinks handleCloseNavMenu={handleCloseNavMenu} />
                     {/* PROFILE BOX */}
-                    {user && (
-                        <NavProfileBox
-                            handleOpenUserMenu={handleOpenUserMenu}
-                            handleCloseUserMenu={handleCloseUserMenu}
-                            anchorElUser={anchorElUser}
-                        />
-                    )}
+                    {user && <NavProfileBox handleOpenUserMenu={handleOpenUserMenu} handleCloseUserMenu={handleCloseUserMenu} anchorElUser={anchorElUser} />}
                     {!user && (
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            component={RouterLink}
-                            size="medium"
-                            to="/auth?mode=login"
-                            sx={{ marginLeft: '1rem' }}
-                        >
+                        <Button variant="contained" color="primary" component={RouterLink} size="medium" to="/auth?mode=login" sx={{ marginLeft: '1rem' }}>
                             Log in
                         </Button>
                     )}

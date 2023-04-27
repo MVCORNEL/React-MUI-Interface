@@ -25,6 +25,7 @@ let theme = createTheme({
             dark: '#4f5155',
             contrastText: '#fff',
         },
+        background: { default: '#fcfcfc' },
     },
 
     typography: {
@@ -35,25 +36,25 @@ let theme = createTheme({
         fontFamily: ['Quicksand', 'sans-serif', 'Roboto'].join(','),
 
         h1: {
-            fontSize: 60,
-            fontWeight: 500,
-            color: '#303030',
+            fontSize: 56,
+            fontWeight: 600,
+            color: '#333',
             fontFamily: 'Lora',
         },
 
         h2: {
-            fontSize: 44,
+            fontSize: 38,
             lineHeight: 1.3,
-            fontWeight: 600,
+            fontWeight: 700,
             color: '#333',
             fontFamily: 'Lora',
         },
 
         h3: {
             fontWeight: 700,
-            fontSize: 26,
+            fontSize: 28,
             lineHeight: 1.3,
-            color: '#333',
+            color: '#404040',
             position: 'relative',
             fontFamily: 'Lora',
         },

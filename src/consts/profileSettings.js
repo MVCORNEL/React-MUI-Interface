@@ -21,13 +21,6 @@ const profileSettings = [
         icon: StarBorderPurple500OutlinedIcon,
         link: 'reviews',
     },
-    ,
-    {
-        id: 'theme',
-        label: 'Theme',
-        icon: SettingsOutlinedIcon,
-        link: 'theme',
-    },
 ];
 
 export default profileSettings;

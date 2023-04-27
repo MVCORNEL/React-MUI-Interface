@@ -6,6 +6,7 @@ import Products from '../pages/Products';
 import Portofolio from '../pages/Portofolio';
 import AboutUs from '../pages/AboutUs';
 import User from '../pages/User';
+import Product from '../pages/Product';
 import authActions from '../auth/actionsAuth';
 import userActions from '../auth/actionsUser';
 import logoutAction from '../auth/actionLogout';
@@ -31,6 +32,7 @@ const router = createBrowserRouter(
                 <Route path="about" element={<AboutUs />} />
                 <Route path="portofolio" element={<Portofolio />} />
                 <Route path="products" element={<Products />} />
+                <Route path="product" element={<Product />} />
                 {/* RESTRICTING ACCESS FOR THE USER ROUTE AND ITS CHILDREN FOR THE LOGGEN IN US */}
                 <Route path="user" element={<User />} loader={checkUserIsAuthentificated} action={userActions} />
             </Route>
