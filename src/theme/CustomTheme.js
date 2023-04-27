@@ -64,7 +64,7 @@ let theme = createTheme({
             color: '#FF5722',
             fontWeight: 600,
             lineHeight: 1.3,
-            fontSize: 30,
+            fontSize: 28,
         },
 
         h5: {

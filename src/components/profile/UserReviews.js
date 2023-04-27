@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import List from '@mui/material/List';
-import MyReview from './myReview/MyReview';
+import Review from '../reviews/Review';
 import { Fragment } from 'react';
 
 /**
@@ -14,9 +14,9 @@ const UserReviews = () => {
             </Typography>
 
             <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                <MyReview />
-                <MyReview />
-                <MyReview />
+                <Review />
+                <Review />
+                <Review />
             </List>
         </Fragment>
     );

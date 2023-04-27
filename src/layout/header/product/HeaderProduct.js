@@ -12,6 +12,7 @@ const HeaderProduct = () => {
     return (
         <Box sx={{ position: 'relative', backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', width: '100%', height: 'auto' }}>
             {/* BACKGROUND COLOR - FIRST HALF */}
+
             <Container
                 component="section"
                 sx={{
@@ -30,13 +31,13 @@ const HeaderProduct = () => {
                         py={2}
                         px={6}
                         display={'inline-block'}
-                        mb={{ xxs: '2rem', xs: '5rem', md: '9rem', lg: '16rem' }}
+                        mb={{ xxs: '2rem', xs: '5rem', md: '9rem', lg: '17rem' }}
                     >
                         Ferestre de temopan
                     </Typography>
                 </Box>
 
-                <Box position={'relative'} sx={{ bottom: '-15rem', marginTop: '-15rem', mb: '15rem' }}>
+                <Box position={'relative'} sx={{ bottom: '-11rem', marginTop: '-11rem', mb: '15rem' }}>
                     <SubHeader />
                 </Box>
             </Container>

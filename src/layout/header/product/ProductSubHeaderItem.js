@@ -13,11 +13,11 @@ const ProductSubHeaderItem = ({ icon, title }) => {
     return (
         <Box sx={{ flexBasis: '100%' }}>
             {/* ICON */}
-            <IconWrapper size="9rem" marginBottom="2rem" color={theme.palette.primary.main}>
+            <IconWrapper size="8rem" marginBottom="2rem" color={theme.palette.primary.main}>
                 {icon}
             </IconWrapper>
             {/* TEXT */}
-            <Typography variant="h6" component="h3" textAlign="center" color={theme.palette.primary.main} maxWidth={'12ch'} mx="auto">
+            <Typography variant="h5" component="h3" textAlign="center" color={theme.palette.primary.main} maxWidth={'12ch'} mx="auto">
                 {title}
             </Typography>
         </Box>

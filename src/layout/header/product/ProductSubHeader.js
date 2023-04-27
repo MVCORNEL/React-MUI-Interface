@@ -23,9 +23,9 @@ const SubHeader = () => {
             mt={6}
             textAlign={'start'}
             spacing={4}
-            p={7}
+            p={5}
             sx={{
-                boxShadow: '1px 1px 1px 1px #888',
+                boxShadow: '1px 1px 1px 1px #ccc',
             }}
             divider={isVerySmallDevice ? <Divider flexItem orientation="horizontal" /> : <Divider flexItem orientation="vertical" />}
         >
