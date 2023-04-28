@@ -9,6 +9,7 @@ import { IconButton } from '@mui/material';
 import AddIcon from '@mui/icons-material/AddCircle';
 import EditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Form } from 'react-router-dom';
 
 //MUI FUNCTION TAKEN AND CUSTOMIZED FROM https://mui.com/material-ui/react-table/
 /**
@@ -49,11 +50,13 @@ const CustomTableToolbar = ({ header = 'Table', numSelected, onAddPressed, onDel
             {numSelected > 0 ? (
                 <Stack direction={'row'}>
                     {numSelected === 1 && (
-                        <Tooltip onClick={onDeletePressed}>
-                            <IconButton>
-                                <EditIcon />
-                            </IconButton>
-                        </Tooltip>
+                        <Form method="delete" action="/deleteMe">
+                            <Tooltip onClick={onDeletePressed}>
+                                <IconButton type="submit">
+                                    <EditIcon />
+                                </IconButton>
+                            </Tooltip>
+                        </Form>
                     )}
                     <Tooltip title="Delete">
                         <IconButton onClick={onEditPressed}>

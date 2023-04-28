@@ -157,7 +157,7 @@ const SignupForm = () => {
                                     onChange={passwordChangeHandler}
                                     onBlur={passwordBlurHandler}
                                     helperText={`Password must contain a small letter ,a capital letter, a digit and at least 8 characters length`}
-                                    isPasswordField={true}
+                                    type={'password'}
                                 ></Input>
                             </Grid>
                             {/* RETYPED PASSWORD */}
@@ -171,7 +171,7 @@ const SignupForm = () => {
                                     onChange={retypedPasswordChangeHandler}
                                     onBlur={retypedPasswordBlurHandler}
                                     helperText={`The passwords do not match`}
-                                    isPasswordField={true}
+                                    type={'password'}
                                 ></Input>
                             </Grid>
 

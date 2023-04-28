@@ -73,7 +73,7 @@ const LoginForm = () => {
                             onChange={passwordChangeHandler}
                             onBlur={passwordBlurHandler}
                             helperText={`Invalid password`}
-                            isPasswordField={true}
+                            type={'password'}
                         ></Input>
                         <Stack direction="row" justifyContent={'space-between'} alignItems={'center'} mb={4}>
                             {/* REMEMBER ME */}

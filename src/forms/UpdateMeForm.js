@@ -21,8 +21,6 @@ import { useActionData, useNavigation } from 'react-router-dom';
 const SettigsForm = () => {
     //Error data returned from the action request handler
     const errorEdit = useActionData();
-    //If the current form is submitting the button appearance will change for a moment
-    const navigation = useNavigation();
     //Hard coded image TODO
     const oldImage = me;
 
