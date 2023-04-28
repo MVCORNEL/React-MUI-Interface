@@ -19,12 +19,14 @@ import PropTypes from 'prop-types';
  * The table will automatically generate the rows based on the provided object information by using @function createRow function
  * The table will sort the record based on the pressed headers @function CustomTableHeader
  * The table listened for event coming out from the @function CustomTableToolbar
- *
+ * @prop {string} tableName
  * @prop {array} rows data expected
  * @prop {array} headCells a configuration obkject for the table.
  * @returns
  */
-export default function CustomTable({ rows, headCells }) {
+export default function CustomTable({ tableName, rows, headCells }) {
+    console.log('called');
+
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
     const [selected, setSelected] = React.useState([]);
@@ -89,7 +91,7 @@ export default function CustomTable({ rows, headCells }) {
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
     //MUI FUNCTION TAKEN FROM https://mui.com/material-ui/react-table/
-    const visibleRows = React.useMemo(() => stableSort(rows, getComparator(order, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage), [order, orderBy, page, rowsPerPage]);
+    const visibleRows = React.useMemo(() => stableSort(rows, getComparator(order, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage), [order, orderBy, page, rowsPerPage, rows]);
     //MUI FUNCTION TAKEN AND CUSTOMIZED FROM https://mui.com/material-ui/react-table/
 
     /**
@@ -144,7 +146,13 @@ export default function CustomTable({ rows, headCells }) {
     return (
         <Box sx={{ width: '100%' }}>
             <Paper sx={{ width: '100%', mb: 2 }}>
-                <CustomTableToolbar numSelected={selected.length} onAddPressed={handleAddButtonPressed} />
+                <CustomTableToolbar
+                    header={tableName}
+                    numSelected={selected.length}
+                    onDeletePressed={handleDeleteButtonPressed}
+                    onEditPressed={handleEditButtonPressed}
+                    onAddPressed={handleAddButtonPressed}
+                />
                 <TableContainer>
                     <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size="mediun">
                         <CustomTableHeader
@@ -189,4 +197,5 @@ export default function CustomTable({ rows, headCells }) {
 CustomTable.propTypes = {
     rows: PropTypes.array.isRequired,
     headCells: PropTypes.array.isRequired,
+    tableName: PropTypes.string.isRequired,
 };

@@ -1,5 +1,6 @@
 import TextField from '@mui/material/TextField';
-
+import PropTypes from 'prop-types';
+import React from 'react';
 /**
  * This interactive control component was constructed on top of MUI's TextField element characteristics.
  *
@@ -13,13 +14,19 @@ import TextField from '@mui/material/TextField';
  * @prop {function} onBlur calback function used when the element losses focus
  * @prop {boolean} multiline if the current element contains many lines if the value is false; else, only one.
  */
-const Input = ({ type, label, value, helperText, error, id, onChange, onBlur, multiline }) => {
+const Input = ({ type, label, value, helperText, error, id, onChange, onBlur, multiline, isPasswordField = false }) => {
+    const [showPassword, setShowPassword] = React.useState(false);
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
+
     return (
         <div>
             <TextField
                 error={error}
                 helperText={error ? helperText : ' '}
-                type={type}
+                type={isPasswordField ? 'password' : 'text'}
                 id={id}
                 label={label}
                 name={id}
@@ -37,3 +44,17 @@ const Input = ({ type, label, value, helperText, error, id, onChange, onBlur, mu
 };
 
 export default Input;
+
+//DATA TYPE VALIDATION
+Input.propTypes = {
+    id: PropTypes.string.isRequired,
+    input: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    helperText: PropTypes.string.isRequired,
+    error: PropTypes.bool.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func.isRequired,
+    multiline: PropTypes.bool,
+    isPasswordField: PropTypes.bool,
+};

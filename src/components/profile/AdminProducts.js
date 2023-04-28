@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import { Fragment } from 'react';
-import ProductsTable from '../table/CreateTableFactorial';
+import ProductsTable from '../table/ProductsTable';
 
 /**
  * Funcional componenets represeting an editable list of reviews.
