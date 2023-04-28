@@ -1,4 +1,4 @@
-import { ListItemIcon, ListItemButton, ListItemText, ListItem, Typography, SvgIcon } from '@mui/material';
+import { ListItemIcon, ListItemButton, ListItemText, ListItem, Typography, SvgIcon, useMediaQuery } from '@mui/material';
 import { NavLink as RouterLink } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { useSearchParams } from 'react-router-dom';
@@ -19,6 +19,13 @@ const UserMenuItem = ({ id, icon, label, link }) => {
     //establish if the the current link element is the selected one.
     const [searchParams] = useSearchParams();
     const isActive = searchParams.get('tab') === link;
+
+    const isProductsTab = searchParams.get('tab') === 'products';
+    const isUsersTab = searchParams.get('tab') === 'users';
+    const isAdmin = isProductsTab || isUsersTab;
+    //smaller than 900
+    const isSmallDevice = useMediaQuery(theme.breakpoints.down('md'));
+
     //function used to distinguish the current selectected link, from the others.
     const activeStyle = () =>
         isActive
@@ -44,7 +51,7 @@ const UserMenuItem = ({ id, icon, label, link }) => {
             <ListItemButton
                 sx={{
                     justifyContent: 'initial',
-                    p: 1.5,
+                    p: { xxs: 0.5, md: 1.5 },
                 }}
             >
                 <ListItemIcon
@@ -58,15 +65,16 @@ const UserMenuItem = ({ id, icon, label, link }) => {
                 >
                     <SvgIcon component={icon} sx={{ fontSize: '3rem', color: '#fff' }} />
                 </ListItemIcon>
-
-                <ListItemText
-                    disableTypography
-                    primary={
-                        <Typography variant="body2" style={{ color: '#FFFFFF' }}>
-                            {label}
-                        </Typography>
-                    }
-                />
+                {(!isAdmin || isSmallDevice) && (
+                    <ListItemText
+                        disableTypography
+                        primary={
+                            <Typography variant="body2" style={{ color: '#FFFFFF' }}>
+                                {label}
+                            </Typography>
+                        }
+                    />
+                )}
             </ListItemButton>
         </ListItem>
     );

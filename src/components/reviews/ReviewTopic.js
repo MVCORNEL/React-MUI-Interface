@@ -26,7 +26,7 @@ const CustomerReviews = () => {
                         </Typography>
                         <Rating name="read-only" readOnly value={5} sx={{ marginLeft: -1 }} size="large" />
 
-                        <Typography component="body2" variant="body2">
+                        <Typography component="p" variant="body2">
                             11 reviews
                         </Typography>
                     </Stack>
@@ -51,7 +51,7 @@ const CustomerReviews = () => {
             </List>
 
             <Box textAlign={'center'} mt={6}>
-                <Button color="secondary" component="h3" mt={2} mb={1}>
+                <Button color="secondary" mt={2} mb={1}>
                     See more !
                 </Button>
             </Box>

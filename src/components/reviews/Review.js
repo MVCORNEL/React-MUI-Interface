@@ -25,15 +25,15 @@ const Review = ({ photo, date, product, comment, rate, likes, isEditable = false
             <ListItemText
                 sx={{ marginRight: 4, textAlign: 'justify' }}
                 primary={
-                    <Typography sx={{ display: 'inline-block' }} component="span" variant="body1" color="text.primary" mt={0.8}>
+                    <Typography sx={{ display: 'inline-block' }} color="text.primary" mt={0.8}>
                         Manea Valentin Cornel
                     </Typography>
                 }
                 secondary={
                     <React.Fragment>
                         <Stack component="span" direction={'row'} alignItems={'end'} mb={1}>
-                            <Rating value={4} sx={{ marginLeft: -0.5 }} readOnly size={'small'} />
-                            <Typography sx={{ display: 'inline' }} component="span" variant="body2" color="text.secondary" ml={2}>
+                            <Rating component="span" value={4} sx={{ marginLeft: -0.5 }} readOnly size={'small'} />
+                            <Typography sx={{ display: 'inline' }} component="span" variant="body1" color="text.secondary" ml={2}>
                                 2 weeks ago
                             </Typography>
                         </Stack>
@@ -50,7 +50,7 @@ const Review = ({ photo, date, product, comment, rate, likes, isEditable = false
                                 </Button>
                             </Box>
                         ) : (
-                            <Box display={'block'} component="span" ml={-1} mt={1} z>
+                            <Box display={'block'} component="span" ml={-1} mt={1}>
                                 <Button size="large" component="span" color="secondary" startIcon={<ThumbUpOffAltOutlinedIcon />}></Button>
                                 <span>10</span>
                             </Box>

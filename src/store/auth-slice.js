@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     isAuthentificated: false,
+    isAdmin: false,
 };
 
 //Create slice is used for preparing a slice of our global state
@@ -15,6 +16,9 @@ const authSlice = createSlice({
         },
         logout(state) {
             state.isAuthentificated = false;
+        },
+        setAdmin(state) {
+            state.isAdmin = false;
         },
     },
 });

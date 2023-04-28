@@ -1,5 +1,8 @@
 import { Typography } from '@mui/material';
-import { Form } from 'react-router-dom';
+
+/**
+ * Funcional componenets represeting an a simple chat/ NOT IMPLEMENTED
+ */
 const AskUs = () => {
     return (
         <div>
