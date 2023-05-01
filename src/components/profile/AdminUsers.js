@@ -1,21 +1,21 @@
 import { Typography } from '@mui/material';
 import { Fragment } from 'react';
-import ProductsTable from '../table/ProductsTable';
+import UsersTable from '../table/UsersTable';
 
 /**
  * Funcional component a header and a table
  */
-const AdminProducts = () => {
+const AdminUsers = () => {
     return (
         <Fragment>
             {/* HEADING */}
             <Typography variant={'h4'} component="h1" mb={4}>
-                Manage the Products
+                Admin Users
             </Typography>
             {/* TABLE */}
-            <ProductsTable />
+            <UsersTable />
         </Fragment>
     );
 };
 
-export default AdminProducts;
+export default AdminUsers;

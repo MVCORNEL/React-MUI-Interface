@@ -5,6 +5,7 @@ import UserAskUs from '../components/profile/UserAskUs';
 import UserProfile from '../components/profile/UserMe';
 import UserReviews from '../components/profile/UserReviews';
 import AdminProducts from '../components/profile/AdminProducts';
+import AdminUsers from '../components/profile/AdminUsers';
 import { json } from 'react-router-dom';
 import { useEffect } from 'react';
 /**
@@ -55,6 +56,7 @@ const User = () => {
                 {forAdmin && (
                     <Box mx={'auto'} mt={8} mb={8} width={'100%'} sx={{ minWidth: 0 }} px={2}>
                         {isProductsTab && <AdminProducts />}
+                        {isUsersTab && <AdminUsers />}
                     </Box>
                 )}
             </Stack>

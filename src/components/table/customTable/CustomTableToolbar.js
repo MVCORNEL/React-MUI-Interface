@@ -9,6 +9,7 @@ import EditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Form } from 'react-router-dom';
 import ProductDialogForm from '../../../forms/ProductDialogForm';
+import UserDialog from '../../../forms/UserDialogForm';
 
 //MUI FUNCTION TAKEN AND CUSTOMIZED FROM https://mui.com/material-ui/react-table/
 /**
@@ -73,7 +74,7 @@ const CustomTableToolbar = ({ header = 'Table', numSelected, selectedList }) => 
                                 </IconButton>
                             </Tooltip>
                         )}
-                        <Form method="DELETE" action="?tab=products">
+                        <Form method="DELETE" action={`?tab=${header.toLowerCase()}`}>
                             <input type="hidden" name="key" value="value" />
                             <IconButton component="button" type="submit">
                                 {/* PASS THE IDS FOR THE REQUIRED TO DELETE ELEMENTS */}
@@ -91,7 +92,8 @@ const CustomTableToolbar = ({ header = 'Table', numSelected, selectedList }) => 
                 )}
             </Toolbar>
             {/* PASS THE ID FOR THE REQUIRED TO EDIT ELEMENT */}
-            <ProductDialogForm mode={mode} open={open} onClose={handleClose} id={editId} />
+            {header === 'Products' && <ProductDialogForm mode={mode} open={open} onClose={handleClose} id={editId} />}
+            {header === 'Users' && <UserDialog mode={mode} open={open} onClose={handleClose} id={editId} />}
         </React.Fragment>
     );
 };

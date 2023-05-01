@@ -8,33 +8,29 @@ import useHttp from './../../hooks/useHttp';
  * Using a custom http hook,data will be fetched and the table will be populated acordingly.
  *
  */
-const ProductsTable = () => {
+const UsersTable = () => {
     // Functions that will return an request object configuration url,
     // this function will be passed as configuration for the useHttp custom hook.
     // Wrapped into useCallback hook, assuring that this function will not re-render when the current component re-evaluates
     // avoiding infinte loop problem, inside the useHttp custom hook.
     const ceateRequestConfigGetAll = useCallback(() => {
-        return { url: 'http://127.0.0.1:8000/api/v1/products' };
+        return { url: 'http://127.0.0.1:8000/api/v1/users' };
     }, []);
 
-    //Function used to tranform data, coming from a request object into a list of desired product objects
+    //Function used to tranform data, coming from a request object into a list of desired user objects
     //Wrapped into useCallback hook, assuring that this function will not re-render when the current component re-evaluates
     //avoiding infinte loop problem, inside the useHttp custom hook.
-    const tranformProducts = useCallback(
-        (data) => {
-            return data.map((product) => {
-                return {
-                    name: product.name,
-                    category: product.category,
-                    id: product._id,
-                    rating: product.ratingsAverage,
-                    reviews: product.ratingsQuantity,
-                };
-            });
-        },
-
-        []
-    );
+    const tranformProducts = useCallback((data) => {
+        console.log(data);
+        return data.map((user) => {
+            return {
+                lastName: user.lastName,
+                email: user.email,
+                phoneNumber: user.phoneNumber,
+                id: user._id,
+            };
+        });
+    }, []);
 
     //Fetch url custom hook
     const { data: rows, isLoading, hasError, sendRequest: fetchProducts } = useHttp(ceateRequestConfigGetAll, tranformProducts);
@@ -52,14 +48,21 @@ const ProductsTable = () => {
             id: 'name',
             numeric: false,
             disablePadding: true,
-            label: 'Product',
+            label: 'User',
             align: 'left',
         },
         {
-            id: 'category',
+            id: 'email',
             numeric: false,
             disablePadding: false,
-            label: 'Category',
+            label: 'Email',
+            align: 'left',
+        },
+        {
+            id: 'phoneNumber',
+            numeric: true,
+            disablePadding: false,
+            label: 'Phone',
             align: 'left',
         },
         {
@@ -67,31 +70,17 @@ const ProductsTable = () => {
             numeric: true,
             disablePadding: false,
             label: 'Id',
-            align: 'left',
-        },
-
-        {
-            id: 'rating',
-            numeric: true,
-            disablePadding: false,
-            label: 'Rate',
-            align: 'left',
-        },
-        {
-            id: 'reviews',
-            numeric: true,
-            disablePadding: false,
-            label: 'Reviews count',
+            align: 'right',
         },
     ];
 
     return (
         <Fragment>
-            {!isLoading && <CustomTable tableName="Products" headCells={headCells} rows={rows} />}
+            {!isLoading && <CustomTable tableName="Users" headCells={headCells} rows={rows} />}
             {isLoading && <p>Loading</p>}
             {!isLoading && hasError && <p>{hasError}</p>}
         </Fragment>
     );
 };
 
-export default ProductsTable;
+export default UsersTable;

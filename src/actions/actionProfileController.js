@@ -1,6 +1,8 @@
 import actionMe from './actionsMe';
 import actionsProducts from './actionAdminProducts';
 import actionsReviews from './actionUserDeleteEditReviews';
+import actionUsers from './actionAdminUsers';
+
 /**
  * This function works as a wrapper function and router function is used to process the data from any form.
  * Instead of using the standard form tag, the Form router element prevents the browser's default behaviour of automatically sending a request to the backend.
@@ -14,7 +16,7 @@ async function action({ request }) {
     const tab = searchParams.get('tab');
 
     //2 Handle only the following forms
-    if (tab !== 'products' && tab !== 'me' && tab !== 'reviews') {
+    if (tab !== 'products' && tab !== 'me' && tab !== 'reviews' && tab !== 'users') {
         throw new Error('Unrecognized request . Please cotact the administrator !');
     }
 
@@ -31,6 +33,11 @@ async function action({ request }) {
     //5 Handle reviews actions
     if (tab === 'reviews') {
         return await actionsReviews(request);
+    }
+
+    //6 Handle reviews actions
+    if (tab === 'users') {
+        return await actionUsers(request);
     }
 
     return null;
