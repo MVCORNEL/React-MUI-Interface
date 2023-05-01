@@ -216,9 +216,9 @@ const ProductDialog = ({ open, onClose, mode, id }) => {
                                 <input name="image" accept="image/*" type="file" onChange={photoChangeHandler} hidden></input>
                             </Button>
                         </Stack>
-
+                        {/* ONLY WAY TO PASS FURTHER TO THE ACTION */}
                         <input type="hidden" name="id" value={id} />
-
+                        {/* SUBMIT BUTTOn*/}
                         <DialogActions>
                             <Button variant="contained" disabled={!canSubmit} type="submit">
                                 {mode === 'POST' ? 'Add Product' : 'Edit Product'}

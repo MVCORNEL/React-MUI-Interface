@@ -23,8 +23,7 @@ const productLoader = async ({ params }) => {
     // //4 Parse the data into js objects.
     const productData = await productRsponse.json();
     const reviewsData = await reviewsResponse.json();
-    // const responseReviewData = await reviews.json();
-    // // const responseReviewData = await reviews.json();
+
     //5 Propagate the fails further
     if (productData.status === 'fail') {
         throw json({ message: productData.message }, { status: productData.status });

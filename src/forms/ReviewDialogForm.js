@@ -15,7 +15,7 @@ import { useActionData, useNavigate, useParams } from 'react-router-dom';
  * @param {string} id requried to update product id
  * @returns
  */
-const ReviewDialog = ({ open, onClose, id }) => {
+const ReviewDialog = ({ open, onClose, id, mode = 'POST' }) => {
     //Navigate hook used to refresh the page
     const navigate = useNavigate();
     const { productSlug } = useParams();
@@ -57,7 +57,7 @@ const ReviewDialog = ({ open, onClose, id }) => {
             <DialogTitle variant="h3"> {'Rate us'}</DialogTitle>
 
             <DialogContent sx={{ height: 'auto', padding: { xxs: 1, xs: 3 } }}>
-                <Form method={'POST'}>
+                <Form method={mode}>
                     <Typography variant={'body2'} component="p" textAlign="center" color={'error'}>
                         {error ? error : ''}
                     </Typography>
@@ -96,7 +96,7 @@ const ReviewDialog = ({ open, onClose, id }) => {
 
                         <DialogActions>
                             <Button variant="contained" disabled={!canSubmit} type="submit">
-                                {'Add Review'}
+                                {mode === 'PATCH' ? 'Edit Review' : 'Add Review'}
                             </Button>
                             <Button onClick={onCloseAndReset}>Cancel</Button>
                         </DialogActions>
@@ -113,4 +113,5 @@ ReviewDialog.propTypes = {
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
     id: PropTypes.string,
+    mode: PropTypes.string,
 };
