@@ -39,7 +39,6 @@ const UserReviews = () => {
 
     useEffect(() => {
         fetchProducts();
-        console.log(data);
         //Function within the custom useHttp hook will set some states, when this function is called.
         //When ne states are set, the componenet where the useHttp hook is used re-renders, resulting into an infinite loop.
         //the work around useCallback hook

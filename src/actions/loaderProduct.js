@@ -1,12 +1,12 @@
-import { json, useParams } from 'react-router-dom';
+import { json } from 'react-router-dom';
 /**
+ * The current function is used to load into the product page the product details and its review, by executing two parallel fetch request.
  * The current loader router function is used to sent fetch request ahd handle  data before a certain page/resource is accessed.
  * Instead of using the standard way of fecthing data , this functiona will automatically fetch data when a route component is accessed.
  * @returns The the fetched data otherwise throws the related errors
  */
 const productLoader = async ({ params }) => {
-    //FETCH PRODUCT
-    // let [product, reviews] = await Promise.all(
+    //Fetch product and the current product reviews list
     let [productRsponse, reviewsResponse] = await Promise.all([
         fetch(`http://127.0.0.1:8000/api/v1/products?slug=${params.productSlug}`, {
             headers: { 'Content-Type': 'application/json' },
@@ -29,11 +29,11 @@ const productLoader = async ({ params }) => {
     if (productData.status === 'fail') {
         throw json({ message: productData.message }, { status: productData.status });
     }
-    if (reviewsData.status === 'fail') {
+    if (reviewsData.status === 'error') {
         throw json({ message: reviewsData.message }, { status: reviewsData.status });
     }
     // // Propagate the error further
-    if (productData.status === 'error') {
+    if (productData.status === 'fail') {
         //500 indicates that something went wrong on the backend
         throw json({ message: productData.message }, { status: productData.status });
     }

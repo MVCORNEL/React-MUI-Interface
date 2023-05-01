@@ -27,7 +27,7 @@ function ErrorPage() {
         <PushFooterBottomBox>
             <Nav />
             <Container>
-                <h1>{title}</h1>
+                <h1>{error?.status}</h1>
                 <p>{message}</p>
             </Container>
             <Footer />

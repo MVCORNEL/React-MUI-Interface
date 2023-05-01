@@ -13,8 +13,9 @@ import actionWriteReview from './../actions/actionWriteReview';
 import logoutAction from '../actions/actionLogout';
 import deleteAction from '../actions/actionDeleteMe';
 import productLoader from '../actions/loaderProduct';
+import profileLoader from '../actions/loaderProfile';
 import Auth from '../pages/Auth';
-import { checkUserIsAuthentificated, getUserData } from '../auth/user';
+import { getUserData } from '../auth/user';
 
 /**
  * The router component responsible for all the route configuration functionality
@@ -36,7 +37,7 @@ const router = createBrowserRouter(
                 <Route path="products" element={<Products />} />
                 <Route path="product/:productSlug" loader={productLoader} action={actionWriteReview} element={<Product />} />
                 {/* RESTRICTING ACCESS FOR THE USER ROUTE AND ITS CHILDREN FOR THE LOGGEN IN US */}
-                <Route path="user" element={<User />} loader={checkUserIsAuthentificated} action={actionProfileController} />
+                <Route path="user" element={<User />} loader={profileLoader} action={actionProfileController} />
             </Route>
             {/* All the forms used with Form tag submission handling will be redirect to authAction*/}
             <Route path="auth" element={<Auth />} action={authActions} />

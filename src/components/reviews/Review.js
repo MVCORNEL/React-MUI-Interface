@@ -13,15 +13,15 @@ import PropTypes from 'prop-types';
  * @prop {string} name user's review name
  * @prop {string} date expects a string represting the date when the review was written
  * @prop {string} comment expects a string comment
- * @prop {string} photo expects a string represeting an url to a image
+ * @prop {string} image expects a string represeting an url to a image
  * @prop {number} rate expects a number between 1 and 5
  * @returns
  */
-const Review = ({ name, date, photo, comment, rate, isEditable = false }) => {
+const Review = ({ name, date, image, comment, rate, isEditable = false }) => {
     return (
         <ListItem alignItems="flex-start" sx={{ mt: 2, backgroundColor: '#e9e9e9' }}>
             <ListItemAvatar>
-                <Avatar alt="Remy Sharp" src={photo} />
+                <Avatar alt="Remy Sharp" src={image} />
             </ListItemAvatar>
             <ListItemText
                 sx={{ marginRight: 4, textAlign: 'justify' }}
@@ -61,7 +61,7 @@ export default Review;
 Review.propTypes = {
     name: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
-    photo: PropTypes.string,
+    image: PropTypes.string,
     comment: PropTypes.string.isRequired,
     rate: PropTypes.number.isRequired,
 };

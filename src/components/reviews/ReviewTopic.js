@@ -72,7 +72,7 @@ const CustomerReviews = ({ ratingsAverage, ratingsQuantity, id, reviews }) => {
                         rate={review.rating}
                         date={review.date}
                         comment={review.comment}
-                        photo={review.user.photo}
+                        image={review.user.image}
                     ></Review>
                 ))}
             </List>

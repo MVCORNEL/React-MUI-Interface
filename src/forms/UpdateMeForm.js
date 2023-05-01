@@ -2,14 +2,14 @@ import { Form } from 'react-router-dom';
 import { Typography, Stack, Button } from '@mui/material';
 import Input from '../ui/Input';
 import useInput from '../hooks/useInput';
-import useHttp from '../hooks/useHttp';
-import { useCallback, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import useImageUploader from '../hooks/useImageUploader';
 import { validateName, validatePhone } from '../helpers/validators';
-import me from '../images/team-0.jpg';
 import Avatar from '@mui/material/Avatar';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
-import { useActionData } from 'react-router-dom';
+import { useActionData, useLoaderData } from 'react-router-dom';
+import { storeActions } from '../store/store-slice';
 
 /**
  * Settings Form function component.
@@ -19,10 +19,13 @@ import { useActionData } from 'react-router-dom';
  * The submitted button is disabled until the form is valid.
  */
 const SettigsForm = () => {
+    const dispatch = useDispatch();
     //Error data returned from the action request handler
     const errorEdit = useActionData();
     //Hard coded image TODO
-    const oldImage = me;
+    const oldUser = useLoaderData();
+    //Error data returned from the action request handler
+    const [imageFromRequest, setImageFromRequest] = useState(null);
 
     //FNAME
     const {
@@ -51,57 +54,27 @@ const SettigsForm = () => {
         inputBlurHandler: phoneBlurHandler,
         setValue: setPhoneNumber,
     } = useInput(validatePhone);
+
     //IMAGE HOOK
-    const { image: photo, imageAsUrl: photoUrl, imageUploadedHandler: photoChangeHandler } = useImageUploader();
+    const { image, imageAsUrl: photoUrl, imageUploadedHandler: photoChangeHandler } = useImageUploader();
 
-    /**
-     *Function used to return a request object for the url configuration, this function is used as a configuration for the useHttp custom hook.
-     *Wrapped inside the useCallback custom hook, this function ensures that it won't re-render when the current component is evaluated, preventing the issue with infinite loops.
-     */
-    const ceateRequestConfig = useCallback(() => {
-        return { url: 'http://127.0.0.1:8000/api/v1/users/getMe' };
-    }, []);
-
-    /**
-     *Function used to return an request object configuration for cookie credentials, this function will be passed as configuration for the useHttp custom hook.
-     *Wrapped inside the useCallback custom hook, this function ensures that it won't re-render when the current component is evaluated, preventing the issue with infinite loops.
-     */
-    const extraConfigDetails = useCallback(() => {
-        return { credentials: 'include', withCredentials: true };
-    }, []);
-
-    /**
-     *Function trigerred when data the request data is available. Used to set the default values of the InputFields.
-     *Wrapped inside the useCallback custom hook, this function ensures that it won't re-render when the current component is evaluated, preventing the issue with infinite loops.
-     *
-     * @param {object} data expect a response object resulting from a http request
-     */
-    const tranformUserData = useCallback(
-        (data) => {
-            setPhoneNumber(data.user.phoneNumber);
-            setFirstName(data.user.firstName);
-            setLastName(data.user.lastName);
-            return data.user;
-        },
-        [setPhoneNumber, setFirstName, setLastName]
-    );
-
-    //Fetch old user data.
-    const { data: oldUser, isLoading, hasError, sendRequest: fetchUserData } = useHttp(ceateRequestConfig, tranformUserData, extraConfigDetails());
+    //Update react redux every single an image is uploaded, the only way to provide the image to the action handler
+    useEffect(() => {
+        dispatch(storeActions.setImage(image));
+    }, [image, dispatch]);
 
     useEffect(() => {
-        //fetch data only once when the current for is loaded
-        fetchUserData();
-        //When this function is called, some states within the custom useHttp hook will be set.
-        //The component where the useHttp hook is used re-renders when ne states are set, creating an infinite loop.
-        //The work around is to wrap function sendRequest coming from useHttp hook into a callback hook, also all its dependecies
-    }, [fetchUserData]);
+        setFirstName(oldUser.firstName);
+        setLastName(oldUser.lastName);
+        setPhoneNumber(oldUser.phoneNumber);
+        setImageFromRequest(oldUser.image);
+    }, [setFirstName, setLastName, setPhoneNumber, setImageFromRequest]);
 
     //Check if the user changed any fields
-    const isFNameChanged = oldUser.firstName !== firstNameValue;
-    const isLNameChanged = oldUser.lastName !== lastNameValue;
-    const isPhoneChanged = oldUser.phoneNumber !== phoneValue;
-    const anyFieldChanged = isFNameChanged || isLNameChanged || isPhoneChanged;
+    const isFNameChanged = oldUser?.firstName !== firstNameValue;
+    const isLNameChanged = oldUser?.lastName !== lastNameValue;
+    const isPhoneNumberChanged = oldUser?.phoneNumber !== phoneValue;
+    const anyFieldChanged = isFNameChanged || isLNameChanged || isPhoneNumberChanged || image;
     //Check if the client side validty is passed.
     const isFormValid = firstNameIsValid && lastNameIsValid && phoneIsValid;
     //Check if the form can be submitted
@@ -114,10 +87,9 @@ const SettigsForm = () => {
                 ACCOUNT SETTINGS
             </Typography>
             {/* DIPSLAY ERRORS */}
-            <Typography variant={'body2'} component="p" textAlign="center" mb={6} color={hasError ? 'red' : 'error'}>
-                {hasError ? hasError : ''} {errorEdit ? errorEdit : ''}
+            <Typography variant={'body2'} component="p" textAlign="center" mb={6} color={'red'}>
+                {errorEdit ? errorEdit : ''}
             </Typography>
-
             {/* PHONE */}
             <Input
                 id={'phone'}
@@ -153,7 +125,7 @@ const SettigsForm = () => {
             ></Input>
             {/* PHOTO */}
             <Stack direction="row" alignItems="center" spacing={2} mt={1}>
-                <Avatar alt="current user" src={photo ? photoUrl : oldImage} sx={{ width: 60, height: 60 }} />
+                <Avatar alt="current user" src={photoUrl || imageFromRequest} sx={{ width: 60, height: 60 }} />
                 <Button variant="outlined" component="label" size="small" endIcon={<FileUploadIcon />}>
                     Add a new photo
                     <input hidden accept="image/*" multiple type="file" onChange={photoChangeHandler}></input>
@@ -168,7 +140,6 @@ const SettigsForm = () => {
                 type="submit"
                 sx={{ display: 'block', marginLeft: 'auto', marginRight: { xxs: 'auto', md: 0 }, marginTop: 4, marginBottom: 6 }}
             >
-                {/* {isSubmitting ? 'Submitting' : 'Sign Up'} */}
                 Save New Settings
             </Button>
         </Form>

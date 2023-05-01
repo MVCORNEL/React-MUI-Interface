@@ -1,5 +1,5 @@
 import { json } from 'react-router-dom';
-
+import store from '../store/store';
 /**
  * The current action router function is used to process the data and send the desired request after the updateMe form have been submitted.
  * Instead of using the standard form tag, the Form router element prevents the browser's default behaviour of automatically sending a request to the backend.
@@ -8,30 +8,30 @@ import { json } from 'react-router-dom';
  * @returns The user is directed to the main page if the request is successful; otherwise, handle the errors.
  */
 async function action(request) {
-    //1 Get the search params of the current page, URL default constructor provided by the browser
-    const searchParams = new URL(request.url).searchParams;
-    const tab = searchParams.get('tab');
-    //2 Get all the data within the forms
+    //1 Get all the data within the forms
     const data = await request.formData();
-    let userData;
-    let response;
-    switch (tab) {
-        case 'me': {
-            userData = {
-                firstName: data.get('fname'),
-                lastName: data.get('lname'),
-                phoneNumber: data.get('phone'),
-            };
-            //SEND REQUEST
-            response = await fetch(`http://127.0.0.1:8000/api/v1/users/updateMe`, {
-                method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' },
-                withCredentials: true,
-                credentials: 'include',
-                body: JSON.stringify(userData),
-            });
-        }
+    const image = store.getState().store.imgStore;
+    const form = new FormData();
+    form.append('firstName', data.get('fname'));
+    form.append('lastName', data.get('lname'));
+    form.append('phoneNumber', data.get('phone'));
+    if (image) {
+        form.append('image', image);
     }
+    //SEND REQUEST
+    let response = await fetch(`http://127.0.0.1:8000/api/v1/users/updateMe`, {
+        method: 'PATCH',
+        withCredentials: true,
+        credentials: 'include',
+        body: form,
+    });
+
+    //3 Return a new object because because 204 is a terminate operation, an empty object force the table to red-render
+    //due to useActionData within the table
+    if (response.status === 204) {
+        return null;
+    }
+
     //3 Parse the data into js objects.
     const responseData = await response.json();
 
