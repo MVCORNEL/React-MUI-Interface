@@ -12,7 +12,7 @@ export const validateEmail = (email) => {
 
 /**
  * function verifies a given number and returns  true if the phone has a valid phone format
- * @param {String} phone
+ * @param {String} phone expects phone number format
  * @returns {boolean}
  */
 export const validatePhone = (phone) => {
@@ -21,7 +21,7 @@ export const validatePhone = (phone) => {
 
 /**
  * function verifies a given string and returns true if the comment has more than 50 characters
- * @param {String} comment
+ * @param {String} comment expect a stirng sequence
  * @returns {boolean}
  */
 export const validateComment = (comment) => {
@@ -67,4 +67,50 @@ export const validateRetypedPassword = (password) => {
         }
         return false;
     };
+};
+
+/**
+ * function verifies a given name has at least 3 characters, but not more than 25 characters
+ * @param {String} name
+ * @returns {boolean}
+ */
+export const validateProductName = (name) => {
+    if (name && name.length >= 3 && name.length <= 25) {
+        return true;
+    }
+    return false;
+};
+
+/**
+ * function verifies a given summary has at least 100 characters, but not more than 200 characters
+ * @returns {boolean}
+ */
+export const validateSummary = (summary) => {
+    if (summary && summary.length >= 100 && summary.length <= 200) {
+        return true;
+    }
+    return false;
+};
+
+/**
+ * function verifies a given description has at least 200 characters, but not more than 1500 characters
+ * @param {String} description expect a seruence of characters
+ * @returns {boolean}
+ */
+export const validateDescription = (description) => {
+    if (description && description.length >= 200 && description.length <= 1500) {
+        return true;
+    }
+    return false;
+};
+
+/**
+ * function verifies a given summary has at least 50 characters, but not more than 300 characters
+ * @returns {comment}
+ */
+export const valdiateComment = (comment) => {
+    if (comment && comment.length >= 50 && comment.length <= 300) {
+        return true;
+    }
+    return false;
 };

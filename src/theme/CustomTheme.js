@@ -4,7 +4,7 @@ let theme = createTheme({
     breakpoints: {
         values: {
             xxs: 0,
-            xs: 360,
+            xs: 350,
             sm: 600,
             md: 900,
             lg: 1200,

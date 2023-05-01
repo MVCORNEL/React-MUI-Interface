@@ -20,7 +20,7 @@ const PortofolioTopic = () => {
     return (
         <SectionBox>
             {/* MENU */}
-            <PortofolioMenu menuItems={categories} />
+            {/* <PortofolioMenu menuItems={categories} /> */}
             {/* IMAGE GALLERY */}
             <PortofolioGrid imageList={imageList} />
             {/* PAGINATION */}

@@ -20,7 +20,7 @@ const Input = ({ type = 'text', label, value, helperText, error, id, onChange, o
         <div>
             <TextField
                 error={error}
-                helperText={helperText}
+                helperText={error ? helperText : ' '}
                 type={type}
                 id={id}
                 label={label}

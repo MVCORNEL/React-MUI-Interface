@@ -13,7 +13,7 @@ const ProductsGrid = ({ productList }) => {
             {productList.map((product) => {
                 return (
                     <Grid xxs={12} sm={6} md={4} key={product.id}>
-                        <ProductCard id={product.id} name={product.name} summary={product.summary} imgUrl={product.imgUrl} />
+                        <ProductCard id={product.id} name={product.name} summary={product.summary} imgUrl={product.imgUrl} slug={product.slug} />
                     </Grid>
                 );
             })}

@@ -9,7 +9,7 @@ import { validateName, validatePhone } from '../helpers/validators';
 import me from '../images/team-0.jpg';
 import Avatar from '@mui/material/Avatar';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
-import { useActionData, useNavigation } from 'react-router-dom';
+import { useActionData } from 'react-router-dom';
 
 /**
  * Settings Form function component.
@@ -31,7 +31,6 @@ const SettigsForm = () => {
         hasError: firstNameHasError,
         valueChangeHandler: firstNameChangeHandler,
         inputBlurHandler: firstNameBlurHandler,
-        reset: resetFirstName,
         setValue: setFirstName,
     } = useInput(validateName);
     //LNAME
@@ -41,7 +40,6 @@ const SettigsForm = () => {
         hasError: lastNameHasError,
         valueChangeHandler: lastNameChangeHandler,
         inputBlurHandler: lastNameBlurHandler,
-        reset: resetLastName,
         setValue: setLastName,
     } = useInput(validateName);
     //PHONE
@@ -51,7 +49,6 @@ const SettigsForm = () => {
         hasError: phoneHasError,
         valueChangeHandler: phoneChangeHandler,
         inputBlurHandler: phoneBlurHandler,
-        reset: resetPhone,
         setValue: setPhoneNumber,
     } = useInput(validatePhone);
     //IMAGE HOOK
@@ -79,12 +76,15 @@ const SettigsForm = () => {
      *
      * @param {object} data expect a response object resulting from a http request
      */
-    const tranformUserData = useCallback((data) => {
-        setPhoneNumber(data.user.phoneNumber);
-        setFirstName(data.user.firstName);
-        setLastName(data.user.lastName);
-        return data.user;
-    }, []);
+    const tranformUserData = useCallback(
+        (data) => {
+            setPhoneNumber(data.user.phoneNumber);
+            setFirstName(data.user.firstName);
+            setLastName(data.user.lastName);
+            return data.user;
+        },
+        [setPhoneNumber, setFirstName, setLastName]
+    );
 
     //Fetch old user data.
     const { data: oldUser, isLoading, hasError, sendRequest: fetchUserData } = useHttp(ceateRequestConfig, tranformUserData, extraConfigDetails());

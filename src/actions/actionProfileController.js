@@ -1,5 +1,5 @@
 import actionMe from './actionsMe';
-
+import actionsProducts from './actionAdminProducts';
 /**
  * This function works as a wrapper function and router function is used to process the data from any form.
  * Instead of using the standard form tag, the Form router element prevents the browser's default behaviour of automatically sending a request to the backend.
@@ -11,13 +11,22 @@ async function action({ request }) {
     //1 Get the search params of the current page, URL default constructor provided by the browser
     const searchParams = new URL(request.url).searchParams;
     const tab = searchParams.get('tab');
-    //2 Handle only the following forms
 
+    //2 Handle only the following forms
+    if (tab !== 'products' && tab !== 'me') {
+        throw new Error('Unrecognized request . Please cotact the administrator !');
+    }
+
+    //3 Handle profile actions
     if (tab === 'me') {
-        await actionMe(request);
+        return await actionMe(request);
+    }
+
+    //4 Handle products actions
+    if (tab === 'products') {
+        return await actionsProducts(request);
     }
 
     return null;
 }
-
 export default action;

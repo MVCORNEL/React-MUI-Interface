@@ -5,29 +5,46 @@ import React from 'react';
 import Review from './Review';
 import CreateIcon from '@mui/icons-material/Create';
 import Chip from '@mui/material/Chip';
+import PropTypes from 'prop-types';
+import { useState } from 'react';
+import ReviewDialog from '../../forms/ReviewDialogForm';
 
 /**
  * Represents the review topic, consisting in a list of reviews, and a heading containg details about the current topic review rate.
+ * @prop {number} ratingsAverage
+ * @prop {number} ratingsQuantity
+ * @prop {string} id - current product id
+ * @prop {string} reviews - array with the current reviews
  */
-const CustomerReviews = () => {
+const CustomerReviews = ({ ratingsAverage, ratingsQuantity, id, reviews }) => {
+    const [open, setOpen] = useState(false);
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleClickAddReview = () => {
+        setOpen(true);
+    };
+
     return (
-        <SectionBox isGray={true}>
+        <SectionBox>
             <SectionHeading heading="What our customers think " />
             {/* HEADER */}
-            <Stack direction="row" justifyContent={'space-between'} alignItems={'end'}>
-                <Box>
+            <Stack direction={{ xxs: 'column', sm: 'row' }} justifyContent={'space-between'} alignItems={{ sm: 'end' }}>
+                <Box mb={{ xxs: 5, sm: 0 }}>
                     {/* DETAILS  */}
-                    <Typography component="h3" variant="h3" mt={2} mb={1}>
+                    <Typography component="h2" variant="h4" mt={2} mb={1}>
                         Overal rating
                     </Typography>
                     <Stack direction="row" alignItems={'center'} spacing={2} mb={2}>
                         <Typography component="span" variant="h6">
-                            4.5
+                            {ratingsAverage.toLocaleString('en', { useGrouping: false, minimumFractionDigits: 1 })}
                         </Typography>
-                        <Rating name="read-only" readOnly value={5} sx={{ marginLeft: -1 }} size="large" />
+                        <Rating name="read-only" readOnly value={ratingsAverage} sx={{ marginLeft: -1 }} size="large" />
 
                         <Typography component="p" variant="body2">
-                            11 reviews
+                            {ratingsQuantity} reviews
                         </Typography>
                     </Stack>
                     {/* SORT */}
@@ -38,25 +55,38 @@ const CustomerReviews = () => {
                     </Stack>
                 </Box>
                 {/* CRATE REVIEW */}
-                <Button variant="contained" color="primary" component="h3" mt={2} mb={1} startIcon={<CreateIcon />}>
+                <Button sx={{ display: { xxs: 'none', sm: 'flex' } }} onClick={handleClickAddReview} variant="contained" color="primary" component="h3" mt={2} mb={1} startIcon={<CreateIcon />}>
                     Write a review !
                 </Button>
             </Stack>
-
+            {/* CRATE REVIEW */}
+            <Button sx={{ display: { xxs: 'flex', sm: 'none' } }} onClick={handleClickAddReview} variant="contained" color="primary" component="h3" mt={2} mb={1} startIcon={<CreateIcon />}>
+                Write a review !
+            </Button>
             {/* REVIEWS */}
             <List>
-                <Review></Review>
-                <Review></Review>
-                <Review></Review>
+                {reviews.map((review) => (
+                    <Review
+                        key={review.id}
+                        name={`${review.user.firstName} ${review.user.lastName} `}
+                        rate={review.rating}
+                        date={review.date}
+                        comment={review.comment}
+                        photo={review.user.photo}
+                    ></Review>
+                ))}
             </List>
 
-            <Box textAlign={'center'} mt={6}>
-                <Button color="secondary" mt={2} mb={1}>
-                    See more !
-                </Button>
-            </Box>
+            <ReviewDialog open={open} onClose={handleClose} id={id} />
         </SectionBox>
     );
 };
 
 export default CustomerReviews;
+
+CustomerReviews.propTypes = {
+    ratingsAverage: PropTypes.number.isRequired,
+    ratingsQuantity: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
+    reviews: PropTypes.array.isRequired,
+};

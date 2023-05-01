@@ -15,10 +15,16 @@ const useImageUploader = () => {
         }
     };
 
+    const resetImage = () => {
+        setImage(null);
+    };
+
     return {
         image,
         imageAsUrl,
         imageUploadedHandler,
+        setImage,
+        resetImage,
     };
 };
 

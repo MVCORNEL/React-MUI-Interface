@@ -32,7 +32,7 @@ const Header = () => {
                         {/* BUTTON */}
                         <Box mt={4}>
                             <Button variant="contained" color="primary" size="large" sx={{ display: { xxs: 'none', md: 'block' } }}>
-                                Calculeaza pret estimativ
+                                Contact us
                             </Button>
                         </Box>
                         {/* EXTRA */}
@@ -69,7 +69,7 @@ const Header = () => {
                     {/* BUTTON */}
                     <Box mt={{ xxs: 4 }} sx={{ textAlign: 'center' }}>
                         <Button variant="contained" color="primary" size="large" sx={{ width: { xxs: '100%', sm: '60%' }, display: { sx: 'block', md: 'none' } }}>
-                            Calculeaza pret estimativ
+                            Contact us
                         </Button>
                     </Box>
                 </Grid>

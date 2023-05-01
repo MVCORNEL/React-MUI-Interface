@@ -11,14 +11,19 @@
 //so you must not send HTTP requests, or write something to local storage, or fetch something from local storage
 //so reducers shouls take the given inputs that are provided by redux and reduces the expected output
 import { configureStore } from '@reduxjs/toolkit';
-import authSlice from './auth-slice';
+import storeSlice from './store-slice';
 
 //configureStore makes merging one reducer into a single one simplier
 //configuration store where we set the reducer properties
 //When work with multiple slices you still have only one store, reducers being merge
 const store = configureStore({
     //creating a map of reducers, underneath the scene the reducers will be marge into a bif reducer
-    reducer: { auth: authSlice.reducer },
+    reducer: { store: storeSlice.reducer },
+    //allow object storage
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 });
 
 export default store;

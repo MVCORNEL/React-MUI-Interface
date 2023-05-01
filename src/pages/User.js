@@ -5,7 +5,8 @@ import UserAskUs from '../components/profile/UserAskUs';
 import UserProfile from '../components/profile/UserMe';
 import UserReviews from '../components/profile/UserReviews';
 import AdminProducts from '../components/profile/AdminProducts';
-
+import { json } from 'react-router-dom';
+import { useEffect } from 'react';
 /**
  * The user page component page. The main components of the current page are rendered based on the query parameter.
  * On the left side a menu and on the right side the placeholder for the required pages.
@@ -19,6 +20,12 @@ const User = () => {
     const isUsersTab = searchParams.get('tab') === 'users';
     const forUser = isProfileTab || isMessasgesTab || isReviewsTab;
     const forAdmin = isProductsTab || isUsersTab;
+
+    useEffect(() => {
+        if (!forUser && !forAdmin) {
+            throw json({ message: 'The current route does exist' }, { status: 404 });
+        }
+    }, []);
 
     return (
         <Container

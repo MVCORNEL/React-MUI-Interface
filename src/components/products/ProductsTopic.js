@@ -32,6 +32,7 @@ const ProductsTopic = () => {
                 category: product.category,
                 summary: product.summary,
                 description: product.description,
+                slug: product.slug,
                 imgUrl: product.imgUrl,
             };
         });

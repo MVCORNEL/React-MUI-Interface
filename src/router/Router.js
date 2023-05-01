@@ -7,10 +7,12 @@ import Portofolio from '../pages/Portofolio';
 import AboutUs from '../pages/AboutUs';
 import User from '../pages/User';
 import Product from '../pages/Product';
-import authActions from '../auth/actionsAuth';
+import authActions from '../actions/actionsAuth';
 import actionProfileController from '../actions/actionProfileController';
-import logoutAction from '../auth/actionLogout';
-import deleteAction from '../auth/actionDeleteMe';
+import actionWriteReview from './../actions/actionWriteReview';
+import logoutAction from '../actions/actionLogout';
+import deleteAction from '../actions/actionDeleteMe';
+import productLoader from '../actions/loaderProduct';
 import Auth from '../pages/Auth';
 import { checkUserIsAuthentificated, getUserData } from '../auth/user';
 
@@ -32,7 +34,7 @@ const router = createBrowserRouter(
                 <Route path="about" element={<AboutUs />} />
                 <Route path="portofolio" element={<Portofolio />} />
                 <Route path="products" element={<Products />} />
-                <Route path="product" element={<Product />} />
+                <Route path="product/:productSlug" loader={productLoader} action={actionWriteReview} element={<Product />} />
                 {/* RESTRICTING ACCESS FOR THE USER ROUTE AND ITS CHILDREN FOR THE LOGGEN IN US */}
                 <Route path="user" element={<User />} loader={checkUserIsAuthentificated} action={actionProfileController} />
             </Route>

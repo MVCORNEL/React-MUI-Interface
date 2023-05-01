@@ -1,3 +1,5 @@
+import { json } from 'react-router-dom';
+
 /**
  * The current action router function is used to process the data and send the desired request after the updateMe form have been submitted.
  * Instead of using the standard form tag, the Form router element prevents the browser's default behaviour of automatically sending a request to the backend.
@@ -9,17 +11,13 @@ async function action(request) {
     //1 Get the search params of the current page, URL default constructor provided by the browser
     const searchParams = new URL(request.url).searchParams;
     const tab = searchParams.get('tab');
-    //2 Handle only the following forms
-    if (tab !== 'me') {
-        return 'Something went wrong';
-    }
-    //3 Get all the data within the forms
+    //2 Get all the data within the forms
     const data = await request.formData();
     let userData;
     let response;
     switch (tab) {
         case 'me': {
-            userData = userData = {
+            userData = {
                 firstName: data.get('fname'),
                 lastName: data.get('lname'),
                 phoneNumber: data.get('phone'),
@@ -28,22 +26,23 @@ async function action(request) {
             response = await fetch(`http://127.0.0.1:8000/api/v1/users/updateMe`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
-                // withCredentials: true,
+                withCredentials: true,
                 credentials: 'include',
                 body: JSON.stringify(userData),
             });
         }
     }
-    //4 Parse the data into js objects.
+    //3 Parse the data into js objects.
     const responseData = await response.json();
 
-    //5 Propagate the error further to the useActionData hook within the form, within the body are details about the errors.
+    //4 Propagate the error further to the useActionData hook within the form, within the body are details about the errors.
     if (responseData.status === 'fail') {
         return responseData.message;
     }
     //5.1 Propagate the error into router error handler
     if (responseData.status === 'error') {
-        throw new Error(`${responseData.message}`);
+        //500 indicates taht something went wrong on the backend
+        throw json({ message: responseData.message }, { status: 500 });
     }
     //6 Set user to data to the local Storage update jus the user's interface data, based on the new date
     localStorage.setItem('user', JSON.stringify(responseData.data.user));

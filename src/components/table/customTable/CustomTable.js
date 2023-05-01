@@ -31,17 +31,6 @@ export default function CustomTable({ tableName, rows, headCells }) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
-    //CUSTOM FUNCTIONS
-    const handleEditButtonPressed = (event) => {
-        console.log('Pressed Edit');
-    };
-    const handleDeleteButtonPressed = (event) => {
-        console.log('Pressed Delete');
-    };
-    const handleAddButtonPressed = (event) => {
-        console.log('Pressed Add');
-    };
-
     //MUI FUNCTION TAKEN FROM https://mui.com/material-ui/react-table/
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -51,19 +40,19 @@ export default function CustomTable({ tableName, rows, headCells }) {
     //MUI FUNCTION TAKEN FROM https://mui.com/material-ui/react-table/
     const handleSelectAllClick = (event) => {
         if (event.target.checked) {
-            const newSelected = rows.map((n) => n.name);
+            const newSelected = rows.map((n) => n.id);
             setSelected(newSelected);
             return;
         }
         setSelected([]);
     };
     //MUI FUNCTION TAKEN FROM https://mui.com/material-ui/react-table/
-    const handleClick = (event, name) => {
-        const selectedIndex = selected.indexOf(name);
+    const handleClick = (event, id) => {
+        const selectedIndex = selected.indexOf(id);
         let newSelected = [];
 
         if (selectedIndex === -1) {
-            newSelected = newSelected.concat(selected, name);
+            newSelected = newSelected.concat(selected, id);
         } else if (selectedIndex === 0) {
             newSelected = newSelected.concat(selected.slice(1));
         } else if (selectedIndex === selected.length - 1) {
@@ -84,7 +73,7 @@ export default function CustomTable({ tableName, rows, headCells }) {
         setPage(0);
     };
     //MUI FUNCTION TAKEN FROM https://mui.com/material-ui/react-table/
-    const isSelected = (name) => selected.indexOf(name) !== -1;
+    const isSelected = (id) => selected.indexOf(id) !== -1;
     //MUI FUNCTION TAKEN FROM https://mui.com/material-ui/react-table/
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
@@ -103,11 +92,11 @@ export default function CustomTable({ tableName, rows, headCells }) {
         return (
             <TableRow
                 hover
-                onClick={(event) => handleClick(event, currentRow.name)}
+                onClick={(event) => handleClick(event, currentRow.id)}
                 role="checkbox"
                 aria-checked={isItemSelected}
                 tabIndex={-1}
-                key={currentRow.name}
+                key={currentRow.id}
                 selected={isItemSelected}
                 sx={{ cursor: 'pointer' }}
             >
@@ -131,7 +120,7 @@ export default function CustomTable({ tableName, rows, headCells }) {
                         );
                     } else {
                         return (
-                            <TableCell key={index} align="right">
+                            <TableCell key={index} align="left">
                                 {currentRow[key]}
                             </TableCell>
                         );
@@ -144,13 +133,8 @@ export default function CustomTable({ tableName, rows, headCells }) {
     return (
         <Box sx={{ width: '100%' }}>
             <Paper sx={{ width: '100%', mb: 2 }}>
-                <CustomTableToolbar
-                    header={tableName}
-                    numSelected={selected.length}
-                    onDeletePressed={handleDeleteButtonPressed}
-                    onEditPressed={handleEditButtonPressed}
-                    onAddPressed={handleAddButtonPressed}
-                />
+                {/* PASS THROUGH THE TOLLBAT THE CURRENT SELECTE LIST ELEMENTS */}
+                <CustomTableToolbar header={tableName} numSelected={selected.length} selectedList={selected} />
                 <TableContainer>
                     <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size="mediun">
                         <CustomTableHeader
@@ -164,7 +148,7 @@ export default function CustomTable({ tableName, rows, headCells }) {
                         />
                         <TableBody>
                             {visibleRows.map((row, index) => {
-                                const isItemSelected = isSelected(row.name);
+                                const isItemSelected = isSelected(row.id);
                                 const labelId = `enhanced-table-checkbox-${index}`;
 
                                 return createRow(row, isItemSelected, labelId);

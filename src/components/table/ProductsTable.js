@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import CustomTable from './customTable/CustomTable';
 import { useEffect, useCallback } from 'react';
 import useHttp from './../../hooks/useHttp';
-
+import { useActionData } from 'react-router-dom';
 /**
  * Products admin table component, consiting into a Table that allow the Sorting/Editing,Deleting,Creating records
  * Using a custom http hook,data will be fetched and the table will be populated acordingly.
@@ -17,22 +17,22 @@ const ProductsTable = () => {
         return { url: 'http://127.0.0.1:8000/api/v1/products' };
     }, []);
 
-    const ceateRequestConfigDelete = useCallback(() => {
-        return { url: 'http://127.0.0.1:8000/api/v1/products' };
-    }, []);
-
     //Function used to tranform data, coming from a request object into a list of desired product objects
     //Wrapped into useCallback hook, assuring that this function will not re-render when the current component re-evaluates
     //avoiding infinte loop problem, inside the useHttp custom hook.
-    const tranformProducts = useCallback((data) => {
-        return data.map((product) => {
-            return {
-                name: product.name,
-                category: product.category,
-                imgUrl: product.imgUrl,
-            };
-        });
-    }, []);
+    const tranformProducts = useCallback(
+        (data) => {
+            return data.map((product) => {
+                return {
+                    name: product.name,
+                    category: product.category,
+                    id: product._id,
+                };
+            });
+        },
+
+        []
+    );
 
     //Fetch url custom hook
     const { data: rows, isLoading, hasError, sendRequest: fetchProducts } = useHttp(ceateRequestConfigGetAll, tranformProducts);
@@ -58,16 +58,16 @@ const ProductsTable = () => {
             numeric: false,
             disablePadding: false,
             label: 'Category',
-            align: 'right',
+            align: 'left',
+        },
+        {
+            id: 'id',
+            numeric: true,
+            disablePadding: false,
+            label: 'Id',
+            align: 'left',
         },
 
-        {
-            id: 'imgUrl',
-            numeric: false,
-            disablePadding: false,
-            label: 'ImgUrl',
-            align: 'right',
-        },
         // {
         //     id: 'rate',
         //     numeric: true,
@@ -90,8 +90,8 @@ const ProductsTable = () => {
 
     return (
         <Fragment>
-            {!isLoading && rows.length > 0 && <CustomTable tableName="Products" headCells={headCells} rows={rows} />}
-            {!isLoading && rows.length === 0 && !hasError && <p>No products found</p>}
+            {!isLoading && <CustomTable tableName="Products" headCells={headCells} rows={rows} />}
+            {!isLoading && !hasError && <p>No products found</p>}
             {isLoading && <p>Loading</p>}
             {!isLoading && hasError && <p>{hasError}</p>}
         </Fragment>

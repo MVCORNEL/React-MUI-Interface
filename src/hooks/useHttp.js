@@ -12,7 +12,7 @@ import { useCallback, useState } from 'react';
 const useHttp = (requestConfiguration, processData, extra = {}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [hasError, setHasError] = useState(null);
-    const [data, setData] = useState({});
+    const [data, setData] = useState([]);
 
     const sendRequest = useCallback(
         async () => {

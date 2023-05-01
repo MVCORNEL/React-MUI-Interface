@@ -12,8 +12,8 @@ const ProductDetailsCardItem = ({ title, imgUrl }) => {
     return (
         <Card sx={{ maxWidth: 350, borderRadius: 0, boxShadow: 'none' }}>
             <CardActionArea sx={{ margin: '0', padding: '0' }}>
-                <CardMedia component="img" height="280" image={img} alt="green iguana" />
-                <CardContent sx={{ padding: 0 }}>
+                <CardMedia component="img" height="280" image={img} alt={title} />
+                <CardContent sx={{ paddingLeft: 2, paddingRight: 2, paddingTop: 3, paddingBottom: 3 }}>
                     <Typography gutterBottom variant="subtitle1" component="h3">
                         Lizard
                     </Typography>
