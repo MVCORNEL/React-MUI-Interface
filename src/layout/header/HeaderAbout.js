@@ -23,7 +23,7 @@ const HeaderAbout = () => {
                 {/* HEADING */}
                 <Box textAlign="center">
                     <Typography variant="h1" component="h1" color="white" backgroundColor="rgba(0,0,0,0.6)" py={2} px={6} display={'inline-block'}>
-                        Despre noi
+                        About us
                     </Typography>
                 </Box>
 

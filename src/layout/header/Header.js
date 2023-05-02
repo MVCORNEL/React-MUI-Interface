@@ -23,7 +23,7 @@ const Header = () => {
                     <Box>
                         {/* HEADING */}
                         <Typography variant="h1" component="h1">
-                            Montare Termopane Ardelenesti
+                            Double Glazed Windows
                         </Typography>
                         {/* SUBTITLE TEXT*/}
                         <Typography variant="body1" component="p" sx={{ textAlign: 'justify', marginTop: '2rem' }}>

@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
 import { storeActions } from '../store/store-slice';
 import useHttp from '../hooks/useHttp';
 import { useNavigate } from 'react-router';
-
+import URL from '../consts/URL';
 /**
  * Product dialog box functional component, resposible for adding and edditing the current products.
  * When editing an element, the data will be automatically fetched based on the product id.
@@ -79,8 +79,9 @@ const ProductDialog = ({ open, onClose, mode, id }) => {
 
     //Function used to return a request object for the url configuration, this function is used as a configuration for the useHttp custom hook.
     //Wrapped inside the useCallback custom hook, this function ensures that it won't re-render when the current component is revaluated, preventing the issue with infinite loops.
+
     const ceateRequestConfig = useCallback(() => {
-        return { url: `${URL}}/api/v1/products/${id}` };
+        return { url: `${URL}/api/v1/products/${id}` };
     }, [id]);
 
     //Function used to return an request object configuration for cookie credentials, this function will be passed as configuration for the useHttp custom hook.

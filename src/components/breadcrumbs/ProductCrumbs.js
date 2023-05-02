@@ -9,7 +9,7 @@ import { Link as RouterLink } from 'react-router-dom';
 const ProductCrumbs = () => {
     return (
         <Breadcrumbs aria-label="breadcrumb">
-            <Link component={RouterLink} underline="hover" color="inherit" href="/products">
+            <Link component={RouterLink} underline="hover" color="inherit" to="/products">
                 Products
             </Link>
             <span>Product Service</span>

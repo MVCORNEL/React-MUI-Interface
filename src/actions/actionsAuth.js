@@ -22,7 +22,7 @@ async function action({ request }) {
 
     //SIGN UP
     if (mode === 'signup') {
-        alert('signup');
+        alert('Successfully registered !');
         userData = {
             firstName: data.get('fname'),
             lastName: data.get('lname'),

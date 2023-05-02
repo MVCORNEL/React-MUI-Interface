@@ -28,7 +28,7 @@ const HeaderProducts = () => {
                         <Box>
                             {/* HEADING */}
                             <Typography variant="h1" component="h1" color="white" backgroundColor="rgba(0,0,0,0.6)" py={2} px={5}>
-                                Termopane de calitate superioara
+                                Superior quality windows
                             </Typography>
                             {/* BUTTON */}
                         </Box>

@@ -16,7 +16,6 @@ const action = async () => {
     const responseData = await response.json();
     //3 Propagate the error further to the useActionData hook within the form, within the body are details about the errors.
     if (responseData.status === 'fail') {
-        alert(responseData.message);
     }
     if (responseData.status === 'error') {
         throw new Error(responseData.message);

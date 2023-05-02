@@ -29,7 +29,6 @@ const action = async () => {
 
     //4 Propagate the error further to the useActionData hook within the form, within the body are details about the errors.
     if (responseData.status === 'fail') {
-        alert(responseData.message);
         return redirect('/');
     }
     if (responseData.status === 'error') {

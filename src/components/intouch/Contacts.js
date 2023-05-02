@@ -13,7 +13,7 @@ const Contacts = () => {
         <Box border={{ xxs: '1px solid #aaa', md: 'none' }} p={2} sx={{ borderRadius: 2 }}>
             {/* HEADING */}
             <Typography mt={{ xxs: 0, md: 1 }} variant={'h3'} component={'h3'} textAlign={{ xxs: 'center', md: 'start' }}>
-                Unde ne poti gasii ?
+                Where you can find us ?
             </Typography>
             <Divider
                 color={theme.palette.primary.main}

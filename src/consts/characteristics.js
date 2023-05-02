@@ -6,25 +6,25 @@ import { ReactComponent as GuaranteeSvg } from './../icons/guarantee.svg';
 const characteristics = [
     {
         id: 1,
-        title: 'Izolare termica',
+        title: 'Thermal insulation',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         icon: <InsulationSvg />,
     },
     {
         id: 2,
-        title: 'Intretinere usoara',
+        title: 'INTRETINERE USOARA',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
         icon: <NatureSvg />,
     },
     {
         id: 3,
-        title: 'Siguranta marita',
+        title: 'SIGURANTA MARITA',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         icon: <LocktSvg />,
     },
     {
         id: 4,
-        title: 'Garantie indelungata',
+        title: 'Long warranty',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
         icon: <GuaranteeSvg />,
     },

@@ -29,7 +29,7 @@ async function action(request) {
         }
 
         //4 Parse the data into js objects.
-        const responseData = await response.json();
+        let responseData = await response.json();
 
         //5 Propagate the error further to the useActionData hook within the form, within the body are details about the errors.
         if (responseData.status === 'fail') {
@@ -40,10 +40,12 @@ async function action(request) {
             //500 indicates that something went wrong on the backend
             throw json({ message: responseData.message }, { status: response.status });
         }
+        return null;
     }
 
-    if (request.method === 'POST' || request.method === 'PATCH') {
-        const newUser = {
+    let newUser;
+    if (request.method === 'POST') {
+        newUser = {
             firstName: data.get('fname'),
             lastName: data.get('lname'),
             email: data.get('email'),
@@ -51,35 +53,42 @@ async function action(request) {
             password: data.get('password'),
             passwordConfirm: data.get('password'),
         };
-
-        const id = data.get('id');
-
-        //2 Send Request
-        response = await fetch(`${URL}/api/v1/users/${id}`, {
-            headers: { 'Content-Type': 'application/json' },
-            method: request.method,
-            withCredentials: true,
-            credentials: 'include',
-            body: JSON.stringify(newUser),
-        });
-
-        //3 Parse the data into js objects.
-        const responseData = await response.json();
-
-        //4 Propagate the error further to the useActionData hook within the form, within the body are details about the errors.
-        if (responseData.status === 'fail') {
-            return responseData?.message;
-        }
-        //5 Propagate the error into router error handler
-        if (responseData.status === 'error') {
-            //500 indicates taht something went wrong on the backend
-            throw json({ message: responseData?.message }, { status: 500 });
-        }
-        //7 Everything went as expected
-        return null;
+    }
+    if (request.method === 'PATCH') {
+        newUser = {
+            firstName: data.get('fname'),
+            lastName: data.get('lname'),
+            email: data.get('email'),
+            phoneNumber: data.get('phone'),
+        };
     }
 
+    const id = data.get('id');
+
+    console.log(newUser);
+
+    //2 Send Request
+    response = await fetch(`${URL}/api/v1/users/${id}`, {
+        headers: { 'Content-Type': 'application/json' },
+        method: request.method,
+        withCredentials: true,
+        credentials: 'include',
+        body: JSON.stringify(newUser),
+    });
+
+    //3 Parse the data into js objects.
+    const responseData = await response.json();
+
+    //4 Propagate the error further to the useActionData hook within the form, within the body are details about the errors.
+    if (responseData.status === 'fail') {
+        return responseData?.message;
+    }
+    //5 Propagate the error into router error handler
+    if (responseData.status === 'error') {
+        //500 indicates taht something went wrong on the backend
+        throw json({ message: responseData?.message }, { status: 500 });
+    }
+    //7 Everything went as expected
     return null;
 }
-
 export default action;

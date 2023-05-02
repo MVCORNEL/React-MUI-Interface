@@ -1,3 +1,2 @@
-// const URL = 'https://shielded-savannah-49255.herokuapp.com';
-const URL2 = 'https://my-windows-api.onrender.com';
+const URL2 = 'http://localhost:8000';
 export default URL2;

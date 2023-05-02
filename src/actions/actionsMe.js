@@ -16,9 +16,11 @@ async function action(request) {
     form.append('firstName', data.get('fname'));
     form.append('lastName', data.get('lname'));
     form.append('phoneNumber', data.get('phone'));
+
     if (image) {
         form.append('image', image);
     }
+
     //SEND REQUEST
     let response = await fetch(`${URL}/api/v1/users/updateMe`, {
         method: 'PATCH',
@@ -48,6 +50,7 @@ async function action(request) {
     //6 Set user to data to the local Storage update jus the user's interface data, based on the new date
     localStorage.setItem('user', JSON.stringify(responseData.data.user));
     //7 Everything went as expected
+    alert('User successfully updated');
     return null;
 }
 

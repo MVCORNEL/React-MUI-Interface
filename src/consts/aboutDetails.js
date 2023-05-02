@@ -3,7 +3,7 @@ import about2 from './../images/about2.jpg';
 
 export const about = {
     id: 1,
-    title: 'Despre termopane Sibiu',
+    title: 'About our small service ',
     details: [
         {
             id: 1,
@@ -19,7 +19,7 @@ export const about = {
 
 export const quality = {
     id: 1,
-    title: 'Produse de calitate superioara',
+    title: 'Superior quality products',
     details: [
         {
             id: 1,

@@ -10,7 +10,7 @@ export const privacyList = {
 export const navigationList = {
     title: 'Navigare Rapida',
     items: [
-        { id: 'n1', label: 'Despre noi', url: '#' },
-        { id: 'n2', label: 'Contacteaza-ne', url: '#' },
+        { id: 'n1', label: 'About us', url: '#' },
+        { id: 'n2', label: 'Contact us', url: '#' },
     ],
 };

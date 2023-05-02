@@ -6,10 +6,10 @@ import Looks3Icon from '@mui/icons-material/Looks3';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 
 export const services = {
-    title: '3 pasi achizitionare produs',
+    title: '3 steps to purchase the product',
     subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nullam ac tortor vitae purus.',
     image: img1,
-    link: 'Contacteaza-ne prin email sau nr. telefon',
+    link: 'Contact us by email or no. phone',
     list: [
         {
             id: 1,
@@ -30,24 +30,24 @@ export const services = {
 };
 
 export const curving = {
-    title: 'Curbare cadrane',
+    title: 'Quadrant curvature',
     subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla facilisi morbi tempus iaculis.',
     image: img2,
-    link: 'Vezi lucrari precedente',
+    link: 'See our previous work',
     list: [
         {
             id: 1,
-            text: 'Ferestre cu deshchidere simpla sau dubla at varius vel pharetra vel turpis nunc eget lorem dolor enim eu turpis egestas pretium aenean pharetra magna ac placerat.',
+            text: 'Windows with single or double opening at varius vel pharetra vel turpis nunc eget lorem dolor enim eu turpis egestas pretium aenean pharetra magna ac placerat.',
             icon: FiberManualRecordIcon,
         },
         {
             id: 2,
-            text: 'Usi si usi balcon scelerisque purus semper eget duis at tellus at urna condimentum mattis pellentesque id nibh tortor id',
+            text: 'Doors and balcony doors scelerisque purus semper eget duis at tellus at urna condimentum mattis pellentesque id nibh tortor id',
             icon: FiberManualRecordIcon,
         },
         {
             id: 3,
-            text: 'Pervaze, plase tantari si rulouri tristique risus nec feugiat in fermentum posuere urna nec tincidunt praesent.',
+            text: 'Window sills, mosquito nets and roller blinds tristique risus nec feugiat in fermentum posuere urna nec tincidunt praesent',
             icon: FiberManualRecordIcon,
         },
     ],

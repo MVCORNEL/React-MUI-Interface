@@ -8,13 +8,13 @@ import { ReactComponent as Guarantee } from './../icons/guarantee.svg';
 const features = [
     {
         id: 1,
-        title: 'Montaj',
+        title: 'ASSEMBLY',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         icon: <IstallSvg />,
     },
     {
         id: 2,
-        title: 'Productie',
+        title: 'PRODUCTION ',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
         icon: <ProductionSvg />,
     },
@@ -26,19 +26,19 @@ const features = [
     },
     {
         id: 4,
-        title: 'Reparatii',
+        title: 'REPAIRS',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
         icon: <RepairSvg />,
     },
     {
         id: 5,
-        title: 'Consiliere',
+        title: 'COUNSELING',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
         icon: <CounselingSvg />,
     },
     {
         id: 6,
-        title: 'Garantie',
+        title: 'GUARANTEE',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
         icon: <Guarantee />,
     },

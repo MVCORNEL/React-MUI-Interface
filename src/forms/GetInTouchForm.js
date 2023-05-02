@@ -61,7 +61,7 @@ const GetInTouchForm = () => {
             <form onSubmit={formSubmitHandler}>
                 {/* TITLE */}
                 <Typography variant={'h3'} component={'h3'} ml={2} textAlign={{ xxs: 'center', md: 'start' }}>
-                    Lasa-ne un mesaj
+                    Let us a message !
                 </Typography>
                 <Divider
                     color={theme.palette.primary.main}
@@ -120,7 +120,16 @@ const GetInTouchForm = () => {
                     </Grid>
                     {/* SUBMIT */}
                     <Grid xxs={12}>
-                        <Button size="large" variant="contained" color="primary" type="submit" disabled={!isFormValid}>
+                        <Button
+                            size="large"
+                            variant="contained"
+                            color="primary"
+                            type="submit"
+                            disabled={!isFormValid}
+                            onClick={() => {
+                                alert('Thank you very much! We will get in touch with you as soon as possible!');
+                            }}
+                        >
                             Trimite
                         </Button>
                     </Grid>
