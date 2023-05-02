@@ -6,6 +6,7 @@ import { useEffect, useCallback, useState } from 'react';
 import useHttp from './../../hooks/useHttp';
 import { useLoaderData } from 'react-router-dom';
 import ReviewDialog from '../../forms/ReviewDialogForm';
+import URL from '../../consts/URL';
 /**
  * Funcional componenets represeting an editable list of reviews.
  */
@@ -31,7 +32,7 @@ const UserReviews = () => {
     //Wrapped into useCallback hook, assuring that this function will not re-render when the current component re-evaluates
     //avoiding infinte loop problem, inside the useHttp custom hook.
     const ceateRequestConfig = useCallback(() => {
-        return { url: `http://127.0.0.1:8000/api/v1/reviews?user=${currentUser._id}` };
+        return { url: `${URL}/api/v1/reviews?user=${currentUser._id}` };
     }, []);
 
     //Function used to tranform data, coming from a request object into a list of desired product objects

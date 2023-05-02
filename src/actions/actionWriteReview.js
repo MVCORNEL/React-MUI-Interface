@@ -1,5 +1,5 @@
 import { json } from 'react-router-dom';
-
+import URL from '../consts/URL';
 /**
  * The current action router function is used to process the data and send the desired request after a user creates a review.
  * Instead of using the standard form tag, the Form router element prevents the browser's default behaviour of automatically sending a request to the backend.
@@ -18,7 +18,7 @@ async function action({ request }) {
     };
 
     //2 Send Request
-    const response = await fetch(`http://127.0.0.1:8000/api/v1/reviews`, {
+    const response = await fetch(`${URL}/api/v1/reviews`, {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         withCredentials: true,

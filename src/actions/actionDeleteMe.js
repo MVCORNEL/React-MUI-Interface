@@ -1,5 +1,5 @@
 import { redirect } from 'react-router-dom';
-
+import URL from '../consts/URL';
 /**
  * The current action router function is used to process the data and send the desired request after the deteleMe form has been submitted.
  * Instead of using the standard form tag, the Form router element prevents the browser's default behaviour of automatically sending a request to the backend.
@@ -12,7 +12,7 @@ const action = async () => {
     localStorage.removeItem('tokenExpiringDate');
 
     //1 SEND DELETE REQUEST
-    const response = await fetch(`http://127.0.0.1:8000/api/v1/users/deleteMe`, {
+    const response = await fetch(`${URL}/api/v1/users/deleteMe`, {
         method: 'DELETE',
         withCredentials: true,
         credentials: 'include',

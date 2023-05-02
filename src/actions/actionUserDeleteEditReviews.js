@@ -1,4 +1,5 @@
 import { json } from 'react-router-dom';
+import URL from '../consts/URL';
 
 /**
  * The current action router function is used to process the data and send the desired request after the user updates or deletes its reviews.
@@ -16,7 +17,7 @@ async function action(request) {
     const reviewId = data.get('id');
     if (request.method === 'DELETE') {
         //2 SEND REQUEST
-        response = await fetch(`http://127.0.0.1:8000/api/v1/reviews/${reviewId}`, {
+        response = await fetch(`${URL}/api/v1/reviews/${reviewId}`, {
             method: 'DELETE',
             withCredentials: true,
             credentials: 'include',
@@ -46,7 +47,7 @@ async function action(request) {
             date: currentDate,
         };
         //2 Send patch request
-        const response = await fetch(`http://127.0.0.1:8000/api/v1/reviews/${reviewId}`, {
+        const response = await fetch(`${URL}/api/v1/reviews/${reviewId}`, {
             headers: { 'Content-Type': 'application/json' },
             method: 'PATCH',
             withCredentials: true,

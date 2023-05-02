@@ -1,5 +1,5 @@
 import { redirect } from 'react-router-dom';
-
+import URL from '../consts/URL';
 /**
  * The current action router function is used to process the data and send the desired request after the logoutForm form has been submitted.
  * Instead of using the standard form tag, the Form router element prevents the browser's default behaviour of automatically sending a request to the backend.
@@ -11,7 +11,7 @@ const action = async () => {
     localStorage.removeItem('user');
     localStorage.removeItem('tokenExpiringDate');
     //1 SEND REQUEST
-    const response = await fetch(`http://127.0.0.1:8000/api/v1/users/logout`, { credentials: 'include' });
+    const response = await fetch(`${URL}/api/v1/users/logout`, { credentials: 'include' });
     //2 Parse the data into js objects.
     const responseData = await response.json();
     //3 Propagate the error further to the useActionData hook within the form, within the body are details about the errors.

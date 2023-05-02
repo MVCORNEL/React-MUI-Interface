@@ -1,5 +1,6 @@
 import { json } from 'react-router-dom';
 import store from '../store/store';
+import URL from '../consts/URL';
 /**
  * The current action router function is used to process the data and send the desired request after the updateMe form have been submitted.
  * Instead of using the standard form tag, the Form router element prevents the browser's default behaviour of automatically sending a request to the backend.
@@ -19,7 +20,7 @@ async function action(request) {
         form.append('image', image);
     }
     //SEND REQUEST
-    let response = await fetch(`http://127.0.0.1:8000/api/v1/users/updateMe`, {
+    let response = await fetch(`${URL}/api/v1/users/updateMe`, {
         method: 'PATCH',
         withCredentials: true,
         credentials: 'include',

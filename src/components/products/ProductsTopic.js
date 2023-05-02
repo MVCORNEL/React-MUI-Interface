@@ -3,6 +3,7 @@ import SectionHeading from '../../ui/SectionHeading';
 import ProductsGrid from './ProductsGrid';
 import { useEffect, useCallback } from 'react';
 import useHttp from './../../hooks/useHttp';
+import URL from '../../consts/URL';
 
 /**
  * Products topic section component, consiting a Subheading (title,subtitle) and a fully responsive list of product cards
@@ -16,7 +17,7 @@ const ProductsTopic = () => {
      *
      */
     const ceateRequestConfig = useCallback(() => {
-        return { url: 'http://127.0.0.1:8000/api/v1/products' };
+        return { url: `${URL}/api/v1/products` };
     }, []);
 
     /**

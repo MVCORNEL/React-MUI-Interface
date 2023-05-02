@@ -1,4 +1,5 @@
 import { json } from 'react-router-dom';
+import URL from '../consts/URL';
 /**
  * The current function is used to load into the product page the product details and its review, by executing two parallel fetch request.
  * The current loader router function is used to sent fetch request ahd handle  data before a certain page/resource is accessed.
@@ -8,13 +9,13 @@ import { json } from 'react-router-dom';
 const productLoader = async ({ params }) => {
     //Fetch product and the current product reviews list
     let [productRsponse, reviewsResponse] = await Promise.all([
-        fetch(`http://127.0.0.1:8000/api/v1/products?slug=${params.productSlug}`, {
+        fetch(`${URL}/api/v1/products?slug=${params.productSlug}`, {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true,
             credentials: 'include',
         }),
         // // //FETCH PRODUCT REVIEWS
-        await fetch(`http://127.0.0.1:8000/api/v1/reviews?productSlug=${params.productSlug}&sort=rating`, {
+        await fetch(`${URL}/api/v1/reviews?productSlug=${params.productSlug}&sort=rating`, {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true,
             credentials: 'include',

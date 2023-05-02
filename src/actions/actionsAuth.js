@@ -1,5 +1,5 @@
 import { redirect } from 'react-router-dom';
-
+import URL from '../consts/URL';
 /**
  * The current action router function is used to process the data and send the desired request after the loginForm,signupForm or forgotPassword form have been submitted.
  * Instead of using the standard form tag, the Form router element prevents the browser's default behaviour of automatically sending a request to the backend.
@@ -45,7 +45,7 @@ async function action({ request }) {
         };
     }
     //SEND REQUEST
-    const response = await fetch(`http://127.0.0.1:8000/api/v1/users/${mode}`, {
+    const response = await fetch(`${URL}/api/v1/users/${mode}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,

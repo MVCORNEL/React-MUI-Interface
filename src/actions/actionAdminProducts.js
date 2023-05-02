@@ -1,6 +1,6 @@
 import { json } from 'react-router-dom';
 import store from '../store/store';
-
+import URL from '../consts/URL';
 /**
  * The current action router function is used to process the data and send the desired request after the administrator updates deletes or creates a record.
  * Instead of using the standard form tag, the Form router element prevents the browser's default behaviour of automatically sending a request to the backend.
@@ -17,7 +17,7 @@ async function action(request) {
         //1 Get all the data within the forms
         const productIds = data.get('ids');
         //2 SEND REQUEST
-        response = await fetch(`http://127.0.0.1:8000/api/v1/products/${productIds}`, {
+        response = await fetch(`${URL}/api/v1/products/${productIds}`, {
             method: 'DELETE',
             withCredentials: true,
             credentials: 'include',
@@ -54,7 +54,7 @@ async function action(request) {
         const id = data.get('id');
 
         //2 Send Request
-        response = await fetch(`http://127.0.0.1:8000/api/v1/products/${id}`, {
+        response = await fetch(`${URL}/api/v1/products/${id}`, {
             method: request.method,
             withCredentials: true,
             credentials: 'include',

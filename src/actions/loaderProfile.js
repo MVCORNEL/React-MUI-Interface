@@ -1,4 +1,5 @@
 import { json } from 'react-router-dom';
+import URL from '../consts/URL';
 /**
  * The current loader router function is used to sent fetch request ahd handle  data before a certain page/resource is accessed.
  * Instead of using the standard way of fecthing data , this functiona will automatically fetch data when a route component is accessed.
@@ -6,7 +7,7 @@ import { json } from 'react-router-dom';
  */
 const profileLoader = async ({ params }) => {
     //GET THE CURRENT USER
-    let userData = await fetch(`http://127.0.0.1:8000/api/v1/users/getMe`, {
+    let userData = await fetch(`${URL}/api/v1/users/getMe`, {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
         credentials: 'include',
