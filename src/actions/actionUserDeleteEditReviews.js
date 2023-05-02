@@ -14,7 +14,6 @@ async function action(request) {
     let responseData;
     //1 Get the id from the submited form
     const reviewId = data.get('id');
-    console.log(reviewId);
     if (request.method === 'DELETE') {
         //2 SEND REQUEST
         response = await fetch(`http://127.0.0.1:8000/api/v1/reviews/${reviewId}`, {
@@ -26,7 +25,7 @@ async function action(request) {
         //3 Return a new object because because 204 is a terminate operation, an empty object force the table to red-render
         //due to useActionData within the table
         if (response.status === 204) {
-            return '';
+            return null;
         }
 
         //4 Parse the data into js objects.

@@ -104,7 +104,7 @@ const UserDialog = ({ open, onClose, mode, id }) => {
     );
 
     //Fetch product to edit
-    const { data: oldUserData, isLoading, hasError, sendRequest: fetchProductData } = useHttp(ceateRequestConfig, tranformUserData, extraConfigDetails());
+    const { data: oldUserData, sendRequest: fetchProductData } = useHttp(ceateRequestConfig, tranformUserData, extraConfigDetails());
 
     //Reset the fields when the dorm is closed
     const onCloseAndReset = () => {
@@ -124,9 +124,12 @@ const UserDialog = ({ open, onClose, mode, id }) => {
 
     const anyFieldChanged = isFirstNameChanged || isLastNameChanged || isEmailChanged || isPhoneChanged;
     //Check if the client side validty is passed.
-    const isFormValid = emailIsValid && passwordIsValid && firstNameIsValid && lastNameIsValid && phoneIsValid;
+    const isFormValid = emailIsValid && firstNameIsValid && lastNameIsValid && phoneIsValid;
     //Check if the form can be submitted
-    const canSubmit = anyFieldChanged && isFormValid;
+    let canSubmit = anyFieldChanged && isFormValid;
+    if (mode === 'POST' && !passwordIsValid) {
+        canSubmit = false;
+    }
 
     //FETCH DATA WHEN PATCHED INS CHANGED
     useEffect(() => {
@@ -210,17 +213,19 @@ const UserDialog = ({ open, onClose, mode, id }) => {
 
                         {/* PASSWORD */}
 
-                        <Input
-                            id={'password'}
-                            label="Password"
-                            value={passwordValue}
-                            isValid={passwordHasError}
-                            error={passwordHasError}
-                            onChange={passwordChangeHandler}
-                            onBlur={passwordBlurHandler}
-                            helperText={`Password must contain a small letter ,a capital letter, a digit and at least 8 characters length`}
-                            type={'password'}
-                        ></Input>
+                        {mode === 'POST' && (
+                            <Input
+                                id={'password'}
+                                label="Password"
+                                value={passwordValue}
+                                isValid={passwordHasError}
+                                error={passwordHasError}
+                                onChange={passwordChangeHandler}
+                                onBlur={passwordBlurHandler}
+                                helperText={`Password must contain a small letter ,a capital letter, a digit and at least 8 characters length`}
+                                type={'password'}
+                            ></Input>
+                        )}
 
                         {/* ONLY WAY TO PASS FURTHER TO THE ACTION */}
                         <input type="hidden" name="id" value={id} />

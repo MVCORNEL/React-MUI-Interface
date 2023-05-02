@@ -20,7 +20,7 @@ import { Form } from 'react-router-dom';
  * @prop {number} rate expects a number between 1 and 5
  * @returns
  */
-const Review = ({ id, name, date, image, comment, rate, isEditable = false, onEdit }) => {
+const Review = ({ id, name = 'Deleted user', date, image, comment, rate, isEditable = false, onEdit }) => {
     return (
         <Form method="DELETE">
             <ListItem alignItems="flex-start" sx={{ mt: 2, backgroundColor: '#e9e9e9' }}>
@@ -74,10 +74,10 @@ export default Review;
 
 Review.propTypes = {
     id: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    date: PropTypes.string,
     image: PropTypes.string,
-    comment: PropTypes.string.isRequired,
-    rate: PropTypes.number.isRequired,
+    comment: PropTypes.string,
+    rate: PropTypes.number,
     onEdit: PropTypes.func,
 };

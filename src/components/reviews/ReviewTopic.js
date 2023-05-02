@@ -8,7 +8,8 @@ import Chip from '@mui/material/Chip';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import ReviewDialog from '../../forms/ReviewDialogForm';
-
+import { useRouteLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 /**
  * Represents the review topic, consisting in a list of reviews, and a heading containg details about the current topic review rate.
  * @prop {number} ratingsAverage
@@ -18,6 +19,9 @@ import ReviewDialog from '../../forms/ReviewDialogForm';
  */
 const CustomerReviews = ({ ratingsAverage, ratingsQuantity, id, reviews }) => {
     const [open, setOpen] = useState(false);
+    //user login state
+    const user = useRouteLoaderData('root');
+    console.log(user);
 
     const handleClose = () => {
         setOpen(false);
@@ -55,25 +59,42 @@ const CustomerReviews = ({ ratingsAverage, ratingsQuantity, id, reviews }) => {
                     </Stack>
                 </Box>
                 {/* CRATE REVIEW */}
-                <Button sx={{ display: { xxs: 'none', sm: 'flex' } }} onClick={handleClickAddReview} variant="contained" color="primary" component="h3" mt={2} mb={1} startIcon={<CreateIcon />}>
-                    Write a review !
-                </Button>
+                {user && (
+                    <Button
+                        sx={{ display: { xxs: 'none', sm: 'flex' } }}
+                        onClick={handleClickAddReview}
+                        variant="contained"
+                        color="primary"
+                        component="button"
+                        mt={2}
+                        mb={1}
+                        startIcon={<CreateIcon />}
+                    >
+                        Write a review !
+                    </Button>
+                )}
+                {!user && (
+                    <Button sx={{ display: { xxs: 'none', sm: 'flex' } }} variant="contained" color="primary" mt={2} mb={1} component={Link} to={'/auth?mode=login'}>
+                        Sign in to let us as review
+                    </Button>
+                )}
             </Stack>
             {/* CRATE REVIEW */}
-            <Button sx={{ display: { xxs: 'flex', sm: 'none' } }} onClick={handleClickAddReview} variant="contained" color="primary" component="h3" mt={2} mb={1} startIcon={<CreateIcon />}>
-                Write a review !
-            </Button>
+            {user && (
+                <Button sx={{ display: { xxs: 'flex', sm: 'none' } }} onClick={handleClickAddReview} variant="contained" color="primary" component="h3" mt={2} mb={1} startIcon={<CreateIcon />}>
+                    Write a review !
+                </Button>
+            )}
+            {!user && (
+                <Button sx={{ display: { xxs: 'flex', sm: 'none' } }} variant="contained" color="primary" mt={2} mb={1} component={Link} to={'/auth?mode=login'}>
+                    Sign in to let us as review
+                </Button>
+            )}
+
             {/* REVIEWS */}
             <List>
                 {reviews.map((review) => (
-                    <Review
-                        key={review.id}
-                        name={`${review.user.firstName} ${review.user.lastName} `}
-                        rate={review.rating}
-                        date={review.date}
-                        comment={review.comment}
-                        image={review.user.image}
-                    ></Review>
+                    <Review key={review?.id} name={review?.user?.firstName} rate={review?.rating} date={review?.date} comment={review?.comment} image={review?.user?.image}></Review>
                 ))}
             </List>
 

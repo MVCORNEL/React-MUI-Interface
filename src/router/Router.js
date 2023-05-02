@@ -51,7 +51,7 @@ const router = createBrowserRouter(
                             //ADMIN ROUTES CA CAN ACCESSED ONLY BY ADMINISTRATOR
                             if (tab === 'products' || tab === 'users') {
                                 if (!isAdmin) {
-                                    return redirectUserTo('/');
+                                    return redirectUserTo('/auth?mode=login');
                                 }
                             }
                             return profileLoader({ params });

@@ -41,7 +41,7 @@ const UserReviews = () => {
         return data.map((review) => {
             return {
                 id: review?.id,
-                name: review?.user.firstName + ' ' + review?.user.lastName,
+                name: review?.user?.firstName,
                 rating: review?.rating,
                 date: review?.date,
                 description: review?.description,
@@ -72,13 +72,13 @@ const UserReviews = () => {
                     {reviews?.map((review) => (
                         <Review
                             isEditable={true}
-                            key={review.id}
-                            id={review.id}
-                            name={`${review.name} `}
-                            rate={review.rating}
-                            date={review.date}
-                            comment={review.comment}
-                            image={review.image}
+                            key={review?.id}
+                            id={review?.id}
+                            name={`${review?.name} `}
+                            rate={review?.rating}
+                            date={review?.date}
+                            comment={review?.comment}
+                            image={review?.image}
                             onEdit={handleClickEditReview}
                         ></Review>
                     ))}

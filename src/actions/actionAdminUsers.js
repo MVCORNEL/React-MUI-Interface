@@ -15,7 +15,6 @@ async function action(request) {
     if (request.method === 'DELETE') {
         //1 Get all the data within the forms
         const usersIds = data.get('ids');
-        alert('HERE');
         //2 SEND REQUEST
         response = await fetch(`http://127.0.0.1:8000/api/v1/users/${usersIds}`, {
             method: 'DELETE',
