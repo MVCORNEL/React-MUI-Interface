@@ -13,6 +13,7 @@ const HeaderProducts = () => {
         <Box sx={{ position: 'relative', backgroundImage: `url(${backgroundLight})`, backgroundSize: 'cover', minHeight: { xss: 'auto', md: '92vh' }, width: '100%' }}>
             {/* BACKGROUND COLOR - FIRST HALF */}
             <Container
+                tabIndex={0}
                 component="section"
                 sx={{
                     paddingTop: { xxs: '5rem', sm: '5rem', md: '7rem', lg: '9rem' },

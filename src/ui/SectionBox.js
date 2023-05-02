@@ -16,6 +16,7 @@ const SectionBox = ({ children, isGray }) => {
     const getContainer = (content) => {
         return (
             <Container
+                tabIndex="0"
                 component="section"
                 sx={{
                     paddingTop: { xxs: '4rem', sm: '5rem', md: '7rem', lg: '10rem' },

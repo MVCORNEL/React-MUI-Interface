@@ -11,6 +11,7 @@ import Image from 'mui-image';
 const Header = () => {
     return (
         <Container
+            tabIndex={0}
             component="section"
             sx={{
                 marginTop: { xxs: '4rem', sm: '5rem', md: '7rem', lg: '9rem' },

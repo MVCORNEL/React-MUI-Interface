@@ -16,6 +16,7 @@ const SubHeader = () => {
 
     return (
         <Stack
+            tabIndex={0}
             width="100%"
             direction={{ xxs: 'column', sm: 'row' }}
             justifyContent="space-around"

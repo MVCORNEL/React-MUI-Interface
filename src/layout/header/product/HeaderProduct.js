@@ -28,6 +28,7 @@ const HeaderProduct = ({ title }) => {
                 {/* HEADING */}
                 <Box textAlign="center">
                     <Typography
+                        tabIndex={0}
                         variant="h1"
                         component="h1"
                         color="white"
