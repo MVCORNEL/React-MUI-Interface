@@ -16,6 +16,7 @@ import productLoader from '../actions/loaderProduct';
 import profileLoader from '../actions/loaderProfile';
 import Auth from '../pages/Auth';
 import { getUserData } from '../auth/user';
+import { isUserAuthentificated, isUserAdmin, redirectUserTo } from '../auth/user';
 
 /**
  * The router component responsible for all the route configuration functionality
@@ -37,7 +38,29 @@ const router = createBrowserRouter(
                 <Route path="products" element={<Products />} />
                 <Route path="product/:productSlug" loader={productLoader} action={actionWriteReview} element={<Product />} />
                 {/* RESTRICTING ACCESS FOR THE USER ROUTE AND ITS CHILDREN FOR THE LOGGEN IN US */}
-                <Route path="user" element={<User />} loader={profileLoader} action={actionProfileController} />
+                <Route
+                    path="user"
+                    element={<User />}
+                    loader={({ request, params }) => {
+                        const isAuth = isUserAuthentificated();
+                        //non-auth user cannpt access this route
+                        if (isAuth) {
+                            const isAdmin = isUserAdmin();
+                            const searchParams = new URL(request.url).searchParams;
+                            const tab = searchParams.get('tab');
+                            //ADMIN ROUTES CA CAN ACCESSED ONLY BY ADMINISTRATOR
+                            if (tab === 'products' || tab === 'users') {
+                                if (!isAdmin) {
+                                    return redirectUserTo('/');
+                                }
+                            }
+                            return profileLoader({ params });
+                        } else {
+                            return redirectUserTo('/auth?mode=login');
+                        }
+                    }}
+                    action={actionProfileController}
+                />
             </Route>
             {/* All the forms used with Form tag submission handling will be redirect to authAction*/}
             <Route path="auth" element={<Auth />} action={authActions} />

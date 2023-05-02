@@ -1,7 +1,8 @@
 import { Typography } from '@mui/material';
 import { Fragment } from 'react';
 import UsersTable from '../table/UsersTable';
-
+import { isUserAuthentificated } from '../../auth/user';
+import { useNavigate } from 'react-router-dom';
 /**
  * Funcional component a header and a table
  */

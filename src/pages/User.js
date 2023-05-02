@@ -8,6 +8,8 @@ import AdminProducts from '../components/profile/AdminProducts';
 import AdminUsers from '../components/profile/AdminUsers';
 import { json } from 'react-router-dom';
 import { useEffect } from 'react';
+import { isUserAuthentificated } from '../auth/user';
+import { useNavigate } from 'react-router-dom';
 /**
  * The user page component page. The main components of the current page are rendered based on the query parameter.
  * On the left side a menu and on the right side the placeholder for the required pages.
@@ -21,7 +23,6 @@ const User = () => {
     const isUsersTab = searchParams.get('tab') === 'users';
     const forUser = isProfileTab || isMessasgesTab || isReviewsTab;
     const forAdmin = isProductsTab || isUsersTab;
-
     useEffect(() => {
         if (!forUser && !forAdmin) {
             throw json({ message: 'The current route does exist' }, { status: 404 });
@@ -52,6 +53,7 @@ const User = () => {
                         {isReviewsTab && <UserReviews />}
                     </Box>
                 )}
+
                 {/* USER's LIST */}
                 {forAdmin && (
                     <Box mx={'auto'} mt={8} mb={8} width={'100%'} sx={{ minWidth: 0 }} px={2}>

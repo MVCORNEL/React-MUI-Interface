@@ -17,11 +17,16 @@ const UsersTable = () => {
         return { url: 'http://127.0.0.1:8000/api/v1/users' };
     }, []);
 
+    //Function used to return an request object configuration for cookie credentials, this function will be passed as configuration for the useHttp custom hook.
+    //Wrapped inside the useCallback custom hook, this function ensures that it won't re-render when the current component is evaluated, preventing the issue with infinite loops.
+    const extraConfigDetails = useCallback(() => {
+        return { credentials: 'include', withCredentials: true };
+    }, []);
+
     //Function used to tranform data, coming from a request object into a list of desired user objects
     //Wrapped into useCallback hook, assuring that this function will not re-render when the current component re-evaluates
     //avoiding infinte loop problem, inside the useHttp custom hook.
     const tranformProducts = useCallback((data) => {
-        console.log(data);
         return data.map((user) => {
             return {
                 lastName: user.lastName,
@@ -33,7 +38,7 @@ const UsersTable = () => {
     }, []);
 
     //Fetch url custom hook
-    const { data: rows, isLoading, hasError, sendRequest: fetchProducts } = useHttp(ceateRequestConfigGetAll, tranformProducts);
+    const { data: rows, isLoading, hasError, sendRequest: fetchProducts } = useHttp(ceateRequestConfigGetAll, tranformProducts, extraConfigDetails());
 
     useEffect(() => {
         fetchProducts();

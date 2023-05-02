@@ -30,12 +30,36 @@ export const getUserData = () => {
  * restricting access to some resources to only logged-in users.
  * Not logged in users tryng to access proteced resources will be redirect to log in.
  */
-export const checkUserIsAuthentificated = () => {
+export const isUserAuthentificated = () => {
     const user = getUserData();
+    console.log('HERE');
     if (!user) {
-        return redirect('/auth?mode=login');
+        return false;
     }
-    return null;
+    return true;
+};
+
+/**
+ * Function used in together with router loader routes to provide an additional layer of protection for the website by
+ * restricting access to some resources to only logged-in users.
+ * Not logged in users tryng to access proteced resources will be redirect to log in.
+ */
+export const redirectUserTo = (link) => {
+    return redirect(link);
+};
+
+/**
+ * Function used in together with router loader routes to provide an additional layer of protection for the website by
+ * restricting access to some resources to only admin typed users.
+ * Not admin in users tryng to access proteced resources will be redirectto the home page
+ */
+export const isUserAdmin = () => {
+    const user = getUserData();
+
+    if (user?.role === 'admin') {
+        return true;
+    }
+    return false;
 };
 
 /**

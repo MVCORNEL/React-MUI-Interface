@@ -17,6 +17,8 @@ function Navbar() {
     const [anchorElUser, setAnchorElUser] = useState(null);
     //user login state
     const user = useRouteLoaderData('root');
+    const userImage = user?.image;
+
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
@@ -45,7 +47,7 @@ function Navbar() {
                     {/* LINKS */}
                     <NavLinks handleCloseNavMenu={handleCloseNavMenu} />
                     {/* PROFILE BOX */}
-                    {user && <NavProfileBox handleOpenUserMenu={handleOpenUserMenu} handleCloseUserMenu={handleCloseUserMenu} anchorElUser={anchorElUser} />}
+                    {user && <NavProfileBox handleOpenUserMenu={handleOpenUserMenu} handleCloseUserMenu={handleCloseUserMenu} anchorElUser={anchorElUser} image={userImage} />}
                     {!user && (
                         <Button variant="contained" color="primary" component={RouterLink} size="medium" to="/auth?mode=login" sx={{ marginLeft: '1rem' }}>
                             Log in

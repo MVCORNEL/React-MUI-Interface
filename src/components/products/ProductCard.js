@@ -40,7 +40,7 @@ const ProductCard = ({ id, name, summary, imgUrl, slug }) => {
                     {summary}
                 </Typography>
             </CardContent>
-            <CardActions sx={{ direction: 'column', justifyContent: 'center!important' }}>
+            <CardActions sx={{ direction: 'column', justifyContent: 'center!important', marginTop: 'auto' }}>
                 <Button component={Link} size="small" to={`/product/${slug}`}>
                     Learn more
                 </Button>

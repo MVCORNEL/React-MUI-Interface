@@ -64,6 +64,7 @@ async function action({ request }) {
     if (responseData.status === 'error') {
         throw new Error(`${responseData.message}`);
     }
+
     //6 Set user to data to the local Storage, and the token expiration time
     //  The JWT token cannot be accessed programatically by the client, because it is sent as a http cookie
     if (mode === 'signup' || mode === 'login') {
