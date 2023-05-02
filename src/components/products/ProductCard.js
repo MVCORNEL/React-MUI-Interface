@@ -55,7 +55,7 @@ ProductCard.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     summary: PropTypes.string.isRequired,
-    imgUrl: PropTypes.string.isRequired,
-    imgUrl: PropTypes.string.isRequired,
+    imgUrl: PropTypes.string,
+
     slug: PropTypes.string.isRequired,
 };

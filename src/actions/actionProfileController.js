@@ -12,9 +12,7 @@ import actionUsers from './actionAdminUsers';
  */
 async function action({ request }) {
     //1 Get the search params of the current page, URL default constructor provided by the browser
-    const searchParams = new URL(request.url).searchParams;
-    const tab = searchParams.get('tab');
-
+    const tab = request.url.split('=').pop();
     //2 Handle only the following forms
     if (tab !== 'products' && tab !== 'me' && tab !== 'reviews' && tab !== 'users') {
         throw new Error('Unrecognized request . Please cotact the administrator !');

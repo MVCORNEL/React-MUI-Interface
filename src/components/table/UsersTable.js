@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import CustomTable from './customTable/CustomTable';
 import { useEffect, useCallback } from 'react';
 import useHttp from './../../hooks/useHttp';
-
+import URL from '../../consts/URL';
 /**
  * Products admin table component, consiting into a Table that allow the Sorting/Editing,Deleting,Creating records
  * Using a custom http hook,data will be fetched and the table will be populated acordingly.
@@ -14,7 +14,7 @@ const UsersTable = () => {
     // Wrapped into useCallback hook, assuring that this function will not re-render when the current component re-evaluates
     // avoiding infinte loop problem, inside the useHttp custom hook.
     const ceateRequestConfigGetAll = useCallback(() => {
-        return { url: 'http://127.0.0.1:8000/api/v1/users' };
+        return { url: `${URL}/api/v1/users` };
     }, []);
 
     //Function used to return an request object configuration for cookie credentials, this function will be passed as configuration for the useHttp custom hook.

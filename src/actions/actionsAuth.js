@@ -9,18 +9,20 @@ import URL from '../consts/URL';
  */
 async function action({ request }) {
     //1 Get the search params of the current page, URL default constructor provided by the browser
-    const searchParams = new URL(request.url).searchParams;
-    const mode = searchParams.get('mode');
+    // const param = new URL(request.url).searchParams;
+    const mode = request.url.split('=').pop();
     //2 Handle only the following forms
     if (mode !== 'login' && mode !== 'signup' && mode !== 'forgot') {
         return 'Something went wrong';
     }
+
     //3 Get all the data within the forms
     const data = await request.formData();
     let userData;
 
     //SIGN UP
     if (mode === 'signup') {
+        alert('signup');
         userData = {
             firstName: data.get('fname'),
             lastName: data.get('lname'),
@@ -37,7 +39,6 @@ async function action({ request }) {
             password: data.get('password'),
         };
     }
-
     //FORGOT
     if (mode === 'forgot') {
         userData = {
@@ -47,15 +48,13 @@ async function action({ request }) {
     //SEND REQUEST
     const response = await fetch(`${URL}/api/v1/users/${mode}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'X-HTTP-Method-Override': 'PATCH' },
         withCredentials: true,
         credentials: 'include',
         body: JSON.stringify(userData),
     });
-
     //4 Parse the data into js objects.
     const responseData = await response.json();
-
     //5 Propagate the error further to the useActionData hook within the form, within the body are details about the errors.
     if (responseData.status === 'fail') {
         return responseData.message;

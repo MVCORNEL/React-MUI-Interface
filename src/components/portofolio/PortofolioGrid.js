@@ -17,7 +17,6 @@ const PortofolioGrid = ({ imageList }) => {
     return (
         <ImageList sx={{ height: 'auto' }} cols={isSmallDevice ? 2 : 4} gap={2} variant="quilted">
             {imageList.map((item, index) => {
-                console.log(item.title);
                 return (
                     <ImageListItem key={index} cols={item.cols || 1} rows={item.rows || 1}>
                         <img src={`${item.image}`} alt={item.title} />
