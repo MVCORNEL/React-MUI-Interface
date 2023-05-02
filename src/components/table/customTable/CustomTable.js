@@ -99,6 +99,7 @@ export default function CustomTable({ tableName, rows, headCells }) {
                 key={currentRow.id}
                 selected={isItemSelected}
                 sx={{ cursor: 'pointer' }}
+                tab={0}
             >
                 {Object.keys(currentRow).map(function (key, index) {
                     if (index === 0) {

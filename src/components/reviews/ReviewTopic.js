@@ -21,7 +21,6 @@ const CustomerReviews = ({ ratingsAverage, ratingsQuantity, id, reviews }) => {
     const [open, setOpen] = useState(false);
     //user login state
     const user = useRouteLoaderData('root');
-    console.log(user);
 
     const handleClose = () => {
         setOpen(false);

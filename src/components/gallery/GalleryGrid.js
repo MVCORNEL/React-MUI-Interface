@@ -21,7 +21,7 @@ const GalleryGrid = () => {
         <ImageList sx={{ height: 'auto' }} cols={isSmallDevice ? 1 : isMediumDevice ? 2 : 3} rowHeight={isMediumDevice ? (isSmallDevice ? 150 : 225) : 300} gap={1} variant="quilted">
             {images.map((item) => (
                 <ImageListItem key={item.img}>
-                    <img src={`${item.img}`} alt={item.title} loading="lazy" />
+                    <img src={`${item.img}`} alt={item.title} />
                 </ImageListItem>
             ))}
         </ImageList>

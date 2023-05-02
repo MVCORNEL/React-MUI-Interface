@@ -3,7 +3,7 @@ import { Stack, Typography, Box, Button, List } from '@mui/material';
 import SectionBox from '../../ui/SectionBox';
 import Image from 'mui-image';
 import ServiceItem from './ServiceItem';
-
+import { Link } from 'react-router-dom';
 /**
  * The component of the service topic section is divided into two equal segments, one of which contains an image.
  * One represents a text topic that includes, while the other (a title, a subtitle, a list of steps, and a link)
@@ -38,7 +38,8 @@ const ServiceTopic = ({ title, list, image, link, isPlacedRight, mb }) => {
                         </Box>
                     </Stack>
                     {/* REFERENCE LINK */}
-                    <Button size="small" href="#" sx={{ marginTop: '2rem', display: 'block' }}>
+
+                    <Button size="small" component={Link} to="/portofolio" sx={{ marginTop: '2rem', display: 'block' }}>
                         {link} <span>&rarr;</span>
                     </Button>
                 </Grid>

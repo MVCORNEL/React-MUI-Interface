@@ -19,14 +19,7 @@ const PortofolioTopic = () => {
 
     return (
         <SectionBox>
-            {/* MENU */}
-            {/* <PortofolioMenu menuItems={categories} /> */}
-            {/* IMAGE GALLERY */}
             <PortofolioGrid imageList={imageList} />
-            {/* PAGINATION */}
-            {/* <Box display="flex" justifyContent="center" my={8}>
-                <Pagination variant="outlined" color="primary" count={10} page={page} onChange={handleChangePage} />
-            </Box> */}
         </SectionBox>
     );
 };

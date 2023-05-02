@@ -21,7 +21,7 @@ const About = () => {
                 </Grid>
                 {/* IMAGE */}
                 <Grid xxs={12} md={6} display={{ xxs: 'none', md: 'block' }}>
-                    <Image src={about.image} alt="window image" fit="cover" duration={500} showLoading={true} easing="ease-in" height={'100%'} />
+                    <Image src={about.image} alt="fit winwod image" fit="cover" duration={500} showLoading={true} easing="ease-in" height={'100%'} />
                 </Grid>
                 {/* IMAGE */}
                 <Grid xxs={12} md={6}>

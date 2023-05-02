@@ -12,14 +12,18 @@ const PortofolioGrid = ({ imageList }) => {
     const theme = useTheme();
     //All devices smaller than 900px
     const isSmallDevice = useMediaQuery(theme.breakpoints.down('sm'));
+
     //Columns count
     return (
-        <ImageList sx={{ height: 'auto' }} cols={isSmallDevice ? 2 : 6} gap={2} variant="quilted">
-            {imageList.map((item) => (
-                <ImageListItem key={item.img} cols={item.cols || 1} rows={item.rows || 1}>
-                    <img src={`${item.img}?w=164&h=164&fit=crop&auto=format`} srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`} alt={item.title} loading="lazy" />
-                </ImageListItem>
-            ))}
+        <ImageList sx={{ height: 'auto' }} cols={isSmallDevice ? 2 : 4} gap={2} variant="quilted">
+            {imageList.map((item, index) => {
+                console.log(item.title);
+                return (
+                    <ImageListItem key={index} cols={item.cols || 1} rows={item.rows || 1}>
+                        <img src={`${item.image}`} alt={item.title} />
+                    </ImageListItem>
+                );
+            })}
         </ImageList>
     );
 };

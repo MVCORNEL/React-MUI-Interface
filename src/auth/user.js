@@ -32,7 +32,6 @@ export const getUserData = () => {
  */
 export const isUserAuthentificated = () => {
     const user = getUserData();
-    console.log('HERE');
     if (!user) {
         return false;
     }

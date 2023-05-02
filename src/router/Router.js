@@ -7,6 +7,7 @@ import Portofolio from '../pages/Portofolio';
 import AboutUs from '../pages/AboutUs';
 import User from '../pages/User';
 import Product from '../pages/Product';
+import Credits from '../pages/Credits';
 import authActions from '../actions/actionsAuth';
 import actionProfileController from '../actions/actionProfileController';
 import actionWriteReview from './../actions/actionWriteReview';
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
                 <Route path="about" element={<AboutUs />} />
                 <Route path="portofolio" element={<Portofolio />} />
                 <Route path="products" element={<Products />} />
+                <Route path="credits" element={<Credits />} />
                 <Route path="product/:productSlug" loader={productLoader} action={actionWriteReview} element={<Product />} />
                 {/* RESTRICTING ACCESS FOR THE USER ROUTE AND ITS CHILDREN FOR THE LOGGEN IN US */}
                 <Route

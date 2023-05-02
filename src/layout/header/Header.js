@@ -32,7 +32,7 @@ const Header = () => {
                         </Typography>
                         {/* BUTTON */}
                         <Box mt={4}>
-                            <Button variant="contained" color="primary" size="large" sx={{ display: { xxs: 'none', md: 'block' } }}>
+                            <Button component={'a'} href={'#contact'} variant="contained" color="primary" size="large" sx={{ display: { xxs: 'none', md: 'inline-block' } }}>
                                 Contact us
                             </Button>
                         </Box>
@@ -65,11 +65,11 @@ const Header = () => {
                 <Grid xxs={12} md={5} alignSelf="center" pl={{ md: 10, lg: 3 }}>
                     {/* IMAGE */}
                     <Box width={{ xxs: '55%', sm: '30%', md: '100%' }} mr="auto" ml="auto">
-                        <Image src={img1} alt="window image" fit="cover" duration={0} />
+                        <Image src={img1} alt="Guy fiiting window" fit="cover" duration={0} />
                     </Box>
                     {/* BUTTON */}
                     <Box mt={{ xxs: 4 }} sx={{ textAlign: 'center' }}>
-                        <Button variant="contained" color="primary" size="large" sx={{ width: { xxs: '100%', sm: '60%' }, display: { sx: 'block', md: 'none' } }}>
+                        <Button component={'a'} href={'#contact'} variant="contained" color="primary" size="large" sx={{ width: { xxs: '100%', sm: '60%' }, display: { sx: 'block', md: 'none' } }}>
                             Contact us
                         </Button>
                     </Box>
